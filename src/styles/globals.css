@@ -165,6 +165,14 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.2rem); }
     border-bottom: 1px solid var(--border);
 }
 
+/* Sotto i 768px (o su schermi bassi, es. telefono in orizzontale) l'intestazione va su
+   2-3 righe (135-180px): se restasse fissa coprirebbe buona parte dello schermo e
+   l'elemento col focus (WCAG 2.4.11). Lì scorre con la pagina. */
+@media (max-width: 767px), (max-height: 500px) {
+    .site-header { position: static; }
+    html { scroll-padding-top: 0; }
+}
+
 .header-inner {
     display: flex;
     flex-wrap: wrap;
