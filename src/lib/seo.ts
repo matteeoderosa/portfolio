@@ -35,7 +35,7 @@ function textFor(key: PageKey, lang: Lang): { title: string; description: string
   }
   switch (key) {
     case "home":
-      return { title: d.home.title, description: d.home.intro };
+      return { title: `${OWNER} · ${d.home.title}`, description: d.home.intro };
     case "projects":
       return { title: `${d.projects.title} · ${OWNER}`, description: d.projects.intro };
     case "about":

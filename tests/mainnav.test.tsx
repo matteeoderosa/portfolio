@@ -11,7 +11,7 @@ const itNav = [
   { label: "Progetti", href: "/progetti/" },
   { label: "Chi sono", href: "/chi-sono/" },
   { label: "Contatti", href: "/contatti/" },
-  { label: "Archivio", href: "/archivio/" },
+  { label: "Esercizi", href: "/archivio/" },
 ];
 const enNav = [
   { label: "Home", href: "/en/" },

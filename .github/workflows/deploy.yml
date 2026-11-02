@@ -25,6 +25,7 @@ jobs:
           cache: npm
       - uses: actions/configure-pages@v6
       - run: npm ci
+      - run: npm run lint
       - run: npm test
       # Provisional URL build. The final-domain build (empty base path,
       # https://matteoderosa.it, no NOINDEX) replaces these values later:

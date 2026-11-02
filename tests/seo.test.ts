@@ -36,7 +36,7 @@ describe("pageMetadata", () => {
   });
 
   it("home title is the plain-language dictionary title", () => {
-    expect(pageMetadata("home", "it", {}).title).toBe("Creo siti e applicazioni web su misura");
+    expect(pageMetadata("home", "it", {}).title).toBe("Matteo De Rosa · Creo siti e applicazioni web su misura");
   });
 
   it("open graph and twitter use og-image", () => {

@@ -24,6 +24,7 @@ Nomi da non confondere:
 
 - Dove: Register.it, dominio `matteoderosa.it`, Gestione DNS (o "Record DNS").
 - **ATTENZIONE: non cancellare i record MX e TXT esistenti.** Servono alla posta (`ciao@...`). Tocca solo i record A e il CNAME `www`: aggiungi o sostituisci solo quelli.
+- **Attenzione:** passare Register.it ai record DNS personalizzati può azzerare quelli esistenti: controlla che MX e TXT siano ancora al loro posto. Se su `@` ci sono record `AAAA` o di parcheggio (parking), eliminali: solo quelli, mai MX o TXT.
 - Inserisci quattro record `A`, host `@`:
   - `185.199.108.153`
   - `185.199.109.153`
@@ -32,6 +33,8 @@ Nomi da non confondere:
 - Inserisci un record `CNAME`, host `www`, valore `matteeoderosa.github.io`.
 - Funziona se: dopo da pochi minuti a qualche ora, `matteoderosa.it` risponde (anche con un errore di GitHub: va bene, il sito arriva al passo 4).
 - Annullare: ripristina i valori che c'erano prima (copiali o fai uno screenshot prima di cambiare).
+
+Nota: i passi 4 e 5 vanno fatti uno dopo l'altro, senza pause: nel frattempo l'indirizzo provvisorio `github.io/portfolio` ha le risorse (CSS, immagini) rotte.
 
 ## 4. Aggiungi `CNAME` e passa alle impostazioni finali
 
@@ -98,10 +101,18 @@ git push
 
 ## 7. Redirect di `derteo.github.io`
 
-- Nel repo `derteo.github.io` sostituisci `index.html` con `docs/redirect-stubs/derteo-github-io.html` (copiato come `index.html`).
+- Nel repo `derteo.github.io` sostituisci `index.html` con `docs/redirect-stubs/derteo-github-io.html` (copiato come `index.html`) e copialo anche come `404.html`. Elimina le vecchie cartelle `pages/`, `css/`, `js/`, `img/`, così ogni vecchio indirizzo (per esempio `/pages/projects.html`) cade sul `404.html` e viene reindirizzato:
+
+  ```
+  git rm -r pages css js img
+  cp <percorso-del-portfolio>/docs/redirect-stubs/derteo-github-io.html index.html
+  cp index.html 404.html
+  git add index.html 404.html
+  git commit -m "Redirect to matteoderosa.it" && git push
+  ```
 - Le vecchie pagine vanno: `/pages/projects.html` a `/progetti/`, `/pages/contact.html` a `/contatti/`, `/pages/skills.html` e tutto il resto alla home.
 - Funziona se: aprendo `derteo.github.io` arrivi su `matteoderosa.it`.
-- Annullare: ripristina il vecchio `index.html` dalla cronologia.
+- Annullare: `git revert HEAD` e push, oppure ripristina i vecchi file dalla cronologia.
 
 ## 8. Archivia ITSProdigi
 

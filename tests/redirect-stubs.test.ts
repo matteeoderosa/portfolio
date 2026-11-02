@@ -44,6 +44,11 @@ describe("docs/go-live.md", () => {
     expect(md).toContain("404.html");
     expect(md).not.toMatch(/Libera il vecchio dominio/);
   });
+  it("step 7 tells to copy the derteo stub as 404.html and remove old folders", () => {
+    const step = md.slice(md.indexOf("## 7."), md.indexOf("## 8."));
+    expect(step).toContain("404.html");
+    expect(step).toContain("git rm -r");
+  });
   it("mentions the www CNAME target", () => {
     expect(md).toContain("matteeoderosa.github.io");
   });

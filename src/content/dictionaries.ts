@@ -71,11 +71,11 @@ const it: Dictionary = {
     projects: "Progetti",
     about: "Chi sono",
     contact: "Contatti",
-    archive: "Archivio",
+    archive: "Esercizi",
     write: "Scrivimi",
   },
   home: {
-    eyebrow: "WEB APP DEVELOPER · PISA",
+    eyebrow: "Sviluppatore web · Grosseto e Pisa",
     title: "Creo siti e applicazioni web su misura",
     intro:
       "Mi chiamo Matteo e aiuto persone e piccole attività a portare online ciò che serve davvero, in modo semplice e curato.",
@@ -151,19 +151,19 @@ const en: Dictionary = {
     about: "About",
     contact: "Contact",
     archive: "Archive",
-    write: "Write me",
+    write: "Get in touch",
   },
   home: {
-    eyebrow: "WEB APP DEVELOPER · PISA",
+    eyebrow: "Web developer · Grosseto and Pisa",
     title: "I build custom websites and web applications",
     intro:
-      "I'm Matteo, and I help people and small businesses put online what they really need, in a simple and careful way.",
+      "I'm Matteo, and I help people and small businesses put online what they really need, with simplicity and care.",
     ctaProjects: "See my projects",
     servicesTitle: "What I can do for you",
     services: [
       "A showcase website for your business",
       "A custom-made web application",
-      "A management tool to organize your work",
+      "A tool to run your business",
     ],
     featuredTitle: "Selected work",
     contactInvite: "Have an idea or a need? Write to me, and we'll talk it over with no commitment.",
