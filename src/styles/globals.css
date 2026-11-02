@@ -272,3 +272,17 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.2rem); }
         transition-duration: 0.01ms !important;
     }
 }
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+.lang-switch:hover { background: var(--surface-2); }
+.lang-switch.is-disabled { opacity: 0.5; cursor: not-allowed; }

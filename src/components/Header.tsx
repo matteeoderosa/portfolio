@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import LangSwitch from "./LangSwitch";
 
 export type HeaderProps = {
   lang: "it" | "en";
@@ -11,6 +12,7 @@ export type HeaderProps = {
     skip: string;
     navAria?: string;
     theme: { dark: string; light: string };
+    langSwitch: { label: string; unavailable: string };
   };
 };
 
@@ -49,6 +51,11 @@ export default function Header({ lang, currentPath, labels }: HeaderProps) {
           <a className="btn btn-primary" href={EMAIL}>
             {labels.write}
           </a>
+          <LangSwitch
+            lang={lang}
+            label={labels.langSwitch.label}
+            unavailable={labels.langSwitch.unavailable}
+          />
           <ThemeToggle labels={labels.theme} />
         </div>
       </header>
