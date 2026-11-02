@@ -1,5 +1,6 @@
 import { dictionaries } from "@/content/dictionaries";
 import { site } from "@/content/site";
+import { assetHref } from "@/lib/site";
 import type { Lang } from "@/lib/routes";
 
 export default function ContactView({ lang }: { lang: Lang }) {
@@ -37,7 +38,7 @@ export default function ContactView({ lang }: { lang: Lang }) {
           ) : null}
         </ul>
         {site.cvUrl ? (
-          <a className="btn btn-primary" data-cv href={site.cvUrl} target="_blank" rel="noopener noreferrer">
+          <a className="btn btn-primary" data-cv href={assetHref(site.cvUrl)} target="_blank" rel="noopener noreferrer">
             {c.cvLabel}
           </a>
         ) : null}

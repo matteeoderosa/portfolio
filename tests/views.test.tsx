@@ -84,3 +84,33 @@ describe("ProjectView", () => {
     expect(() => Mod({ lang: "en", slug: "broken" })).toThrow();
   });
 });
+
+describe("assetHref / base path", () => {
+  it("assetHref prefixes root-relative paths only", async () => {
+    const { assetHref } = await import("@/lib/site");
+    const env = { NEXT_PUBLIC_BASE_PATH: "/portfolio" };
+    expect(assetHref("/cv.pdf", env)).toBe("/portfolio/cv.pdf");
+    expect(assetHref("https://x.it/cv.pdf", env)).toBe("https://x.it/cv.pdf");
+  });
+
+  it("ContactView applies the base path to a root-relative cvUrl, not to https", async () => {
+    process.env.NEXT_PUBLIC_BASE_PATH = "/portfolio";
+    try {
+      for (const [cv, expected] of [
+        ["/cv.pdf", "/portfolio/cv.pdf"],
+        ["https://x.it/cv.pdf", "https://x.it/cv.pdf"],
+      ]) {
+        vi.resetModules();
+        vi.doMock("@/content/site", () => ({
+          site: { email: "a@b.it", github: "https://github.com/x", cvUrl: cv },
+        }));
+        const Mod = (await import("@/views/ContactView")).default;
+        const { container, unmount } = render(<Mod lang="it" />);
+        expect(container.querySelector("[data-cv]")?.getAttribute("href")).toBe(expected);
+        unmount();
+      }
+    } finally {
+      delete process.env.NEXT_PUBLIC_BASE_PATH;
+    }
+  });
+});

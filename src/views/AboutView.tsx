@@ -1,6 +1,6 @@
 import { dictionaries } from "@/content/dictionaries";
 import { site } from "@/content/site";
-import { withBase } from "@/lib/site";
+import { assetHref } from "@/lib/site";
 import type { Lang } from "@/lib/routes";
 import ContactCta from "@/components/ContactCta";
 
@@ -16,7 +16,7 @@ export default function AboutView({ lang }: { lang: Lang }) {
             // eslint-disable-next-line @next/next/no-img-element
             <img
               className="portrait"
-              src={site.photo.startsWith("/") ? withBase(site.photo) : site.photo}
+              src={assetHref(site.photo)}
               alt={dict.contact.photoAlt}
             />
           ) : null}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { dictionaries } from "@/content/dictionaries";
 import { projects } from "@/content/projects";
 import { routePath, type Lang } from "@/lib/routes";
-import { withBase } from "@/lib/site";
+import { assetHref } from "@/lib/site";
 import TagList from "@/components/TagList";
 import ContactCta from "@/components/ContactCta";
 
@@ -32,7 +32,7 @@ export default function ProjectView({ lang, slug }: { lang: Lang; slug: string }
           <p className="lead">{text.summary}</p>
           {shot ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img className="shot" src={shot.startsWith("/") ? withBase(shot) : shot} alt={text.name} />
+            <img className="shot" src={assetHref(shot)} alt={text.name} />
           ) : null}
           <h2>{dict.projects.purposeTitle}</h2>
           <p>{text.purpose}</p>
