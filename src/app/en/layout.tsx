@@ -32,7 +32,7 @@ export default function EnLayout({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
-        <Shell lang="en" currentPath="/en/" header={header} footer={footer}>
+        <Shell lang="en" header={header} footer={footer}>
           {children}
         </Shell>
       </body>

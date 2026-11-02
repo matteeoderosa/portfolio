@@ -1,10 +1,10 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import MainNav from "./MainNav";
 import LangSwitch from "./LangSwitch";
 
 export type HeaderProps = {
   lang: "it" | "en";
-  currentPath: string;
   labels: {
     brand?: never;
     nav: { label: string; href: string }[];
@@ -18,9 +18,8 @@ export type HeaderProps = {
 
 const EMAIL = "mailto:ciao@matteoderosa.it";
 
-export default function Header({ lang, currentPath, labels }: HeaderProps) {
+export default function Header({ lang, labels }: HeaderProps) {
   const home = lang === "en" ? "/en/" : "/";
-  const norm = (p: string) => p.replace(/\/+$/, "") || "/";
   return (
     <>
       <a className="skip-link" href="#contenuto">
@@ -34,20 +33,7 @@ export default function Header({ lang, currentPath, labels }: HeaderProps) {
             </span>
             <span>Matteo De Rosa</span>
           </Link>
-          <nav className="main-nav" aria-label={labels.navAria ?? "Menu"}>
-            <ul>
-              {labels.nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={norm(item.href) === norm(currentPath) ? "page" : undefined}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <MainNav items={labels.nav} ariaLabel={labels.navAria ?? "Menu"} />
           <a className="btn btn-primary" href={EMAIL}>
             {labels.write}
           </a>

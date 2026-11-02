@@ -33,7 +33,7 @@ export default function ItLayout({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
-        <Shell lang="it" currentPath="/" header={header} footer={footer}>
+        <Shell lang="it" header={header} footer={footer}>
           {children}
         </Shell>
       </body>

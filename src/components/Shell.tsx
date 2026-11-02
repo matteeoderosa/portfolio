@@ -4,16 +4,15 @@ import Footer, { type FooterProps } from "./Footer";
 
 type Props = {
   lang: "it" | "en";
-  currentPath: string;
   header: HeaderProps["labels"];
   footer: FooterProps["labels"];
   children: ReactNode;
 };
 
-export default function Shell({ lang, currentPath, header, footer, children }: Props) {
+export default function Shell({ lang, header, footer, children }: Props) {
   return (
     <>
-      <Header lang={lang} currentPath={currentPath} labels={header} />
+      <Header lang={lang} labels={header} />
       <main id="contenuto" tabIndex={-1}>
         {children}
       </main>

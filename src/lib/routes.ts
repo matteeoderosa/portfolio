@@ -49,3 +49,11 @@ export function alternatePath(pathname: string, to: Lang): string | null {
   }
   return null;
 }
+
+/** True when `href` is the current page, or a section containing it (never for the home routes, except exact). */
+export function isCurrentPath(href: string, pathname: string): boolean {
+  const h = withSlash(href);
+  const p = withSlash(pathname);
+  if (h === "/" || h === "/en/") return p === h;
+  return p === h || p.startsWith(h);
+}
