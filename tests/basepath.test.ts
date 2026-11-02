@@ -86,6 +86,11 @@ describe.skipIf(skip)("provisional build (base path /portfolio)", () => {
     expect(bad).toEqual([]);
   });
 
+  it("out/404.html is the custom 404 page from public/", () => {
+    const built = fs.readFileSync(path.join(out, "404.html"));
+    expect(built.equals(fs.readFileSync(path.join(root, "public", "404.html")))).toBe(true);
+  });
+
   it("robots.txt disallows all and index.html is noindex", () => {
     expect(fs.readFileSync(path.join(out, "robots.txt"), "utf8")).toContain("Disallow: /");
     const html = fs.readFileSync(path.join(out, "index.html"), "utf8");
