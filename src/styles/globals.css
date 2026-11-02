@@ -286,3 +286,73 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.2rem); }
 }
 .lang-switch:hover { background: var(--surface-2); }
 .lang-switch.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* PAGINE */
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+}
+.btn-ghost:hover { background: var(--surface-2); color: var(--text); }
+
+.section { padding: 40px 0; }
+.hero { padding: 56px 0 24px; }
+.hero h1 { margin: 12px 0 20px; }
+.eyebrow { margin: 0; color: var(--accent); font-weight: 600; letter-spacing: 0.06em; }
+.lead { font-size: 1.15rem; color: var(--text-dim); max-width: 60ch; margin: 16px 0 24px; }
+.page-head h1 { margin-bottom: 8px; }
+.section h2 { margin: 28px 0 12px; }
+
+.services { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 12px; }
+.services li {
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.card-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 20px; }
+@media (min-width: 640px) { .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.15s;
+}
+.project-card:hover { box-shadow: var(--shadow-hover); }
+.project-card h3 { font-size: 1.6rem; }
+.project-card h3 a { color: var(--text); text-decoration: none; }
+.project-card p { margin: 0; color: var(--text-dim); }
+.card-link { margin-top: auto; font-weight: 600; }
+
+.tag-list { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 8px 0 0; padding: 0; font-size: 0.78rem; }
+.tag-list li {
+    padding: 2px 8px;
+    color: var(--text-dim);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+}
+
+.back-link { display: inline-block; margin-bottom: 16px; font-weight: 500; }
+.project-detail p { max-width: 65ch; }
+.shot, .portrait { display: block; border-radius: var(--radius); margin: 16px 0; }
+.portrait { max-width: 220px; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+
+.contact-list { list-style: none; margin: 20px 0; padding: 0; display: grid; gap: 14px; }
+.contact-list .label { display: block; color: var(--text-dim); font-size: 0.8rem; }
+.contact-list a { font-size: 1.1rem; overflow-wrap: anywhere; }
+.interests { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+.interests li { padding: 6px 14px; background: var(--surface-2); border-radius: 999px; }
+
+.contact-cta { margin-top: 24px; padding: 32px 0; background: var(--surface-2); border-top: 1px solid var(--border); }
+.contact-cta-inner { display: flex; flex-direction: column; gap: 8px; }
+.contact-cta p { margin: 0; font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.2; }

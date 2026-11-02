@@ -1,3 +1,5 @@
-export default function Home() {
-  return <div className="wrap" />;
+import HomeView from "@/views/HomeView";
+
+export default function Page() {
+  return <HomeView lang="it" />;
 }
