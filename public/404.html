@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>Pagina non trovata · Page not found · Matteo De Rosa</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --border: rgba(0, 0, 0, 0.1);
+    --text: #1c1917;
+    --text-dim: #57534e;
+    --accent: #1f7a12;
+    --accent-bright: #3fc427;
+    --on-accent: #0b1a08;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151311;
+      --surface: #1e1b18;
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f3f0ea;
+      --text-dim: #b4ada2;
+      --accent: #3fc427;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
+  main {
+    width: 100%;
+    max-width: 640px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+  }
+  .code {
+    margin: 0 0 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0 0 8px;
+    font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+  p { margin: 0 0 16px; color: var(--text-dim); }
+  section + section { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+  a {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--accent-bright);
+    color: var(--on-accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a:hover { filter: brightness(1.08); }
+  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  @media (max-width: 480px) { main { padding: 24px; } h1 { font-size: 1.6rem; } }
+</style>
+</head>
+<body>
+<main>
+  <p class="code">404</p>
+  <section lang="it">
+    <h1>Pagina non trovata</h1>
+    <p>La pagina che cerchi non esiste o è stata spostata.</p>
+    <a href="/">Torna alla home</a>
+  </section>
+  <section lang="en">
+    <h1>Page not found</h1>
+    <p>The page you are looking for does not exist or has been moved.</p>
+    <a href="/en/">Back to the home page</a>
+  </section>
+</main>
+</body>
+</html>
