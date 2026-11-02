@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classi e id nelle tabelle · Matteo De Rosa</title>
+   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../../pages/css/fonts.css">
+      <link rel="stylesheet" href="../../../../pages/css/nav-icons.css" />
+    <link rel="icon" href="../../../../favicon.ico" sizes="48x48">
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../../../apple-touch-icon.png">
+</head>
+  <body>
+    <nav class="nav-icons">
+        <a href="../../../../index.html" aria-label="torna alla home page"><img src="../../../../pages/img/casetta.png" alt="logo home page" /></a>
+        <a href="../../../../pages/navigation.html" aria-label="torna alla pagina di navigazione"><img src="../../../../pages/img/arrow.png" alt="logo freccia per tornare alla pagina di navigazione" /></a>
+    </nav>
+
+     <h1>Header livello 1</h1>
+     <h2>Header livello 2</h2>
+     <h3>Header livello 3</h3>
+     <h4>Header livello 4</h4>
+     <h5>Header livello 5</h5>
+     <h6>Header livello 6</h6>
+     <p>testo molto lungo, che va a finire sicuramente dopo la prima riga della pagina corrente visualizzata sul mio browser.</p>
+<hr>
+     <p>testo molto lungo, che va a finire sicuramente dopo la prima <br>riga della pagina corrente visualizzata sul mio browser.</p>
+
+<table border="10">
+   <caption>
+      vendite auto nei primi 3 mesi dell'anno
+   </caption>
+   <tr>
+      <td rowspan="2" id="venditeauto">Vendite auto</td>
+      <td colspan="2">Gennaio</td>
+      <td colspan="2">Febbraio</td>
+      <td colspan="2">Marzo</td>
+   </tr>
+   <tr>
+      <td>2021</td>
+      <td>2022</td>
+      <td>2021</td>
+      <td>2022</td>
+      <td>2021</td>
+      <td>2022</td>
+   </tr>
+   <tr class="rigadispari">
+      <td>Fiat Panda</td>
+      <td>121</td>
+      <td>110</td>
+      <td>119</td>
+      <td>111</td>
+      <td>123</td>
+      <td>110</td>
+   </tr>
+   <tr class="rigapari">
+      <td>Opel Zafira</td>
+      <td>89</td>
+      <td>80</td>
+      <td>80</td>
+      <td>70</td>
+      <td>77</td>
+      <td>76</td>
+   </tr>
+   <tr class="rigadispari">
+      <td>Audi A4</td>
+      <td>10</td>
+      <td>12</td>
+      <td>14</td>
+      <td>10</td>
+      <td>12</td>
+      <td>14</td>
+   </tr>
+</table>
+
+  </body>
+
+</html>

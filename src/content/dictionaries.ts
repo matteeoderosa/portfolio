@@ -41,6 +41,18 @@ export type Dictionary = {
     cvLabel: string;
     photoAlt: string;
   };
+  archive: {
+    title: string;
+    lead: string;
+    filterLabel: string;
+    placeholder: string;
+    groupCount: string;
+    found: string;
+    foundOne: string;
+    none: string;
+    code: string;
+    codeAria: string;
+  };
   cta: { text: string };
   footer: { copyright: string; github: string };
   a11y: {
@@ -108,6 +120,18 @@ const it: Dictionary = {
     cvLabel: "Scarica il CV",
     photoAlt: "Ritratto di Matteo De Rosa",
   },
+  archive: {
+    title: "Esercizi",
+    lead: "Esercizi di frontend puro: HTML, CSS e JavaScript senza librerie. Ognuno ha il suo codice sorgente su GitHub.",
+    filterLabel: "Filtra gli esercizi",
+    placeholder: "Per esempio: tabella, rubrica, timer",
+    groupCount: "{n} esercizi",
+    found: "{n} esercizi trovati.",
+    foundOne: "1 esercizio trovato.",
+    none: "Nessun esercizio trovato.",
+    code: "Codice",
+    codeAria: "Codice sorgente su GitHub: {title}",
+  },
   cta: { text: "Hai un progetto in mente? Scrivimi, ti rispondo appena posso." },
   footer: { copyright: "Tutti i diritti riservati.", github: "GitHub" },
   a11y: {
@@ -174,6 +198,18 @@ const en: Dictionary = {
     linkedinLabel: "LinkedIn",
     cvLabel: "Download the CV",
     photoAlt: "Portrait of Matteo De Rosa",
+  },
+  archive: {
+    title: "Exercises",
+    lead: "Plain frontend exercises: HTML, CSS and JavaScript with no libraries. Each one has its source code on GitHub.",
+    filterLabel: "Filter the exercises",
+    placeholder: "For example: table, address book, timer",
+    groupCount: "{n} exercises",
+    found: "{n} exercises found.",
+    foundOne: "1 exercise found.",
+    none: "No exercises found.",
+    code: "Code",
+    codeAria: "Source code on GitHub: {title}",
   },
   cta: { text: "Have a project in mind? Write to me, I'll reply as soon as I can." },
   footer: { copyright: "All rights reserved.", github: "GitHub" },

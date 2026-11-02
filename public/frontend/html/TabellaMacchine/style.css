@@ -1,0 +1,60 @@
+td{
+    background-color: lightgreen;
+}
+
+th{ 
+    background-color: lightblue;
+}
+
+h1{ 
+    background-color: thistle; text-align: center;
+}
+
+body{ 
+    background-color: powderblue;
+
+    font-size: 25px;
+}
+
+h2{ 
+    background: linear-gradient(#ffa500, pink);
+    text-align: center;
+}
+
+#venditeauto{ 
+    background-color: aqua;
+}
+
+.mese{
+    color:white;
+    background-color: blueviolet;
+}
+
+.auto{
+    color:white;
+    background-color: #777777;
+}
+
+td:nth-child(odd){ 
+    background-color: red;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+th,td {
+    padding: 10px;
+    text-align: center;
+}
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+}

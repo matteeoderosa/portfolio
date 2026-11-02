@@ -1,0 +1,27 @@
+#venditeauto{
+    background-color: red;
+}
+
+.rigapari{
+    background-color: #aaaaaa;
+}
+
+.rigadispari{
+    background-color: #888888;
+}
+
+caption {
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+td, th {
+    text-align: center;
+    padding: 10px;
+}
+@media screen and (max-width: 600px) {
+    td, th {
+        padding: 5px;
+        font-size: 14px;
+    }
+}

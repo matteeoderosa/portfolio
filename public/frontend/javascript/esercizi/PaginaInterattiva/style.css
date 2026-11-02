@@ -1,0 +1,63 @@
+body {
+    background-color: grey;
+    font-size: 40px;
+
+}
+
+input[type=number] {
+    outline: 2px solid green;
+}
+
+input {
+    outline: 2px solid red;
+    padding: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+input[type=button]:hover {
+    background-color: indigo;
+}
+
+input[type=button]:focus {
+    background-color: brown;
+}
+
+input[type=number]:focus {
+    outline: 2px solid blue;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 200px;
+
+    margin-top: 400px;
+}
+
+.container .subcontainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    padding: 50px;
+}
+@media screen and (max-width: 700px) {
+    body {
+        font-size: 22px;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .container {
+        margin-top: 80px;
+        height: auto;
+    }
+}

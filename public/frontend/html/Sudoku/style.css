@@ -1,0 +1,41 @@
+table,
+td {
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+    border-color: pink;
+}
+
+td:nth-child(3n+4) {
+    border-left-width: 4px;
+}
+
+tr:nth-child(3n+4)>td {
+    border-top-width: 4px;
+}
+
+h1 {
+    font-size: 65px;
+    text-align: center;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+td {
+    font-size: 30px;
+    padding: 5px;
+}
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    td {
+        font-size: 18px;
+        padding: 3px;
+    }
+}

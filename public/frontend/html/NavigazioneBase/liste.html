@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste</title>
+    <link rel="stylesheet" href="../../../pages/css/fonts.css">
+
+    <style>
+
+        ol,ul {
+            margin-bottom: 45px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 35px;
+        }
+
+        div {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #listaD>li , .container li {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .special {
+            justify-content: center;
+            font-size: 19px;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            div {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #listaD>li , .container li {
+                font-size: 17px;
+            }
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="../../../pages/css/nav-icons.css" />
+    <link rel="icon" href="../../../favicon.ico" sizes="48x48">
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+</head>
+<body>
+    <nav class="nav-icons">
+        <a href="../../../index.html" aria-label="torna alla home page"><img src="../../../pages/img/casetta.png" alt="logo home page" /></a>
+        <a href="../../../pages/navigation.html" aria-label="torna alla pagina di navigazione"><img src="../../../pages/img/arrow.png" alt="logo freccia per tornare alla pagina di navigazione" /></a>
+    </nav>
+
+
+    <h1>Liste numerate e ordinate</h1>
+
+<!-- di default crea la lista numerata 
+    
+-->
+
+<div>
+    <ol id="listaD">
+        <li>Udinese</li>
+        <li>Pisa</li>
+        <li>Roma</li>
+    </ol>
+
+<!--    ol>li*3>img     
+    crea in automatico una lista ordinata formata da 3 elementi di immagini
+
+    
+-->
+    <ol>
+        <li><img src="./images/pluto.jpg" width="50" height="50"></li>
+        <li><img src="./images/pluto.jpg" width="50" height="50"></li>
+        <li><img src="./images/pluto.jpg" width="50" height="50"></li>
+    </ol>
+
+</div>
+
+<!-- ordinata con lettere maiuscole
+    
+-->
+
+<div class="container">
+    <ol type="A">
+        <li>oggetto 1</li>
+        <li>oggetto 2</li>
+        <li>oggetto 3</li>
+        <li>oggetto 4</li>
+    </ol>
+
+<!-- ordinata con numeri romani
+     
+-->
+    <ol type="I">
+        <li>oggetto 1</li>
+        <li>oggetto 2</li>
+        <li>oggetto 3</li>
+        <li>oggetto 4</li>
+    </ol>
+
+</div>
+<!-- lista non ordinata (con pallino)
+    
+-->
+
+<div class="container">
+    <ul>
+        <li>Udinese</li>
+        <li>Pisa</li>
+        <li>Roma</li>
+    </ul>
+
+<!-- liste concatenate tra di loro 
+    
+-->
+    <ul>
+        <li>item 1</li>
+        <li>item 2
+            <ol type = "a">
+            <li>sub-item 2.1</li>
+            <li>sub-item 2.2</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!-- "definition list" ; "definition term" ; "definition description" 
+    
+-->
+
+<div class="special">    
+    <dl> 
+        <dt>termine</dt>
+        <dd>sua definizione</dd>
+        <dt>HTTP</dt>
+        <dd>Hypertext Transfer Protocol</dd>
+        <dt>FTP</dt>
+        <dd>File Transfer Protocol</dd>
+    </dl>
+</div>
+
+
+</body>
+</html>
