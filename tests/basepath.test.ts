@@ -29,10 +29,16 @@ function isChecked(file: string): boolean {
 }
 
 describe.skipIf(skip)("provisional build (base path /portfolio)", () => {
+  let hadOut = false;
+  let movedAside = false;
   beforeAll(() => {
     // Keep any existing out/ intact: move it aside, build, restore afterwards.
     if (fs.existsSync(backup)) fs.rmSync(backup, { recursive: true, force: true });
-    if (fs.existsSync(out)) fs.renameSync(out, backup);
+    hadOut = fs.existsSync(out);
+    if (hadOut) {
+      fs.renameSync(out, backup);
+      movedAside = true;
+    }
     execSync("npm run build", {
       cwd: root,
       stdio: "pipe",
@@ -46,8 +52,11 @@ describe.skipIf(skip)("provisional build (base path /portfolio)", () => {
   }, 600_000);
 
   afterAll(() => {
+    // If the rename failed (e.g. a static server holds out/ open on Windows),
+    // out/ is still the original: never delete it.
+    if (hadOut && !movedAside) return;
     fs.rmSync(out, { recursive: true, force: true });
-    if (fs.existsSync(backup)) fs.renameSync(backup, out);
+    if (movedAside) fs.renameSync(backup, out);
   });
 
   const attrs = (html: string) =>
