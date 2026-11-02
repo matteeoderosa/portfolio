@@ -309,7 +309,9 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.2rem); }
   text-decoration: none;
 }
 .lang-switch:hover { background: var(--surface-2); }
-.lang-switch.is-disabled { opacity: 0.5; cursor: not-allowed; }
+.lang-switch.is-disabled { color: var(--text-dim); cursor: default; }
+.lang-switch.is-disabled:hover { background: none; }
+.lang-switch.is-disabled svg { opacity: 0.5; }
 
 /* PAGINE */
 

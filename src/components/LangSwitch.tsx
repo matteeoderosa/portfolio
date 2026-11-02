@@ -8,7 +8,7 @@ type Props = {
   lang: Lang;
   /** Base-path-free current path; defaults to the router pathname. */
   currentPath?: string;
-  /** Describes the target language; the visible code ("IT"/"EN") is appended to form the accessible name. */
+  /** Describes the target language; the visible code ("IT"/"EN") is prepended to form the accessible name. */
   label: string;
   /** Shown (tooltip + screen-reader text) when the page has no translation. */
   unavailable: string;
@@ -63,8 +63,9 @@ export default function LangSwitch({ lang, currentPath, label, unavailable }: Pr
       className="lang-switch"
       href={href}
       hrefLang={target}
-      // Accessible name contains the visible "IT"/"EN" (WCAG 2.5.3, label in name).
-      aria-label={`${label} (${text})`}
+      // Accessible name starts with the visible "IT"/"EN" (WCAG 2.5.3, label in name).
+      // Not in parentheses: checkers (axe) ignore parenthesised text when matching.
+      aria-label={`${text}, ${label}`}
       onClick={() => {
         try {
           localStorage.setItem("lang", target);

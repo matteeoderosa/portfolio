@@ -10,7 +10,7 @@ afterEach(() => {
 describe("LangSwitch", () => {
   it("links to the alternate path with visible text and aria-label", () => {
     render(<LangSwitch lang="it" currentPath="/progetti/" label="Passa all'inglese" unavailable="Non disponibile in inglese" />);
-    const link = screen.getByRole("link", { name: "Passa all'inglese (EN)" });
+    const link = screen.getByRole("link", { name: "EN, Passa all'inglese" });
     // next/link normalises the trailing slash outside a configured build
     expect(link.getAttribute("href")).toMatch(/^\/en\/projects\/?$/);
     expect(link.textContent).toContain("EN");
@@ -34,7 +34,7 @@ describe("LangSwitch", () => {
       const link = screen.getByRole("link");
       const name = link.getAttribute("aria-label") ?? "";
       expect(link.textContent?.trim()).toBe(code);
-      expect(name).toContain(code);
+      expect(name.startsWith(`${code}, `)).toBe(true);
       cleanup();
     }
   });
