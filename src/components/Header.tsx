@@ -2,6 +2,7 @@ import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import MainNav from "./MainNav";
 import LangSwitch from "./LangSwitch";
+import { site } from "@/content/site";
 
 export type HeaderProps = {
   lang: "it" | "en";
@@ -15,8 +16,6 @@ export type HeaderProps = {
     langSwitch: { label: string; unavailable: string };
   };
 };
-
-const EMAIL = "mailto:ciao@matteoderosa.it";
 
 export default function Header({ lang, labels }: HeaderProps) {
   const home = lang === "en" ? "/en/" : "/";
@@ -34,7 +33,7 @@ export default function Header({ lang, labels }: HeaderProps) {
             <span>Matteo De Rosa</span>
           </Link>
           <MainNav items={labels.nav} ariaLabel={labels.navAria ?? "Menu"} />
-          <a className="btn btn-primary" href={EMAIL}>
+          <a className="btn btn-primary" href={`mailto:${site.email}`}>
             {labels.write}
           </a>
           <LangSwitch

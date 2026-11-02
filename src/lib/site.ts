@@ -33,9 +33,9 @@ export function withBase(path: string, env: SiteEnv = currentEnv()): string {
   return getBasePath(env) + path;
 }
 
-/** Base-path-aware href/src for an asset: root-relative paths get the base path, absolute URLs are untouched. */
+/** Base-path-aware href/src for an asset: root-relative paths get the base path; absolute and protocol-relative (`//host/x`) URLs are untouched. */
 export function assetHref(path: string, env: SiteEnv = currentEnv()): string {
-  return path.startsWith("/") ? withBase(path, env) : path;
+  return path.startsWith("/") && !path.startsWith("//") ? withBase(path, env) : path;
 }
 
 /** SITE_URL + path. SITE_URL already includes any base path, so none is added. */

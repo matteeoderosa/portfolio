@@ -10,7 +10,7 @@ afterEach(() => {
 describe("LangSwitch", () => {
   it("links to the alternate path with visible text and aria-label", () => {
     render(<LangSwitch lang="it" currentPath="/progetti/" label="Passa all'inglese" unavailable="Non disponibile in inglese" />);
-    const link = screen.getByRole("link", { name: "Passa all'inglese" });
+    const link = screen.getByRole("link", { name: "Passa all'inglese (EN)" });
     // next/link normalises the trailing slash outside a configured build
     expect(link.getAttribute("href")).toMatch(/^\/en\/projects\/?$/);
     expect(link.textContent).toContain("EN");
@@ -28,9 +28,27 @@ describe("LangSwitch", () => {
     fireEvent.click(screen.getByRole("link"));
     expect(spy).toHaveBeenCalledWith("lang", "it");
   });
-  it("renders a non-link when there is no alternate", () => {
-    render(<LangSwitch lang="it" currentPath="/archivio/" label="Passa all'inglese" unavailable="Non disponibile in inglese" />);
+  it("accessible name contains the visible language code (label in name)", () => {
+    for (const [lang, path, code] of [["it", "/", "EN"], ["en", "/en/", "IT"]] as const) {
+      render(<LangSwitch lang={lang} currentPath={path} label="x" unavailable="n/a" />);
+      const link = screen.getByRole("link");
+      const name = link.getAttribute("aria-label") ?? "";
+      expect(link.textContent?.trim()).toBe(code);
+      expect(name).toContain(code);
+      cleanup();
+    }
+  });
+  it("renders a non-link when there is no alternate, with the reason in its text", () => {
+    const { container } = render(
+      <LangSwitch lang="it" currentPath="/archivio/" label="Passa all'inglese" unavailable="Non disponibile in inglese" />,
+    );
     expect(screen.queryByRole("link")).toBeNull();
-    expect(screen.getByTitle("Non disponibile in inglese")).toBeTruthy();
+    const el = screen.getByTitle("Non disponibile in inglese");
+    // the reason is readable by screen readers, not only as a mouse tooltip
+    expect(el.textContent).toContain("Non disponibile in inglese");
+    expect(el.querySelector(".visually-hidden")).not.toBeNull();
+    // no fake control: no aria-disabled on a non-interactive element, nothing focusable
+    expect(el.hasAttribute("aria-disabled")).toBe(false);
+    expect(container.querySelector("[tabindex], a, button")).toBeNull();
   });
 });

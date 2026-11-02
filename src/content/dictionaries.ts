@@ -102,7 +102,7 @@ const it: Dictionary = {
   },
   about: {
     title: "Chi sono",
-    intro: "Sono Matteo, sviluppo web di Grosseto.",
+    intro: "Sono Matteo, sviluppatore web di Grosseto.",
     paragraphs: [
       "Vivo a Grosseto e studio a Pisa. Mi piace trasformare un'idea in qualcosa che le persone possano usare davvero, senza complicazioni.",
       "Lavoro volentieri con chi ha un'attività o un progetto e vuole un sito o uno strumento fatto bene. Mi trovi sempre disponibile a parlare di software e a valutare una collaborazione.",

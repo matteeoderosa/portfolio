@@ -8,9 +8,9 @@ type Props = {
   lang: Lang;
   /** Base-path-free current path; defaults to the router pathname. */
   currentPath?: string;
-  /** aria-label describing the target language. */
+  /** Describes the target language; the visible code ("IT"/"EN") is appended to form the accessible name. */
   label: string;
-  /** Tooltip shown when the page has no translation. */
+  /** Shown (tooltip + screen-reader text) when the page has no translation. */
   unavailable: string;
 };
 
@@ -43,14 +43,17 @@ export default function LangSwitch({ lang, currentPath, label, unavailable }: Pr
   const content = (
     <>
       {FLAGS[target]}
-      <span>{text}</span>
+      <span lang={target}>{text}</span>
     </>
   );
 
   if (href === null) {
+    // Not a control: plain text, with the reason spelled out for screen readers
+    // (the title tooltip is mouse-only).
     return (
-      <span className="lang-switch is-disabled" title={unavailable} aria-disabled="true">
+      <span className="lang-switch is-disabled" title={unavailable}>
         {content}
+        <span className="visually-hidden"> ({unavailable})</span>
       </span>
     );
   }
@@ -60,8 +63,8 @@ export default function LangSwitch({ lang, currentPath, label, unavailable }: Pr
       className="lang-switch"
       href={href}
       hrefLang={target}
-      lang={target}
-      aria-label={label}
+      // Accessible name contains the visible "IT"/"EN" (WCAG 2.5.3, label in name).
+      aria-label={`${label} (${text})`}
       onClick={() => {
         try {
           localStorage.setItem("lang", target);

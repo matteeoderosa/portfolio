@@ -97,6 +97,22 @@ a:hover { color: var(--accent-strong); }
     border-radius: 4px;
 }
 
+/* Il riempimento verde del bottone primario ha la stessa tinta dell'anello di default:
+   qui l'anello usa il colore del testo, ad alto contrasto in chiaro e in scuro. */
+.btn-primary:focus-visible { outline-color: var(--text); }
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 h1, h2, h3 {
     font-family: var(--font-serif);
     font-weight: 400;
@@ -327,8 +343,8 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.2rem); }
     transition: box-shadow 0.15s;
 }
 .project-card:hover { box-shadow: var(--shadow-hover); }
-.project-card h3 { font-size: 1.6rem; }
-.project-card h3 a { color: var(--text); text-decoration: none; }
+.project-card .card-title { font-size: 1.6rem; margin: 0; }
+.project-card .card-title a { color: var(--text); text-decoration: none; }
 .project-card p { margin: 0; color: var(--text-dim); }
 .card-link { margin-top: auto; font-weight: 600; }
 

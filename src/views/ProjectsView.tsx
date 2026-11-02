@@ -14,7 +14,7 @@ export default function ProjectsView({ lang }: { lang: Lang }) {
           <p className="lead">{dict.projects.intro}</p>
           <div className="card-grid">
             {projects.map((p) => (
-              <ProjectCard key={p.slug} project={p} lang={lang} viewLabel={dict.projects.viewProject} />
+              <ProjectCard key={p.slug} project={p} lang={lang} viewLabel={dict.projects.viewProject} headingLevel={2} />
             ))}
           </div>
         </div>

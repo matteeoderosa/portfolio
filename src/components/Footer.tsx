@@ -1,3 +1,5 @@
+import { site } from "@/content/site";
+
 export type FooterProps = {
   lang: "it" | "en";
   labels: { copyright: string; github: string };
@@ -10,7 +12,7 @@ export default function Footer({ lang, labels }: FooterProps) {
         <p>
           &copy; {new Date().getFullYear()} Matteo De Rosa. {labels.copyright}
         </p>
-        <a href="https://github.com/matteeoderosa" rel="noopener noreferrer">
+        <a href={site.github} rel="noopener noreferrer">
           {labels.github}
         </a>
       </div>
