@@ -9,7 +9,7 @@ export type ProjectText = {
 
 export type Project = {
   slug: string;
-  demoUrl: string;
+  demoUrl?: string;
   repoUrl: string;
   tech: string[];
   featured: boolean;
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   },
   {
     slug: "utenti-post-commenti",
-    demoUrl: "https://tabella.matteeoderosa.it",
+    // Demo offline: add `demoUrl: "https://tabella.matteeoderosa.it"` back when it is live.
     repoUrl: "https://github.com/derteo/users-posts-comments-node",
     tech: ["Node.js", "Express", "SQLite"],
     featured: true,

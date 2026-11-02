@@ -11,7 +11,7 @@ describe("projects content", () => {
     expect(new Set(slugs).size).toBe(slugs.length);
   });
   it.each(projects.map((p) => [p.slug, p] as const))("%s is complete", (_slug, p) => {
-    expect(p.demoUrl).toMatch(/^https:\/\//);
+    if (p.demoUrl) expect(p.demoUrl).toMatch(/^https:\/\//);
     expect(p.repoUrl).toMatch(/^https:\/\//);
     expect(p.tech.length).toBeGreaterThan(0);
     for (const lang of ["it", "en"] as const) {

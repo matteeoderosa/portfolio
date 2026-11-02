@@ -127,6 +127,7 @@ Solo quando tutto il resto funziona.
 
 - Ricrea `todo.`, `tabella.`, `poke.`, `stats.` sul nuovo dominio `matteoderosa.it` e, dai vecchi indirizzi, metti redirect permanenti (301) verso i nuovi. Finora i loro DNS non vanno toccati.
 - Poi aggiorna i `demoUrl` in `src/content/projects.ts` ai nuovi indirizzi e correggi i link `http://` in `https://`.
+- `utenti-post-commenti` non ha `demoUrl` finché la sua demo non è di nuovo online: quando torna attiva, aggiungi `demoUrl` con il nuovo indirizzo.
 - Annullare: finché i vecchi sottodomini restano attivi, i vecchi link funzionano.
 
 ## Cosa controllare alla fine

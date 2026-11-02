@@ -39,9 +39,11 @@ export default function ProjectView({ lang, slug }: { lang: Lang; slug: string }
           <h2>{dict.projects.whatIDidTitle}</h2>
           <p>{text.whatIDid}</p>
           <div className="cta-actions">
-            <a className="btn btn-primary" href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-              {dict.projects.demo}
-            </a>
+            {project.demoUrl ? (
+              <a className="btn btn-primary" href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                {dict.projects.demo}
+              </a>
+            ) : null}
             <a className="btn btn-ghost" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
               {dict.projects.repo}
             </a>

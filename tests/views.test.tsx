@@ -60,6 +60,22 @@ describe("ProjectView", () => {
     expect(container.textContent).toContain(p.text.en.whatIDid);
   });
 
+  it("renders the demo link only when demoUrl is defined; repo link always", async () => {
+    const base = projects[0];
+    const hrefs = async (demoUrl?: string) => {
+      vi.resetModules();
+      vi.doMock("@/content/projects", () => ({
+        projects: [{ ...base, slug: "demo-test", demoUrl }],
+      }));
+      const Mod = (await import("@/views/ProjectView")).default;
+      const { container } = render(Mod({ lang: "en", slug: "demo-test" }));
+      return Array.from(container.querySelectorAll("article .cta-actions a")).map((a) => a.getAttribute("href"));
+    };
+    expect(await hrefs(undefined)).toEqual([base.repoUrl]);
+    cleanup();
+    expect(await hrefs("https://demo.example.com")).toEqual(["https://demo.example.com", base.repoUrl]);
+  });
+
   it("throws for an unknown slug", () => {
     expect(() => ProjectView({ lang: "it", slug: "nope" })).toThrow();
   });
