@@ -71,33 +71,41 @@ Dopo (percorso base vuoto, indirizzo finale, niente NOINDEX):
 - Funziona se: `https://matteoderosa.it` si apre col lucchetto e `www.matteoderosa.it` porta allo stesso sito.
 - Annullare: svuota "Custom domain" e salva.
 
-## 6. Libera il vecchio dominio da ITSProdigi
+## 6. Redirect del vecchio dominio `matteeoderosa.it`
 
-Fallo SOLO quando il passo 5 funziona, altrimenti `matteeoderosa.it` resta senza sito.
+Fallo SOLO quando il passo 5 funziona (il nuovo dominio deve già servire il sito e gli esercizi).
 
-- Dove: GitHub, repo `matteeoderosa/ITSProdigi`, branch `gh-pages`, file `CNAME`, icona cestino, commit.
-- Funziona se: il file non c'è più sul branch `gh-pages`.
-- Annullare: ricrea `CNAME` con dentro `matteeoderosa.it`.
+**Non togliere il CNAME dal branch gh-pages di ITSProdigi.** Il vecchio dominio resta collegato a quel branch: è così che `matteeoderosa.it` continua a funzionare e che GitHub può servire la pagina di redirect. Se togli il `CNAME`, GitHub smette di servire il dominio e il redirect non parte.
 
-## 7. Pubblica le due pagine di redirect
+Sul branch `gh-pages` lasci solo `CNAME`, `index.html` e `404.html` (gli ultimi due sono il file `docs/redirect-stubs/matteoderosa-old.html`). I vecchi file del sito vanno tolti, altrimenti il vecchio dominio continuerebbe a servirli direttamente e il redirect scatterebbe solo sui percorsi mancanti. Dal tuo clone di ITSProdigi (e con il portfolio clonato accanto):
 
-Le due pagine sono in `docs/redirect-stubs/`.
+```bash
+git checkout gh-pages
+git rm -r -q --ignore-unmatch . ':!CNAME'
+cp ../portfolio/docs/redirect-stubs/matteoderosa-old.html index.html
+cp ../portfolio/docs/redirect-stubs/matteoderosa-old.html 404.html
+git add CNAME index.html 404.html
+git commit -m "Redirect al nuovo dominio matteoderosa.it"
+git push
+```
 
-**a) Vecchio dominio `matteeoderosa.it`** (branch `gh-pages` di ITSProdigi)
-- Sul branch `gh-pages` sostituisci `index.html` con il contenuto di `matteoderosa-old.html`.
-- Copia lo stesso contenuto anche come `404.html` sullo stesso branch.
-- Nota: da ora gli esercizi su `matteeoderosa.it` non vengono più serviti da lì (li serve il nuovo dominio). Il redirect mantiene il percorso: `matteeoderosa.it/frontend/...` porta a `matteoderosa.it/frontend/...`. Senza `404.html` quei link darebbero errore 404.
-- I quattro sottodomini non si toccano e continuano a funzionare.
+(Se `git rm` si lamenta del pattern, cancella a mano tutto tranne `CNAME` e rilancia da `cp`.)
+
+- Dopo: i vecchi link `matteeoderosa.it/frontend/...` e `matteeoderosa.it/pages/navigation.html` portano allo stesso percorso su `matteoderosa.it`, dove gli esercizi restano agli stessi indirizzi.
 - Funziona se: `matteeoderosa.it` e un vecchio link profondo portano a `matteoderosa.it`.
-- Annullare: ripristina i file precedenti dalla cronologia del branch.
+- I quattro sottodomini sono ospitati altrove e qui non si toccano.
+- Annullare: `git revert HEAD` (oppure `git checkout <commit-precedente> -- .`) sul branch `gh-pages`, poi push.
 
-**b) `derteo.github.io`**
-- Nel repo `derteo.github.io` sostituisci `index.html` con `derteo-github-io.html` (rinominato `index.html`).
+## 7. Redirect di `derteo.github.io`
+
+- Nel repo `derteo.github.io` sostituisci `index.html` con `docs/redirect-stubs/derteo-github-io.html` (copiato come `index.html`).
 - Le vecchie pagine vanno: `/pages/projects.html` a `/progetti/`, `/pages/contact.html` a `/contatti/`, `/pages/skills.html` e tutto il resto alla home.
 - Funziona se: aprendo `derteo.github.io` arrivi su `matteoderosa.it`.
 - Annullare: ripristina il vecchio `index.html` dalla cronologia.
 
 ## 8. Archivia ITSProdigi
+
+Solo dopo che il redirect del passo 6 è online: archiviare non spegne il sito GitHub Pages, ma conviene farlo a redirect già attivo, perché poi non potrai più fare push sul branch.
 
 - Dove: GitHub, repo `ITSProdigi`, Settings, in fondo "Archive this repository". Non cancellarlo.
 - Annullare: stessa pagina, "Unarchive".
@@ -106,8 +114,8 @@ Le due pagine sono in `docs/redirect-stubs/`.
 
 Solo quando tutto il resto funziona.
 
-- Ricrea `todo.`, `tabella.`, `poke.`, `stats.` sul nuovo dominio `matteoderosa.it` e, dai vecchi indirizzi, metti redirect permanenti (301) verso i nuovi.
-- Poi (chiedimelo) aggiorno i `demoUrl` in `src/content/projects.ts` ai nuovi indirizzi e correggo i link `http://` in `https://`.
+- Ricrea `todo.`, `tabella.`, `poke.`, `stats.` sul nuovo dominio `matteoderosa.it` e, dai vecchi indirizzi, metti redirect permanenti (301) verso i nuovi. Finora i loro DNS non vanno toccati.
+- Poi aggiorna i `demoUrl` in `src/content/projects.ts` ai nuovi indirizzi e correggi i link `http://` in `https://`.
 - Annullare: finché i vecchi sottodomini restano attivi, i vecchi link funzionano.
 
 ## Cosa controllare alla fine

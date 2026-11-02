@@ -39,6 +39,11 @@ describe("docs/go-live.md", () => {
       expect(md).toContain(ip);
     }
   });
+  it("keeps the old domain attached to gh-pages and serves the stub as index and 404", () => {
+    expect(md.toLowerCase()).toContain("non togliere il cname dal branch gh-pages di itsprodigi");
+    expect(md).toContain("404.html");
+    expect(md).not.toMatch(/Libera il vecchio dominio/);
+  });
   it("mentions the www CNAME target", () => {
     expect(md).toContain("matteeoderosa.github.io");
   });
