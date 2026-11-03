@@ -13,6 +13,8 @@ export type Dictionary = {
     intro: string;
     ctaProjects: string;
     servicesTitle: string;
+    servicesProof: string;
+    servicesProofLink: string;
     services: { title: string; text: string; items: string[] }[];
     featuredTitle: string;
     allProjects: string;
@@ -80,6 +82,8 @@ const it: Dictionary = {
       "Ciao! sono Matteo, sviluppatore web di Grosseto, a Pisa per motivi di studio. Aiuto persone e piccole attività a portare online ciò che serve davvero, in modo semplice e curato.",
     ctaProjects: "Guarda i progetti",
     servicesTitle: "Cosa posso fare per te",
+    servicesProof: "Un esempio reale:",
+    servicesProofLink: "il sito del Pisa Running Club, fatto da zero",
     services: [
       {
         title: "Un sito vetrina per la tua attività",
@@ -190,6 +194,8 @@ const en: Dictionary = {
       "I'm Matteo, a web developer from Grosseto. I help people and small businesses put online what they really need, with simplicity and care.",
     ctaProjects: "See my projects",
     servicesTitle: "What I can do for you",
+    servicesProof: "A real example:",
+    servicesProofLink: "the Pisa Running Club website, built from scratch",
     services: [
       {
         title: "A showcase website for your business",

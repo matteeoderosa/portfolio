@@ -3,7 +3,8 @@ import { dictionaries } from "@/content/dictionaries";
 import { projects } from "@/content/projects";
 import { routePath, type Lang } from "@/lib/routes";
 import { assetHref } from "@/lib/site";
-import Stage from "@/components/Stage";
+import ProjectStage from "@/components/ProjectStage";
+import { stageShots } from "@/lib/shots";
 import TagList from "@/components/TagList";
 import ContactCta from "@/components/ContactCta";
 
@@ -24,7 +25,7 @@ export default function ProjectView({ lang, slug }: { lang: Lang; slug: string }
   return (
     <>
       <div className="split page-split">
-        <Stage />
+        <ProjectStage shots={stageShots(lang, [slug])} activeSlug={slug} />
         <article className="col page-col project-detail">
           <h1 className="rise">{text.name}</h1>
           <p className="lead rise" style={{ "--i": 1 } as React.CSSProperties}>

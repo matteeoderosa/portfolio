@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { dictionaries } from "@/content/dictionaries";
 import { projects } from "@/content/projects";
-import { routePath, type Lang } from "@/lib/routes";
-import Stage from "@/components/Stage";
+import { projectPath, routePath, type Lang } from "@/lib/routes";
+import ProjectStage from "@/components/ProjectStage";
+import PhotoGrid from "@/components/PhotoGrid";
+import PhotoStage from "@/components/PhotoStage";
+import { aboutMosaics, heroLayout, heroPhotos } from "@/content/photos";
+import { stageShots } from "@/lib/shots";
 import ProjectCard from "@/components/ProjectCard";
 import ContactCta from "@/components/ContactCta";
 
@@ -14,7 +18,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
   return (
     <>
       <div className="split split-hero" data-nav={routePath("home", lang)}>
-        <Stage />
+        <PhotoStage lang={lang} keys={heroPhotos} layout={heroLayout} />
         <div className="col hero-col">
           <h1 className="rise" style={delay(0)}>
             {dict.home.title}
@@ -27,9 +31,6 @@ export default function HomeView({ lang }: { lang: Lang }) {
               {dict.home.ctaProjects}
             </Link>
           </div>
-          <p className="wordmark rise" style={delay(3)} aria-hidden="true">
-            matteo de rosa
-          </p>
         </div>
       </div>
 
@@ -54,10 +55,19 @@ export default function HomeView({ lang }: { lang: Lang }) {
             </article>
           ))}
         </div>
+        <p className="svc-proof" data-reveal>
+          {dict.home.servicesProof}{" "}
+          <Link className="text-link" href={projectPath("pisa-running-club", lang)}>
+            {dict.home.servicesProofLink}
+          </Link>
+        </p>
       </section>
 
       <div className="split split-story">
-        <Stage />
+        <ProjectStage
+          shots={stageShots(lang)}
+          mosaics={aboutMosaics.map((m) => ({ id: m.id, node: <PhotoGrid lang={lang} keys={m.keys} /> }))}
+        />
         <div className="col story-col">
           <section className="story-section" data-nav={routePath("projects", lang)} aria-labelledby="featured-title">
             <h2 id="featured-title" data-reveal>
@@ -76,20 +86,27 @@ export default function HomeView({ lang }: { lang: Lang }) {
           </section>
 
           <section className="story-section" data-nav={routePath("about", lang)} aria-labelledby="about-title">
-            <h2 id="about-title" data-reveal>
-              {dict.about.title}
-            </h2>
-            <p className="lead" data-reveal style={delay(1)}>
-              {dict.about.intro}
-            </p>
-            {dict.about.paragraphs.map((p, i) => (
-              <p key={p} data-reveal style={delay(i + 2)}>
-                {p}
+            <div data-stage-me="volti">
+              <h2 id="about-title" data-reveal>
+                {dict.about.title}
+              </h2>
+              <p className="lead" data-reveal style={delay(1)}>
+                {dict.about.intro}
               </p>
-            ))}
+              <p data-reveal style={delay(2)}>
+                {dict.about.paragraphs[0]}
+              </p>
+            </div>
+            <div data-stage-me="giro">
+              {dict.about.paragraphs.slice(1).map((p, i) => (
+                <p key={p} data-reveal style={delay(i + 3)}>
+                  {p}
+                </p>
+              ))}
+            </div>
           </section>
 
-          <section className="story-section" data-nav={routePath("about", lang)} aria-labelledby="outside-title">
+          <section className="story-section" data-stage-me="ciclismo" data-nav={routePath("about", lang)} aria-labelledby="outside-title">
             <h2 id="outside-title" data-reveal>
               {dict.about.interestsTitle}
             </h2>
