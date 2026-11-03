@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { pageMetadata, personJsonLd } from "@/lib/seo";
+import { pageMetadata, personJsonLd, websiteJsonLd } from "@/lib/seo";
 import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
 import { projects } from "@/content/projects";
@@ -55,6 +55,22 @@ describe("pageMetadata", () => {
     const m = pageMetadata("home", "it", { NEXT_PUBLIC_BASE_PATH: "/portfolio" });
     expect(JSON.stringify(m.icons)).toContain("/portfolio/favicon.ico");
     expect(JSON.stringify(m.icons)).toContain("/portfolio/apple-touch-icon.png");
+  });
+
+  it("offers Google a square PNG icon that is a multiple of 48px", () => {
+    const icons = (pageMetadata("home", "it", {}).icons as { icon: { url: string; sizes?: string }[] }).icon;
+    expect(icons.some((i) => i.url === "/favicon-48x48.png" && i.sizes === "48x48")).toBe(true);
+    expect(icons.some((i) => i.url === "/favicon-96x96.png" && i.sizes === "96x96")).toBe(true);
+  });
+});
+
+describe("websiteJsonLd", () => {
+  it("names the site for the search results", () => {
+    const ld = websiteJsonLd({}) as Record<string, string>;
+    expect(ld["@type"]).toBe("WebSite");
+    expect(ld.name).toBe("Matteo De Rosa");
+    expect(ld.url).toBe(`${SITE}/`);
+    expect(ld.alternateName).toBe(new URL(SITE).hostname);
   });
 });
 
