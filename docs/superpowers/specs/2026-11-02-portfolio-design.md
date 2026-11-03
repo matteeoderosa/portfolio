@@ -102,3 +102,13 @@ Struttura delle cartelle, libreria di stile (CSS Modules o CSS semplice, senza f
 - CV in PDF: lo fornisce lui o ne parliamo dopo?
 - Foto di Matteo: sì o no?
 - Screenshot per ogni progetto: li facciamo noi dai siti online.
+
+## Aggiornamento del 2026-11-03: nuova direzione grafica
+
+La direzione C "Ibrido" (verde, Instrument Sans/Serif, logo `{m}`, card con bordo) è stata sostituita perché risultava generica e senza immagini. Il contenuto, le pagine, le due lingue, la struttura dei dati e i link restano gli stessi.
+
+- **Idea:** metà schermo resta ferma (per ora un campo di colore), l'altra metà scorre.
+- **Aspetto:** noce e sabbia (tema scuro di default, tema chiaro in osso e noce), Bodoni Moda per i titoli, Jost per il testo, ospitati in locale. Niente monospace, linee sottili, ombre, sfumature o card.
+- **Immagini:** per ora nessuna fotografia. La colonna ferma è un campo a tono e le foto aperte di Grosseto provate in una prima versione sono state tolte (e con loro i crediti).
+- **Cosa viva:** nella chiusura della home e in Contatti, scegliere "cosa ti serve" scrive l'email già pronta (`mailto:`), senza server.
+- **Da fare quando ci sono:** screenshot dei progetti e foto di Matteo nella colonna ferma.

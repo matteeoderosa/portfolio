@@ -1,17 +1,15 @@
 import localFont from "next/font/local";
 
+/** Testo: Jost, un geometrico leggero. */
 export const sans = localFont({
-  src: [
-    { path: "../fonts/instrument-sans-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/instrument-sans-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/instrument-sans-latin-600-normal.woff2", weight: "600", style: "normal" },
-  ],
-  variable: "--font-instrument-sans",
+  src: [{ path: "../fonts/jost-latin-400-500.woff2", weight: "400 500", style: "normal" }],
+  variable: "--font-jost",
   display: "swap",
 });
 
+/** Titoli: Bodoni Moda (didone con contrasto alto, asse ottico incluso). */
 export const serif = localFont({
-  src: [{ path: "../fonts/instrument-serif-latin-400-normal.woff2", weight: "400", style: "normal" }],
-  variable: "--font-instrument-serif",
+  src: [{ path: "../fonts/bodoni-moda-latin-500.woff2", weight: "500", style: "normal" }],
+  variable: "--font-bodoni",
   display: "swap",
 });

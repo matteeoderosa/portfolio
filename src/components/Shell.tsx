@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Header, { type HeaderProps } from "./Header";
 import Footer, { type FooterProps } from "./Footer";
+import MotionInit from "./MotionInit";
 
 type Props = {
   lang: "it" | "en";
@@ -17,6 +18,7 @@ export default function Shell({ lang, header, footer, children }: Props) {
         {children}
       </main>
       <Footer lang={lang} labels={footer} />
+      <MotionInit />
     </>
   );
 }

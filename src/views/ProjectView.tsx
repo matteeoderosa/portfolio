@@ -3,6 +3,7 @@ import { dictionaries } from "@/content/dictionaries";
 import { projects } from "@/content/projects";
 import { routePath, type Lang } from "@/lib/routes";
 import { assetHref } from "@/lib/site";
+import Stage from "@/components/Stage";
 import TagList from "@/components/TagList";
 import ContactCta from "@/components/ContactCta";
 
@@ -22,35 +23,40 @@ export default function ProjectView({ lang, slug }: { lang: Lang; slug: string }
   const shot = project.screenshot;
   return (
     <>
-      <article className="section project-detail">
-        <div className="wrap">
-          <Link className="back-link" href={routePath("projects", lang)}>
-            <span aria-hidden="true">&larr; </span>
-            {dict.projects.back}
-          </Link>
-          <h1>{text.name}</h1>
-          <p className="lead">{text.summary}</p>
+      <div className="split page-split">
+        <Stage />
+        <article className="col page-col project-detail">
+          <h1 className="rise">{text.name}</h1>
+          <p className="lead rise" style={{ "--i": 1 } as React.CSSProperties}>
+            {text.summary}
+          </p>
           {shot ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img className="shot" src={assetHref(shot)} alt={text.name} />
           ) : null}
-          <h2>{dict.projects.purposeTitle}</h2>
-          <p>{text.purpose}</p>
-          <h2>{dict.projects.whatIDidTitle}</h2>
-          <p>{text.whatIDid}</p>
-          <div className="cta-actions">
+          <h2 data-reveal>{dict.projects.purposeTitle}</h2>
+          <p data-reveal>{text.purpose}</p>
+          <h2 data-reveal>{dict.projects.whatIDidTitle}</h2>
+          <p data-reveal>{text.whatIDid}</p>
+          <div className="cta-actions" data-reveal>
             {project.demoUrl ? (
               <a className="btn btn-primary" href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                 {dict.projects.demo}
               </a>
             ) : null}
-            <a className="btn btn-ghost" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn-quiet" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
               {dict.projects.repo}
             </a>
           </div>
           <TagList tags={project.tech} label={dict.projects.techTitle} />
-        </div>
-      </article>
+          <p className="back-link" data-reveal>
+            <Link href={routePath("projects", lang)}>
+              <span aria-hidden="true">&larr; </span>
+              {dict.projects.back}
+            </Link>
+          </p>
+        </article>
+      </div>
       <ContactCta lang={lang} />
     </>
   );

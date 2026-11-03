@@ -32,7 +32,7 @@ export default function ExerciseFilter({ exercises }: { exercises: Exercise[] })
 
   return (
     <>
-      <div className="filter">
+      <div className="filter rise">
         <label htmlFor="filtro">{a.filterLabel}</label>
         <input
           id="filtro"
@@ -53,12 +53,18 @@ export default function ExerciseFilter({ exercises }: { exercises: Exercise[] })
         const id = `titolo-${group.toLowerCase()}`;
         return (
           <section key={group} className="exercise-group" aria-labelledby={id} data-group={group}>
-            <h2 id={id}>
-              {group} <span className="group-count">{a.groupCount.replace("{n}", String(items.length))}</span>
+            <h2 id={id} className="rise">
+              {group}
             </h2>
+            <p className="group-count">{a.groupCount.replace("{n}", String(items.length))}</p>
             <ul className="exercise-list">
-              {items.map((e) => (
-                <li key={e.n} className="exercise" data-exercise>
+              {items.map((e, i) => (
+                <li
+                  key={e.n}
+                  className="exercise rise"
+                  data-exercise
+                  style={{ "--i": Math.min(i, 8) } as React.CSSProperties}
+                >
                   <span className="ex-num">{e.label}</span>
                   <a className="ex-title" href={withBase(e.href)}>
                     {e.title}
