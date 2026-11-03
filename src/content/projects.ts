@@ -31,17 +31,17 @@ export const projects: Project[] = [
     text: {
       it: {
         name: "Pisa Running Club",
-        summary: "Il sito del gruppo di corsa di Pisa: uscite, eventi e come partecipare.",
+        summary: "Il sito del Running Club di Pisa: corse, eventi e come partecipare.",
         purpose:
-          "Spiega come funziona il club: ci si trova in piazza Cairoli, si corre piano e nessuno resta indietro. Elenca le prossime uscite, presenta gli altri sport del gruppo e i professionisti convenzionati, e permette di mettersi in contatto.",
-        whatIDid: "Ho realizzato il sito del club.",
+          "Il sito spiega come funziona il club: decidiamo il punto di ritrovo, si corre piano e nessuno resta indietro. Elenca le prossime uscite, presenta gli altri sport del gruppo e i professionisti convenzionati, e permette di mettersi in contatto con questa realtà.",
+        whatIDid: "Ho realizzato il sito del club da zero, utilizzando il nostro design system, loghi e nomi. Tutto ciò che vedi nel sito, l'ho realizzato personalmente.",
       },
       en: {
         name: "Pisa Running Club",
         summary: "The website of Pisa's running group: runs, events and how to join.",
         purpose:
           "It explains how the club works: we meet in Piazza Cairoli, we run slowly and nobody is left behind. It lists the upcoming runs, presents the group's other sports and partner professionals, and lets you get in touch.",
-        whatIDid: "I built the club's website.",
+        whatIDid: "I built the club's website from scratch. Everything you see on the site, I made it myself, using our design system, logos and names.",
       },
     },
   },
@@ -56,15 +56,15 @@ export const projects: Project[] = [
         name: "Gare del Pisa Running Club",
         summary: "Il calendario condiviso delle gare podistiche.",
         purpose:
-          "Un calendario condiviso delle gare podistiche, pensato per chi si prepara a una gara con il club. È collegato al sito principale del Pisa Running Club.",
-        whatIDid: "Ho realizzato il sito del calendario.",
+          "Un calendario condiviso delle gare podistiche, pensato per chi si prepara a una gara con il club. È collegato al sito principale del Pisa Running Club. Chiunque voglia può aggiungere una gara, e chiunque può consultarlo per sapere dove e quando si corre.",
+        whatIDid: "Ho realizzato il sito da zero. Qualunque servizio è stato pensato e realizzato da me, in modo che fosse il più semplice possibile da utilizzare.",
       },
       en: {
         name: "Pisa Running Club races",
         summary: "The shared calendar of running races.",
         purpose:
           "A shared calendar of running races, made for anyone preparing for a race with the club. It is linked from the main Pisa Running Club website.",
-        whatIDid: "I built the calendar website.",
+        whatIDid: "I built the calendar website from scratch. Every feature was designed and built by me, to make it as simple as possible to use.",
       },
     },
   },
@@ -81,7 +81,7 @@ export const projects: Project[] = [
         purpose:
           "Accedi con il tuo account, crei le tue liste di cose da fare e le note che vuoi ricordare, e spunti ciò che hai già completato.",
         whatIDid:
-          "Ho costruito sia la parte che gestisce account e dati, sia l'interfaccia che si usa dal browser.",
+          "Ho costruito sia la parte che gestisce account e dati, sia l'interfaccia che si usa dal browser, in maniera che fosse il più semplice possibile da utilizzare su ogni dispositivo.",
       },
       en: {
         name: "To-Do List",
@@ -102,19 +102,19 @@ export const projects: Project[] = [
     text: {
       it: {
         name: "PokèReact",
-        summary: "Per sfogliare e cercare tutti i Pokémon.",
+        summary: "Per sfogliare e cercare tutti i Pokémon del Pokédex.",
         purpose:
-          "Puoi cercare un Pokémon per nome, filtrarli per tipo, scorrere le pagine e aprire la scheda con i dettagli, di giorno o con il tema scuro.",
+          "Puoi cercare un Pokémon per nome, filtrarli per tipo, scorrere le pagine e aprire la scheda con i dettagli, con tema chiaro o scuro.",
         whatIDid:
-          "Ho creato l'intera interfaccia, che prende i dati da una raccolta pubblica online di Pokémon.",
+          "Ho creato l'intera interfaccia, che prende i dati dalle API pubbliche fornite da PokéAPI, in modo che fosse carino visivamente e facile da usare.",
       },
       en: {
         name: "PokèReact",
-        summary: "To browse and search all the Pokémon.",
+        summary: "To browse and search all the Pokémon of the Pokédex.",
         purpose:
           "You can search a Pokémon by name, filter them by type, flip through the pages and open a card with all the details, in light or dark theme.",
         whatIDid:
-          "I created the whole interface, which gets its data from a public online collection of Pokémon.",
+          "I created the whole interface, which gets its data from the public PokéAPI.",
       },
     },
   },
@@ -127,11 +127,11 @@ export const projects: Project[] = [
     text: {
       it: {
         name: "GitHub Stats",
-        summary: "Per capire a colpo d'occhio cosa fa un profilo GitHub.",
+        summary: "Per capire a colpo d'occhio cosa è presente su un profilo GitHub.",
         purpose:
-          "Scrivi il nome di una persona o di un'organizzazione e vedi i suoi progetti, i linguaggi usati e l'attività recente. Puoi anche confrontare due profili.",
+          "Scrivi il nome di una persona o di un'organizzazione e vedi i suoi progetti, i linguaggi usati e l'attività recente. Puoi anche confrontare due profili per vedere le differenze tra di essi.",
         whatIDid:
-          "Ho costruito la pagina con grafici e schede, che legge i dati direttamente da GitHub.",
+          "Ho costruito la pagina con grafici e schede, che legge i dati direttamente da GitHub utilizzando API pubbliche con un'interfaccia accattivante.",
       },
       en: {
         name: "GitHub Stats",
