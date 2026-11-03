@@ -24,6 +24,7 @@ export default function ProjectCard({ project, lang, viewLabel, visitLabel, head
     <article
       className="ledger-row"
       data-project-card
+      data-slug={project.slug}
       data-reveal
       style={{ "--i": index } as React.CSSProperties}
     >
@@ -33,16 +34,9 @@ export default function ProjectCard({ project, lang, viewLabel, visitLabel, head
       <div className="ledger-body">
         <p>{text.summary}</p>
         <TagList tags={project.tech} />
-        <Link
-          className="ledger-link"
-          href={projectPath(project.slug, lang)}
-          aria-label={`${viewLabel}: ${text.name}`}
-        >
-          {viewLabel}
-        </Link>
         {project.siteUrl && visitLabel ? (
           <a
-            className="ledger-link"
+            className="ledger-link ledger-link-main"
             href={project.siteUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -51,6 +45,13 @@ export default function ProjectCard({ project, lang, viewLabel, visitLabel, head
             {visitLabel}
           </a>
         ) : null}
+        <Link
+          className="ledger-link ledger-link-quiet"
+          href={projectPath(project.slug, lang)}
+          aria-label={`${viewLabel}: ${text.name}`}
+        >
+          {viewLabel}
+        </Link>
       </div>
     </article>
   );

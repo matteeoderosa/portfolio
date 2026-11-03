@@ -1,7 +1,8 @@
 import { dictionaries } from "@/content/dictionaries";
 import { projects } from "@/content/projects";
 import type { Lang } from "@/lib/routes";
-import Stage from "@/components/Stage";
+import ProjectStage from "@/components/ProjectStage";
+import { stageShots } from "@/lib/shots";
 import ProjectCard from "@/components/ProjectCard";
 import ContactCta from "@/components/ContactCta";
 
@@ -10,7 +11,7 @@ export default function ProjectsView({ lang }: { lang: Lang }) {
   return (
     <>
       <div className="split page-split">
-        <Stage />
+        <ProjectStage shots={stageShots(lang)} />
         <div className="col page-col">
           <h1 className="rise">{dict.projects.title}</h1>
           <p className="lead rise" style={{ "--i": 1 } as React.CSSProperties}>

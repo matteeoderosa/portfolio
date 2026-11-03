@@ -24,6 +24,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "pisa-running-club",
+    screenshot: "/work/pisa-running-club.png",
     siteUrl: "https://pisarunningclub.it",
     tech: [],
     featured: true,
@@ -47,6 +48,7 @@ export const projects: Project[] = [
   },
   {
     slug: "gare-pisa-running-club",
+    screenshot: "/work/gare-pisa-running-club.png",
     siteUrl: "https://gare.pisarunningclub.it",
     tech: [],
     featured: true,
@@ -70,6 +72,7 @@ export const projects: Project[] = [
   },
   {
     slug: "to-do-list",
+    screenshot: "/work/to-do-list.png",
     demoUrl: "https://todo.matteeoderosa.it",
     repoUrl: "https://github.com/derteo/todo-list-laravel",
     tech: ["Laravel", "React", "Docker"],
@@ -95,6 +98,7 @@ export const projects: Project[] = [
   },
   {
     slug: "pokereact",
+    screenshot: "/work/pokereact.png",
     demoUrl: "https://poke.matteeoderosa.it",
     repoUrl: "https://github.com/derteo/pokeReact",
     tech: ["React", "Material UI", "PokéAPI"],
@@ -120,6 +124,7 @@ export const projects: Project[] = [
   },
   {
     slug: "github-stats",
+    screenshot: "/work/github-stats.png",
     demoUrl: "https://stats.matteeoderosa.it",
     repoUrl: "https://github.com/derteo/githubStatsReact",
     tech: ["React", "Material UI", "GitHub API"],
