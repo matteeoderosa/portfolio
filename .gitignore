@@ -44,3 +44,6 @@ next-env.d.ts
 /.superpowers/
 out.basepath-backup
 out.basepath-backup/
+
+# Prove e immagini di lavoro della skill di design
+.taste-skill/
