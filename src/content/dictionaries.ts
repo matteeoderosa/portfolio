@@ -55,7 +55,7 @@ export type Dictionary = {
     mailSubject: string;
     mailBody: string;
   };
-  footer: { copyright: string; github: string; role: string };
+  footer: { copyright: string; github: string };
   a11y: {
     skip: string;
     navAria: string;
@@ -75,77 +75,77 @@ const it: Dictionary = {
     write: "Scrivimi",
   },
   home: {
-    title: "Creo siti e applicazioni web su misura",
+    title: "Siti e WebApps su misura",
     intro:
-      "Sono Matteo, sviluppatore web di Grosseto. Aiuto persone e piccole attività a portare online ciò che serve davvero, in modo semplice e curato.",
+      "Ciao! sono Matteo, sviluppatore web di Grosseto, a Pisa per motivi di studio. Aiuto persone e piccole attività a portare online ciò che serve davvero, in modo semplice e curato.",
     ctaProjects: "Guarda i progetti",
     servicesTitle: "Cosa posso fare per te",
     services: [
       {
         title: "Un sito vetrina per la tua attività",
-        text: "Una pagina chiara che dice chi sei, cosa fai e come trovarti, e che si legge bene anche da telefono.",
+        text: "Una pagina chiara che spiega chi sei, cosa fai e come contattarti, che si legga piacevolmente da ogni dispositivo.",
         items: [
-          "Orari, indirizzo e contatti sempre a portata di mano",
+          "Titoli di studio, esperienze e contatti sempre a portata di mano",
           "Foto e descrizione di prodotti o servizi",
           "Veloce da aprire e semplice da tenere aggiornato",
-          "Pronto per farsi trovare su Google",
+          "Pronto per farsi trovare su ogni motore di ricerca",
         ],
       },
       {
-        title: "Un'applicazione web fatta su misura",
-        text: "Quando un programma già pronto non basta, costruisco lo strumento che serve proprio a te.",
+        title: "Un'applicazione web su misura",
+        text: "Quando non trovi un programma già pronto che faccia al caso tuo, costruisco io ciò che ti serve davvero.",
         items: [
           "Accesso con il tuo account personale",
-          "I tuoi dati salvati e sempre disponibili",
-          "Funziona da computer e da telefono",
+          "I tuoi dati sempre sincronizzati e disponibili all'istante",
+          "Funziona da ogni dispositivo, computer o telefono",
           "Cresce insieme alla tua attività",
         ],
       },
       {
         title: "Un gestionale per organizzare il tuo lavoro",
-        text: "Clienti, appuntamenti, ordini o magazzino: tutto in un posto solo, al posto di fogli e quaderni.",
+        text: "Clienti, appuntamenti, ordini o magazzino: tutto in un posto solo, sempre a portata di mano.",
         items: [
           "Elenchi e ricerche per ritrovare tutto subito",
-          "Prenotazioni e scadenze sotto controllo",
+          "Prenotazioni e scadenze sempre sotto controllo",
           "Meno carta e meno dati da ricopiare",
           "Pensato per chi lo usa ogni giorno",
         ],
       },
     ],
-    featuredTitle: "Alcuni lavori",
+    featuredTitle: "Alcuni dei miei progetti",
     allProjects: "Tutti i progetti",
-    aboutLink: "Leggi di più su di me",
-    contactInvite: "Hai un'idea o un'esigenza? Scrivimi, ne parliamo senza impegno.",
+    aboutLink: "Leggi di più su chi sono",
+    contactInvite: "Hai un'idea o un'esigenza? Scrivimi, ne parliamo per svilupparla insieme al meglio.",
   },
   projects: {
     title: "Progetti",
-    intro: "Una selezione dei lavori a cui ho dedicato più cura.",
-    viewProject: "Scopri il progetto",
+    intro: "Alcuni dei miei lavori a cui ho dedicato più cura.",
+    viewProject: "Scopri di più sul progetto",
     visit: "Visita il sito",
     mainTitle: "Progetti principali",
-    otherTitle: "Altri progetti",
-    back: "Tutti i progetti",
+    otherTitle: "Altri progetti minori",
+    back: "Torna ai progetti",
     purposeTitle: "A cosa serve",
-    whatIDidTitle: "Cosa ho fatto",
+    whatIDidTitle: "Cosa ho creato",
     demo: "Vedi la demo",
     repo: "Vedi il codice",
     techTitle: "Tecnologie usate",
   },
   about: {
     title: "Chi sono",
-    intro: "Sono Matteo, sviluppatore web di Grosseto.",
+    intro: "Ciao, mi chiamo Matteo, sono uno sviluppatore web.",
     paragraphs: [
-      "Vivo a Grosseto e studio a Pisa. Mi piace trasformare un'idea in qualcosa che le persone possano usare davvero, senza complicazioni.",
-      "Lavoro volentieri con chi ha un'attività o un progetto e vuole un sito o uno strumento fatto bene. Mi trovi sempre disponibile a parlare di software e a valutare una collaborazione.",
+      "Vivo a Grosseto e studio a Pisa. Mi piace trasformare un'idea in qualcosa che le persone possano usare davvero in maniera molto semplice.",
+      "Lavoro volentieri con chi ha un'attività o un progetto in mente e vuole un sito o uno strumento fatto bene. Mi trovi sempre disponibile a parlare di software e a valutare una collaborazione.",
     ],
-    interestsTitle: "Fuori dallo schermo",
-    interests: ["Baseball", "Ciclismo", "Corsa"],
+    interestsTitle: "Fuori dallo studio e dal lavoro",
+    interests: ["Corsa", "Ciclismo", "Baseball"],
   },
   contact: {
     title: "Contatti",
-    intro: "Scrivimi due righe: ti rispondo appena posso.",
+    intro: "Scrivimi due righe sulla tua idea: rispondo il prima possibile :D",
     emailLabel: "Email",
-    invite: "Sono aperto a chiacchierare di software e a nuove collaborazioni.",
+    invite: "Sono sempre aperto a chiacchierare di software e a nuove collaborazioni.",
     phoneLabel: "Telefono",
     linkedinLabel: "LinkedIn",
     instagramLabel: "Instagram",
@@ -153,9 +153,9 @@ const it: Dictionary = {
     photoAlt: "Ritratto di Matteo De Rosa",
   },
   cta: {
-    text: "Hai un progetto in mente? Scrivimi, ti rispondo appena posso.",
-    title: "Raccontami cosa ti serve",
-    lead: "Scegli cosa ti serve e si apre l'email già scritta: aggiungi due righe e invia. Ti rispondo appena posso.",
+    text: "Hai un progetto in mente? Scrivimi, ti rispondo il prima possibile.",
+    title: "Raccontami la tua idea",
+    lead: "Scegli cosa ti serve e si apre l'email già scritta: aggiungi due righe e invia. Ti rispondo il prima possibile.",
     legend: "Cosa ti serve?",
     other: "Non lo so ancora, parliamone",
     send: "Scrivimi",
@@ -165,7 +165,6 @@ const it: Dictionary = {
   footer: {
     copyright: "Tutti i diritti riservati.",
     github: "GitHub",
-    role: "Sviluppatore web a Grosseto",
   },
   a11y: {
     skip: "Vai al contenuto",
@@ -276,7 +275,6 @@ const en: Dictionary = {
   footer: {
     copyright: "All rights reserved.",
     github: "GitHub",
-    role: "Web developer in Grosseto",
   },
   a11y: {
     skip: "Skip to content",

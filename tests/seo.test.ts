@@ -3,6 +3,7 @@ import { pageMetadata, personJsonLd } from "@/lib/seo";
 import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
 import { projects } from "@/content/projects";
+import { dictionaries } from "@/content/dictionaries";
 
 const SITE = "https://matteoderosa.it";
 
@@ -29,7 +30,7 @@ describe("pageMetadata", () => {
   });
 
   it("home title is the plain-language dictionary title", () => {
-    expect(pageMetadata("home", "it", {}).title).toBe("Matteo De Rosa · Creo siti e applicazioni web su misura");
+    expect(pageMetadata("home", "it", {}).title).toBe(`Matteo De Rosa · ${dictionaries.it.home.title}`);
   });
 
   it("open graph and twitter use og-image", () => {
