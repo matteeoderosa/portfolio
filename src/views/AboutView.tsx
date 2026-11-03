@@ -3,7 +3,8 @@ import { site } from "@/content/site";
 import { assetHref } from "@/lib/site";
 import type { Lang } from "@/lib/routes";
 import ProjectStage from "@/components/ProjectStage";
-import PhotoGrid from "@/components/PhotoGrid";
+import PhotoMosaic from "@/components/PhotoMosaic";
+import InlineMosaic from "@/components/InlineMosaic";
 import { aboutMosaics } from "@/content/photos";
 import ContactCta from "@/components/ContactCta";
 
@@ -14,7 +15,7 @@ export default function AboutView({ lang }: { lang: Lang }) {
       <div className="split page-split">
         <ProjectStage
           shots={[]}
-          mosaics={aboutMosaics.map((m) => ({ id: m.id, node: <PhotoGrid lang={lang} keys={m.keys} /> }))}
+          mosaics={aboutMosaics.map((m) => ({ id: m.id, node: <PhotoMosaic lang={lang} tree={m.tree} /> }))}
         />
         <div className="col page-col">
           <h1 className="rise">{dict.about.title}</h1>
@@ -22,6 +23,7 @@ export default function AboutView({ lang }: { lang: Lang }) {
             <p className="lead rise" style={{ "--i": 1 } as React.CSSProperties}>
               {dict.about.intro}
             </p>
+            <InlineMosaic lang={lang} id="volti" />
             {site.photo ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img className="portrait" data-portrait src={assetHref(site.photo)} alt={dict.contact.photoAlt} />
@@ -33,6 +35,7 @@ export default function AboutView({ lang }: { lang: Lang }) {
             ))}
           </div>
           <div data-stage-me="giro">
+            <InlineMosaic lang={lang} id="giro" />
             {dict.about.paragraphs.slice(1).map((p, i) => (
               <p key={p} data-reveal style={{ "--i": i } as React.CSSProperties}>
                 {p}
@@ -46,6 +49,7 @@ export default function AboutView({ lang }: { lang: Lang }) {
                 <li key={i}>{i}</li>
               ))}
             </ul>
+            <InlineMosaic lang={lang} id="ciclismo" />
           </div>
         </div>
       </div>

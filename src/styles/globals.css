@@ -320,7 +320,7 @@ main:focus { outline: none; }
 .stage-img[data-on] { opacity: 1; transform: none; }
 .stage-shots:not(:has([data-on])) .stage-img:first-child { opacity: 1; transform: none; }
 
-/* Mosaico di foto: colonne di altezza diversa, tasselli a filo con 4px di spazio */
+/* Griglia degli screenshot della hero: tasselli ritagliati a riempire lo spazio */
 .photo-grid {
     position: absolute;
     inset: 0;
@@ -338,22 +338,32 @@ main:focus { outline: none; }
     animation: photo-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
     animation-delay: calc(var(--i, 0) * 90ms + 80ms);
 }
-.photo-grid[data-n="6"] img:nth-child(1) { grid-area: 1 / 1 / 5 / 2; }
-.photo-grid[data-n="6"] img:nth-child(2) { grid-area: 5 / 1 / 7 / 2; }
-.photo-grid[data-n="6"] img:nth-child(3) { grid-area: 1 / 2 / 3 / 3; }
-.photo-grid[data-n="6"] img:nth-child(4) { grid-area: 3 / 2 / 7 / 3; }
-.photo-grid[data-n="6"] img:nth-child(5) { grid-area: 1 / 3 / 4 / 4; }
-.photo-grid[data-n="6"] img:nth-child(6) { grid-area: 4 / 3 / 7 / 4; }
-.photo-grid[data-n="4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(5, minmax(0, 1fr)); }
-.photo-grid[data-n="4"] img:nth-child(1) { grid-area: 1 / 1 / 4 / 2; }
-.photo-grid[data-n="4"] img:nth-child(2) { grid-area: 4 / 1 / 6 / 2; }
-.photo-grid[data-n="4"] img:nth-child(3) { grid-area: 1 / 2 / 3 / 3; }
-.photo-grid[data-n="4"] img:nth-child(4) { grid-area: 3 / 2 / 6 / 3; }
-/* 3 foto: una colonna alta e due tasselli impilati */
-.photo-grid[data-n="3"] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: 3fr 2fr; }
-.photo-grid[data-n="3"] img:nth-child(1) { grid-area: 1 / 1 / 3 / 2; }
-.photo-grid[data-n="3"] img:nth-child(2) { grid-area: 1 / 2 / 2 / 3; }
-.photo-grid[data-n="3"] img:nth-child(3) { grid-area: 2 / 2 / 3 / 3; }
+
+/* Mosaico di foto intere: ogni foto nel riquadro della sua forma, nessun ritaglio.
+   Il mosaico si adatta allo stage tenendo le proporzioni (--a = larghezza / altezza). */
+.photo-mosaic {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    container-type: size;
+}
+.mosaic-root {
+    width: min(100cqw, calc(100cqh * var(--a)));
+}
+.mosaic-box { display: flex; gap: 4px; min-width: 0; min-height: 0; }
+.mosaic-box > img, .mosaic-root.mosaic-box img {
+    display: block;
+    min-width: 0;
+    min-height: 0;
+    object-fit: contain;
+}
+.photo-mosaic img {
+    display: block;
+    object-fit: contain;
+    animation: photo-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+}
 /* 8 screenshot: una striscia larga in alto, una in basso e sei tasselli in mezzo */
 .photo-grid[data-n="shots8"] { grid-template-rows: repeat(10, minmax(0, 1fr)); }
 .photo-grid[data-n="shots8"] img:nth-child(1) { grid-area: 1 / 1 / 3 / 4; }
@@ -375,7 +385,7 @@ main:focus { outline: none; }
     transition: opacity 0.6s ease, visibility 0.6s;
 }
 .stage-me[data-on] { opacity: 1; visibility: visible; }
-.stage-me .photo-grid img { animation: none; }
+.stage-me .photo-grid img, .stage-me .photo-mosaic img { animation: none; }
 
 .col {
     min-width: 0;
@@ -513,7 +523,9 @@ main:focus { outline: none; }
 }
 
 
-.shot { display: block; margin: 0 0 32px; }
+.shot { display: none; margin: 0 0 32px; }
+.ledger-shot { display: none; }
+.photo-mosaic.photo-mosaic-inline { display: none; }
 .portrait { display: block; max-width: 220px; margin: 0 0 32px; }
 .project-detail p { max-width: 54ch; }
 .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 24px; }
@@ -675,7 +687,28 @@ main:focus { outline: none; }
     .page-split .stage-shots { height: min(30svh, 240px); }
     .stage-photos { height: min(46svh, 360px); }
     .page-split .stage-photos, .page-split .stage-shots:has(.stage-me) { height: min(46svh, 360px); }
-    .split-hero .stage-photos { height: min(60svh, 460px); }
+    .split-hero .stage-photos { height: min(38svh, 290px); }
+    .split-hero .photo-grid[data-n="shots8"] {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        background: transparent;
+    }
+    .split-hero .photo-grid[data-n="shots8"]::-webkit-scrollbar { display: none; }
+    .split-hero .photo-grid[data-n="shots8"] img {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: none;
+        height: 100%;
+        scroll-snap-align: start;
+        animation: none;
+    }
+    /* le due strisce larghe (To-Do List e footer) a quell'altezza si vedrebbero tagliate */
+    .split-hero .photo-grid[data-n="shots8"] img:nth-child(1),
+    .split-hero .photo-grid[data-n="shots8"] img:nth-child(8) { display: none; }
     .hero-col h1 { font-size: clamp(2.5rem, 11vw, 3.5rem); }
     .hero-col h1:lang(en) { font-size: clamp(2.1rem, 8.6vw, 3.25rem); }
     .hero-col .lead, .page-col .lead { max-width: none; }
@@ -699,6 +732,31 @@ main:focus { outline: none; }
 
 @media (max-width: 999px) {
     .cta-band, .cta-close-text { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 999px) {
+    /* il mosaico di foto sta dentro il testo, ognuno accanto alla sua parte */
+    .page-split .stage-shots:has(.stage-me) { display: none; }
+    .photo-mosaic.photo-mosaic-inline {
+        position: static;
+        display: block;
+        container-type: normal;
+        width: min(100%, calc(62svh * var(--a)));
+        margin: 8px auto 32px;
+    }
+    .photo-mosaic-inline .mosaic-root { width: 100%; }
+
+    /* progetti: l'anteprima sopra ogni riga al posto dello stage */
+    .page-split:has(.ledger) > .stage, .page-split:has(.project-detail) > .stage { display: none; }
+    .ledger-shot {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        margin-bottom: 8px;
+        object-fit: cover;
+        object-position: top;
+    }
+    .shot { display: block; width: 100%; }
 }
 
 @media (max-width: 639px) {
