@@ -1,6 +1,7 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { flushSync } from "react-dom";
+import { useSyncExternalStore, type MouseEvent } from "react";
 
 type Props = { labels: { dark: string; light: string } };
 
@@ -31,15 +32,44 @@ function subscribe(onChange: () => void) {
 export default function ThemeToggle({ labels }: Props) {
   const dark = useSyncExternalStore(subscribe, isDark, () => false);
 
-  function toggle() {
+  function toggle(e: MouseEvent<HTMLButtonElement>) {
     const next = isDark() ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem("theme", next);
-    } catch {
-      /* storage non disponibile */
+    const apply = () => {
+      document.documentElement.setAttribute("data-theme", next);
+      try {
+        localStorage.setItem("theme", next);
+      } catch {
+        /* storage non disponibile */
+      }
+      listeners.forEach((l) => l());
+    };
+
+    // Il nuovo tema si apre come un cerchio che parte dal pulsante (View Transitions API).
+    // Senza l'API, o con il movimento ridotto, il tema cambia subito, come prima.
+    const doc = document as Document & {
+      startViewTransition?: (update: () => void) => { ready: Promise<void>; finished: Promise<void> };
+    };
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (!doc.startViewTransition || reduce) {
+      apply();
+      return;
     }
-    listeners.forEach((l) => l());
+    const box = e.currentTarget.getBoundingClientRect();
+    const x = box.left + box.width / 2;
+    const y = box.top + box.height / 2;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const root = document.documentElement;
+    root.classList.add("vt-theme");
+    const transition = doc.startViewTransition(() => flushSync(apply));
+    transition.ready
+      .then(() =>
+        root.animate(
+          { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+          { duration: 650, easing: "cubic-bezier(0.4, 0, 0.2, 1)", pseudoElement: "::view-transition-new(root)" },
+        ),
+      )
+      .catch(() => {});
+    transition.finished.finally(() => root.classList.remove("vt-theme"));
   }
 
   return (

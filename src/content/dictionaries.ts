@@ -65,6 +65,7 @@ export type Dictionary = {
     themeLight: string;
     switchLang: string;
     langUnavailable: string;
+    lightbox: { open: string; close: string; prev: string; next: string; zoom: string; unzoom: string; of: string };
   };
 };
 
@@ -177,6 +178,15 @@ const it: Dictionary = {
     themeLight: "Tema chiaro",
     switchLang: "Passa all'inglese",
     langUnavailable: "Questa pagina non è disponibile in inglese",
+    lightbox: {
+      open: "Ingrandisci",
+      close: "Chiudi",
+      prev: "Foto precedente",
+      next: "Foto successiva",
+      zoom: "Ingrandisci al 100%",
+      unzoom: "Adatta allo schermo",
+      of: "di",
+    },
   },
 };
 
@@ -289,6 +299,15 @@ const en: Dictionary = {
     themeLight: "Light theme",
     switchLang: "Switch to Italian",
     langUnavailable: "This page is not available in Italian",
+    lightbox: {
+      open: "Enlarge",
+      close: "Close",
+      prev: "Previous photo",
+      next: "Next photo",
+      zoom: "Zoom to 100%",
+      unzoom: "Fit to screen",
+      of: "of",
+    },
   },
 };
 

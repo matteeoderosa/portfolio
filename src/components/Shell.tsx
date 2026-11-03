@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 import Header, { type HeaderProps } from "./Header";
 import Footer, { type FooterProps } from "./Footer";
 import MotionInit from "./MotionInit";
+import Lightbox from "./Lightbox";
+import { dictionaries } from "@/content/dictionaries";
 
 type Props = {
   lang: "it" | "en";
@@ -19,6 +21,7 @@ export default function Shell({ lang, header, footer, children }: Props) {
       </main>
       <Footer lang={lang} labels={footer} />
       <MotionInit />
+      <Lightbox labels={dictionaries[lang].a11y.lightbox} />
     </>
   );
 }
