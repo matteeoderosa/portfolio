@@ -41,31 +41,20 @@ Nota: i passi 4 e 5 vanno fatti uno dopo l'altro, senza pause: nel frattempo l'i
 Nel repo `portfolio`:
 
 1. Crea il file `public/CNAME` con dentro una sola riga: `matteoderosa.it`
-2. In `.github/workflows/deploy.yml` sostituisci le tre righe `env` del passo `npm run build`.
+2. Cambia le variabili del repository (GitHub, Settings > Secrets and variables > Actions > Variables), oppure da terminale:
 
-Prima:
-
-```yaml
-        env:
-          NEXT_PUBLIC_BASE_PATH: /portfolio
-          NEXT_PUBLIC_SITE_URL: https://matteeoderosa.github.io/portfolio
-          NEXT_PUBLIC_NOINDEX: "1"
+```bash
+gh variable delete NEXT_PUBLIC_BASE_PATH
+gh variable delete NEXT_PUBLIC_NOINDEX
+gh variable set NEXT_PUBLIC_SITE_URL --body "https://matteoderosa.it"
 ```
 
-Dopo (percorso base vuoto, indirizzo finale, niente NOINDEX):
+(Una variabile cancellata vale "vuoto": percorso base vuoto e niente NOINDEX.)
 
-```yaml
-        env:
-          NEXT_PUBLIC_BASE_PATH: ""
-          NEXT_PUBLIC_SITE_URL: https://matteoderosa.it
-```
-
-(Togli anche il commento "Provisional URL build..." sopra, ora non serve più.)
-
-3. Fai commit e push su `main`: il workflow pubblica la versione finale.
+3. Fai commit e push su `main` di `public/CNAME`: il workflow pubblica la versione finale.
 
 - Funziona se: l'Action diventa verde.
-- Annullare: rimetti le tre righe di prima e rifai il push.
+- Annullare: rimetti `NEXT_PUBLIC_BASE_PATH=/portfolio`, `NEXT_PUBLIC_NOINDEX=1` e `NEXT_PUBLIC_SITE_URL=https://matteeoderosa.github.io/portfolio`, poi rilancia il workflow.
 
 ## 5. Dominio personalizzato e HTTPS
 
