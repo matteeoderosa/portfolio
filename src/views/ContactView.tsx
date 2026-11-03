@@ -26,10 +26,22 @@ export default function ContactView({ lang }: { lang: Lang }) {
           </li>
           <li data-reveal>
             <span className="label">{dict.footer.github}</span>
-            <a href={site.github} target="_blank" rel="noopener noreferrer">
-              {site.github.replace(/^https?:\/\//, "")}
-            </a>
+            <span className="link-stack">
+              {[site.github, site.githubAlt].filter((u): u is string => Boolean(u)).map((u) => (
+                <a key={u} href={u} target="_blank" rel="noopener noreferrer">
+                  {u.replace(/^https?:\/\//, "")}
+                </a>
+              ))}
+            </span>
           </li>
+          {site.instagram ? (
+            <li data-reveal>
+              <span className="label">{c.instagramLabel}</span>
+              <a href={site.instagram} target="_blank" rel="noopener noreferrer">
+                {site.instagram.replace(/^https?:\/\/(www\.)?/, "")}
+              </a>
+            </li>
+          ) : null}
           {site.phone ? (
             <li data-reveal>
               <span className="label">{c.phoneLabel}</span>

@@ -28,13 +28,6 @@ describe("pageMetadata", () => {
     expect(langs.en).toBe(`${SITE}/en/projects/to-do-list/`);
   });
 
-  it("archive has no en alternate", () => {
-    const m = pageMetadata("archive", "it", {});
-    const langs = m.alternates?.languages as Record<string, string>;
-    expect(langs.it).toBe(`${SITE}/archivio/`);
-    expect(langs.en).toBeUndefined();
-  });
-
   it("home title is the plain-language dictionary title", () => {
     expect(pageMetadata("home", "it", {}).title).toBe("Matteo De Rosa · Creo siti e applicazioni web su misura");
   });
@@ -78,9 +71,8 @@ describe("sitemap", () => {
   const entries = sitemap();
   const urls = entries.map((e) => e.url);
 
-  it("lists the archive IT url once and no EN archive", () => {
-    expect(urls.filter((u) => u === `${SITE}/archivio/`)).toHaveLength(1);
-    expect(urls.some((u) => u.includes("/en/archive"))).toBe(false);
+  it("has no archive pages", () => {
+    expect(urls.some((u) => u.includes("/archivio") || u.includes("/archive"))).toBe(false);
   });
 
   it("lists every project in both languages", () => {

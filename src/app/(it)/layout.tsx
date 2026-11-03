@@ -14,7 +14,6 @@ const nav = [
   { label: dict.nav.projects, href: routePath("projects", "it") },
   { label: dict.nav.about, href: routePath("about", "it") },
   { label: dict.nav.contact, href: routePath("contact", "it") },
-  { label: dict.nav.archive, href: routePath("archive", "it") },
 ];
 const header = {
   nav,

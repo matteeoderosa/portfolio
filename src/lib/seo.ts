@@ -42,8 +42,6 @@ function textFor(key: PageKey, lang: Lang): { title: string; description: string
       return { title: `${d.about.title} · ${OWNER}`, description: d.about.intro };
     case "contact":
       return { title: `${d.contact.title} · ${OWNER}`, description: d.contact.intro };
-    case "archive":
-      return { title: `${d.archive.title} · ${OWNER}`, description: d.archive.lead };
   }
 }
 

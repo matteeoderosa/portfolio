@@ -10,10 +10,10 @@ afterEach(() => {
 describe("LangSwitch", () => {
   it("links to the alternate path with visible text and aria-label", () => {
     render(<LangSwitch lang="it" currentPath="/progetti/" label="Passa all'inglese" unavailable="Non disponibile in inglese" />);
-    const link = screen.getByRole("link", { name: "EN, Passa all'inglese" });
+    const link = screen.getByRole("link", { name: "IT, Passa all'inglese" });
     // next/link normalises the trailing slash outside a configured build
     expect(link.getAttribute("href")).toMatch(/^\/en\/projects\/?$/);
-    expect(link.textContent).toContain("EN");
+    expect(link.textContent).toContain("IT");
   });
   it("stores the preference and survives a throwing localStorage", () => {
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
@@ -29,7 +29,7 @@ describe("LangSwitch", () => {
     expect(spy).toHaveBeenCalledWith("lang", "it");
   });
   it("accessible name contains the visible language code (label in name)", () => {
-    for (const [lang, path, code] of [["it", "/", "EN"], ["en", "/en/", "IT"]] as const) {
+    for (const [lang, path, code] of [["it", "/", "IT"], ["en", "/en/", "EN"]] as const) {
       render(<LangSwitch lang={lang} currentPath={path} label="x" unavailable="n/a" />);
       const link = screen.getByRole("link");
       const name = link.getAttribute("aria-label") ?? "";
@@ -40,7 +40,7 @@ describe("LangSwitch", () => {
   });
   it("renders a non-link when there is no alternate, with the reason in its text", () => {
     const { container } = render(
-      <LangSwitch lang="it" currentPath="/archivio/" label="Passa all'inglese" unavailable="Non disponibile in inglese" />,
+      <LangSwitch lang="it" currentPath="/pagina-che-non-esiste/" label="Passa all'inglese" unavailable="Non disponibile in inglese" />,
     );
     expect(screen.queryByRole("link")).toBeNull();
     const el = screen.getByTitle("Non disponibile in inglese");

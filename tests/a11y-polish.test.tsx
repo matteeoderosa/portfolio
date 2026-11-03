@@ -26,7 +26,7 @@ describe("heading outline", () => {
       const ls = levels(container);
       expect(ls[0]).toBe(1);
       expect(skipsLevel(ls)).toBe(false);
-      expect(container.querySelectorAll("[data-project-card] h2").length).toBeGreaterThan(0);
+      expect(container.querySelectorAll("[data-project-card] h3").length).toBeGreaterThan(0);
     });
     it(`Home page (${lang}) keeps card titles at h3 under section h2s`, () => {
       const { container } = render(<HomeView lang={lang} />);

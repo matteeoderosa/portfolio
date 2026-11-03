@@ -12,7 +12,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // Legacy exercises, served untouched.
+    // Static files, served untouched.
     "public/**",
   ]),
 ]);

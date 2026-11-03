@@ -1,6 +1,6 @@
 import { dictionaries } from "@/content/dictionaries";
 import { site } from "@/content/site";
-import type { Lang } from "@/lib/routes";
+import { routePath, type Lang } from "@/lib/routes";
 import NeedPicker from "./NeedPicker";
 
 /** "photo": the closing block of the home page, with the live picker beside it. "band": the short close of the other pages. */
@@ -10,7 +10,7 @@ export default function ContactCta({ lang, variant = "band" }: { lang: Lang; var
   if (variant === "photo") {
     const choices = [...dict.home.services.map((s) => s.title), dict.cta.other];
     return (
-      <section className="cta-close" aria-labelledby="cta-title">
+      <section className="cta-close" data-nav={routePath("contact", lang)} aria-labelledby="cta-title">
         <div className="cta-close-text">
           <h2 id="cta-title" data-reveal>
             {dict.cta.title}

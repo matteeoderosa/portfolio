@@ -13,7 +13,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
   const featured = projects.filter((p) => p.featured).slice(0, 4);
   return (
     <>
-      <div className="split split-hero">
+      <div className="split split-hero" data-nav={routePath("home", lang)}>
         <Stage />
         <div className="col hero-col">
           <h1 className="rise" style={delay(0)}>
@@ -33,7 +33,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
         </div>
       </div>
 
-      <section className="services" aria-labelledby="services-title">
+      <section className="services" data-nav={routePath("home", lang)} aria-labelledby="services-title">
         <h2 id="services-title" data-reveal>
           {dict.home.servicesTitle}
         </h2>
@@ -59,13 +59,13 @@ export default function HomeView({ lang }: { lang: Lang }) {
       <div className="split split-story">
         <Stage />
         <div className="col story-col">
-          <section className="story-section" aria-labelledby="featured-title">
+          <section className="story-section" data-nav={routePath("projects", lang)} aria-labelledby="featured-title">
             <h2 id="featured-title" data-reveal>
               {dict.home.featuredTitle}
             </h2>
             <div className="ledger">
               {featured.map((p, i) => (
-                <ProjectCard key={p.slug} project={p} lang={lang} viewLabel={dict.projects.viewProject} index={i} />
+                <ProjectCard key={p.slug} project={p} lang={lang} viewLabel={dict.projects.viewProject} visitLabel={dict.projects.visit} index={i} />
               ))}
             </div>
             <p data-reveal>
@@ -75,7 +75,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
             </p>
           </section>
 
-          <section className="story-section" aria-labelledby="about-title">
+          <section className="story-section" data-nav={routePath("about", lang)} aria-labelledby="about-title">
             <h2 id="about-title" data-reveal>
               {dict.about.title}
             </h2>
@@ -89,7 +89,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
             ))}
           </section>
 
-          <section className="story-section" aria-labelledby="outside-title">
+          <section className="story-section" data-nav={routePath("about", lang)} aria-labelledby="outside-title">
             <h2 id="outside-title" data-reveal>
               {dict.about.interestsTitle}
             </h2>

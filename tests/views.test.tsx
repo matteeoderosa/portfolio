@@ -61,7 +61,7 @@ describe("ProjectView", () => {
   });
 
   it("renders the demo link only when demoUrl is defined; repo link always", async () => {
-    const base = projects[0];
+    const base = projects.find((p) => p.repoUrl && !p.siteUrl)!;
     const hrefs = async (demoUrl?: string) => {
       vi.resetModules();
       vi.doMock("@/content/projects", () => ({
@@ -74,6 +74,13 @@ describe("ProjectView", () => {
     expect(await hrefs(undefined)).toEqual([base.repoUrl]);
     cleanup();
     expect(await hrefs("https://demo.example.com")).toEqual(["https://demo.example.com", base.repoUrl]);
+  });
+
+  it("shows the live-site link first for a project with a siteUrl", () => {
+    const p = projects.find((x) => x.siteUrl)!;
+    const { container } = render(<ProjectView lang="it" slug={p.slug} />);
+    const hrefs = Array.from(container.querySelectorAll("article .cta-actions a")).map((a) => a.getAttribute("href"));
+    expect(hrefs[0]).toBe(p.siteUrl);
   });
 
   it("throws for an unknown slug", () => {

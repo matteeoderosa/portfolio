@@ -7,7 +7,6 @@ describe("routes", () => {
     expect(routePath("projects", "it")).toBe("/progetti/");
     expect(routePath("about", "it")).toBe("/chi-sono/");
     expect(routePath("contact", "it")).toBe("/contatti/");
-    expect(routePath("archive", "it")).toBe("/archivio/");
     expect(routePath("home", "en")).toBe("/en/");
     expect(routePath("projects", "en")).toBe("/en/projects/");
     expect(routePath("about", "en")).toBe("/en/about/");
@@ -29,8 +28,8 @@ describe("routes", () => {
     expect(alternatePath("/progetti/my-app/", "en")).toBe("/en/projects/my-app/");
     expect(alternatePath("/en/projects/my-app/", "it")).toBe("/progetti/my-app/");
   });
-  it("has no English archive", () => {
-    expect(alternatePath("/archivio/", "en")).toBeNull();
+  it("has no alternate for an unknown page", () => {
+    expect(alternatePath("/pagina-che-non-esiste/", "en")).toBeNull();
   });
   it("tolerates a missing trailing slash", () => {
     expect(alternatePath("/progetti", "en")).toBe("/en/projects/");

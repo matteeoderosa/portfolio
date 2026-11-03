@@ -11,7 +11,6 @@ const itNav = [
   { label: "Progetti", href: "/progetti/" },
   { label: "Chi sono", href: "/chi-sono/" },
   { label: "Contatti", href: "/contatti/" },
-  { label: "Esercizi", href: "/archivio/" },
 ];
 const enNav = [
   { label: "Home", href: "/en/" },
@@ -35,7 +34,7 @@ describe("MainNav", () => {
     [itNav, "/", ["/"]],
     [itNav, "/progetti/", ["/progetti/"]],
     [itNav, "/progetti/to-do/", ["/progetti/"]],
-    [itNav, "/archivio/", ["/archivio/"]],
+    [itNav, "/chi-sono/", ["/chi-sono/"]],
     [enNav, "/en/", ["/en/"]],
     [enNav, "/en/about/", ["/en/about/"]],
     [enNav, "/en/projects/to-do/", ["/en/projects/"]],

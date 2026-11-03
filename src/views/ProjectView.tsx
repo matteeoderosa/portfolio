@@ -39,14 +39,21 @@ export default function ProjectView({ lang, slug }: { lang: Lang; slug: string }
           <h2 data-reveal>{dict.projects.whatIDidTitle}</h2>
           <p data-reveal>{text.whatIDid}</p>
           <div className="cta-actions" data-reveal>
+            {project.siteUrl ? (
+              <a className="btn btn-primary" href={project.siteUrl} target="_blank" rel="noopener noreferrer">
+                {dict.projects.visit}
+              </a>
+            ) : null}
             {project.demoUrl ? (
               <a className="btn btn-primary" href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                 {dict.projects.demo}
               </a>
             ) : null}
-            <a className="btn btn-quiet" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-              {dict.projects.repo}
-            </a>
+            {project.repoUrl ? (
+              <a className="btn btn-quiet" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                {dict.projects.repo}
+              </a>
+            ) : null}
           </div>
           <TagList tags={project.tech} label={dict.projects.techTitle} />
           <p className="back-link" data-reveal>
