@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 import { assetHref } from "@/lib/site";
 import type { Lang } from "@/lib/routes";
 import PhotoStage from "@/components/PhotoStage";
-import { contactPhotos } from "@/content/photos";
+import { contactMosaic } from "@/content/photos";
 import NeedPicker from "@/components/NeedPicker";
 
 export default function ContactView({ lang }: { lang: Lang }) {
@@ -12,7 +12,7 @@ export default function ContactView({ lang }: { lang: Lang }) {
   const choices = [...dict.home.services.map((s) => s.title), dict.cta.other];
   return (
     <div className="split page-split">
-      <PhotoStage lang={lang} keys={contactPhotos} />
+      <PhotoStage lang={lang} tree={contactMosaic} />
       <div className="col page-col">
         <h1 className="rise">{c.title}</h1>
         <p className="lead rise" style={{ "--i": 1 } as React.CSSProperties}>

@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 import { assetHref } from "@/lib/site";
 import type { Lang } from "@/lib/routes";
 import ProjectStage from "@/components/ProjectStage";
-import PhotoGrid from "@/components/PhotoGrid";
+import PhotoMosaic from "@/components/PhotoMosaic";
 import { aboutMosaics } from "@/content/photos";
 import ContactCta from "@/components/ContactCta";
 
@@ -14,7 +14,7 @@ export default function AboutView({ lang }: { lang: Lang }) {
       <div className="split page-split">
         <ProjectStage
           shots={[]}
-          mosaics={aboutMosaics.map((m) => ({ id: m.id, node: <PhotoGrid lang={lang} keys={m.keys} /> }))}
+          mosaics={aboutMosaics.map((m) => ({ id: m.id, node: <PhotoMosaic lang={lang} tree={m.tree} /> }))}
         />
         <div className="col page-col">
           <h1 className="rise">{dict.about.title}</h1>

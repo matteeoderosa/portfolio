@@ -3,7 +3,7 @@ import { dictionaries } from "@/content/dictionaries";
 import { projects } from "@/content/projects";
 import { projectPath, routePath, type Lang } from "@/lib/routes";
 import ProjectStage from "@/components/ProjectStage";
-import PhotoGrid from "@/components/PhotoGrid";
+import PhotoMosaic from "@/components/PhotoMosaic";
 import PhotoStage from "@/components/PhotoStage";
 import { aboutMosaics, heroLayout, heroPhotos } from "@/content/photos";
 import { stageShots } from "@/lib/shots";
@@ -66,7 +66,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
       <div className="split split-story">
         <ProjectStage
           shots={stageShots(lang)}
-          mosaics={aboutMosaics.map((m) => ({ id: m.id, node: <PhotoGrid lang={lang} keys={m.keys} /> }))}
+          mosaics={aboutMosaics.map((m) => ({ id: m.id, node: <PhotoMosaic lang={lang} tree={m.tree} /> }))}
         />
         <div className="col story-col">
           <section className="story-section" data-nav={routePath("projects", lang)} aria-labelledby="featured-title">
