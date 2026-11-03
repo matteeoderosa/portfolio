@@ -29,7 +29,7 @@ describe("ContactView", () => {
     expect(container.querySelector('a[href^="tel:"]')).toBeNull();
     expect(container.querySelector('a[href*="linkedin"]')).toBeNull();
     expect(container.querySelector("[data-cv]")).toBeNull();
-    expect(container.querySelector("img")).toBeNull();
+    expect(container.querySelector("img[data-portrait]")).toBeNull();
     expect(container.querySelector('a[href^="mailto:"]')).not.toBeNull();
   });
 

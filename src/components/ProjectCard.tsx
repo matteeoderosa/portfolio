@@ -9,22 +9,36 @@ type Props = {
   viewLabel: string;
   /** Heading level for the card title: 3 under a section h2, 2 directly under the page h1. */
   headingLevel?: 2 | 3;
+  /** Position in the list, used to stagger the entrance. */
+  index?: number;
 };
 
-export default function ProjectCard({ project, lang, viewLabel, headingLevel = 3 }: Props) {
+/** One row of the ledger of work. */
+export default function ProjectCard({ project, lang, viewLabel, headingLevel = 3, index = 0 }: Props) {
   const text = project.text[lang];
   if (!text) throw new Error(`Project "${project.slug}" has no "${lang}" text`);
   const Heading = headingLevel === 2 ? "h2" : "h3";
   return (
-    <article className="project-card" data-project-card>
-      <Heading className="card-title">
+    <article
+      className="ledger-row"
+      data-project-card
+      data-reveal
+      style={{ "--i": index } as React.CSSProperties}
+    >
+      <Heading className="ledger-name">
         <Link href={projectPath(project.slug, lang)}>{text.name}</Link>
       </Heading>
-      <p>{text.summary}</p>
-      <TagList tags={project.tech} />
-      <Link className="card-link" href={projectPath(project.slug, lang)} aria-label={`${viewLabel}: ${text.name}`}>
-        {viewLabel}
-      </Link>
+      <div className="ledger-body">
+        <p>{text.summary}</p>
+        <TagList tags={project.tech} />
+        <Link
+          className="ledger-link"
+          href={projectPath(project.slug, lang)}
+          aria-label={`${viewLabel}: ${text.name}`}
+        >
+          {viewLabel}
+        </Link>
+      </div>
     </article>
   );
 }

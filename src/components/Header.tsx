@@ -25,12 +25,9 @@ export default function Header({ lang, labels }: HeaderProps) {
         {labels.skip}
       </a>
       <header className="site-header">
-        <div className="wrap header-inner">
+        <div className="header-inner">
           <Link className="brand" href={home}>
-            <span className="logo mono" aria-hidden="true">
-              {"{m}"}
-            </span>
-            <span>Matteo De Rosa</span>
+            Matteo De Rosa
           </Link>
           <MainNav items={labels.nav} ariaLabel={labels.navAria ?? "Menu"} />
           <a className="btn btn-primary" href={`mailto:${site.email}`}>

@@ -2,45 +2,112 @@ import Link from "next/link";
 import { dictionaries } from "@/content/dictionaries";
 import { projects } from "@/content/projects";
 import { routePath, type Lang } from "@/lib/routes";
+import Stage from "@/components/Stage";
 import ProjectCard from "@/components/ProjectCard";
 import ContactCta from "@/components/ContactCta";
+
+const delay = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
 export default function HomeView({ lang }: { lang: Lang }) {
   const dict = dictionaries[lang];
   const featured = projects.filter((p) => p.featured).slice(0, 4);
   return (
     <>
-      <section className="hero">
-        <div className="wrap">
-          <p className="eyebrow mono">{dict.home.eyebrow}</p>
-          <h1>{dict.home.title}</h1>
-          <p className="lead">{dict.home.intro}</p>
-          <Link className="btn btn-primary" href={routePath("projects", lang)}>
-            {dict.home.ctaProjects}
-          </Link>
-        </div>
-      </section>
-      <section className="section" aria-labelledby="services-title">
-        <div className="wrap">
-          <h2 id="services-title">{dict.home.servicesTitle}</h2>
-          <ul className="services">
-            {dict.home.services.map((s) => (
-              <li key={s}>{s}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-      <section className="section" aria-labelledby="featured-title">
-        <div className="wrap">
-          <h2 id="featured-title">{dict.home.featuredTitle}</h2>
-          <div className="card-grid">
-            {featured.map((p) => (
-              <ProjectCard key={p.slug} project={p} lang={lang} viewLabel={dict.projects.viewProject} />
-            ))}
+      <div className="split split-hero">
+        <Stage />
+        <div className="col hero-col">
+          <h1 className="rise" style={delay(0)}>
+            {dict.home.title}
+          </h1>
+          <p className="lead rise" style={delay(1)}>
+            {dict.home.intro}
+          </p>
+          <div className="rise" style={delay(2)}>
+            <Link className="btn btn-primary" href={routePath("projects", lang)}>
+              {dict.home.ctaProjects}
+            </Link>
           </div>
+          <p className="wordmark rise" style={delay(3)} aria-hidden="true">
+            matteo de rosa
+          </p>
+        </div>
+      </div>
+
+      <section className="services" aria-labelledby="services-title">
+        <h2 id="services-title" data-reveal>
+          {dict.home.servicesTitle}
+        </h2>
+        <div className="svc-list">
+          {dict.home.services.map((s) => (
+            <article key={s.title} className="svc">
+              <h3 data-reveal>{s.title}</h3>
+              <div className="svc-row">
+                <div data-reveal style={delay(1)}>
+                  <p>{s.text}</p>
+                  <ul>
+                    {s.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
-      <ContactCta lang={lang} />
+
+      <div className="split split-story">
+        <Stage />
+        <div className="col story-col">
+          <section className="story-section" aria-labelledby="featured-title">
+            <h2 id="featured-title" data-reveal>
+              {dict.home.featuredTitle}
+            </h2>
+            <div className="ledger">
+              {featured.map((p, i) => (
+                <ProjectCard key={p.slug} project={p} lang={lang} viewLabel={dict.projects.viewProject} index={i} />
+              ))}
+            </div>
+            <p data-reveal>
+              <Link className="text-link" href={routePath("projects", lang)}>
+                {dict.home.allProjects}
+              </Link>
+            </p>
+          </section>
+
+          <section className="story-section" aria-labelledby="about-title">
+            <h2 id="about-title" data-reveal>
+              {dict.about.title}
+            </h2>
+            <p className="lead" data-reveal style={delay(1)}>
+              {dict.about.intro}
+            </p>
+            {dict.about.paragraphs.map((p, i) => (
+              <p key={p} data-reveal style={delay(i + 2)}>
+                {p}
+              </p>
+            ))}
+          </section>
+
+          <section className="story-section" aria-labelledby="outside-title">
+            <h2 id="outside-title" data-reveal>
+              {dict.about.interestsTitle}
+            </h2>
+            <ul className="interests" data-reveal>
+              {dict.about.interests.map((i) => (
+                <li key={i}>{i}</li>
+              ))}
+            </ul>
+            <p data-reveal>
+              <Link className="text-link" href={routePath("about", lang)}>
+                {dict.home.aboutLink}
+              </Link>
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <ContactCta lang={lang} variant="photo" />
     </>
   );
 }
