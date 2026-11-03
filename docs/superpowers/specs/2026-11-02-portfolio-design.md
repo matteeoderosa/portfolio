@@ -112,3 +112,7 @@ La direzione C "Ibrido" (verde, Instrument Sans/Serif, logo `{m}`, card con bord
 - **Immagini:** per ora nessuna fotografia. La colonna ferma è un campo a tono e le foto aperte di Grosseto provate in una prima versione sono state tolte (e con loro i crediti).
 - **Cosa viva:** nella chiusura della home e in Contatti, scegliere "cosa ti serve" scrive l'email già pronta (`mailto:`), senza server.
 - **Da fare quando ci sono:** screenshot dei progetti e foto di Matteo nella colonna ferma.
+
+## Aggiornamento: tolta la sezione Esercizi
+
+Il sito ha solo Home, Progetti, Chi sono e Contatti. Sono stati rimossi la pagina `/archivio/`, il filtro, l'elenco dei 26 esercizi e le copie dei file in `public/frontend/` e `public/pages/`. I vecchi indirizzi `/frontend/...` e `/pages/navigation.html` ora danno la pagina 404; gli esercizi restano nel repository ITSProdigi.

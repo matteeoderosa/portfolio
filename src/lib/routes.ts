@@ -1,6 +1,6 @@
 // Paths are base-path-free: `withBase` / `next/link` add the base path at render time.
 export type Lang = "it" | "en";
-export type RouteKey = "home" | "projects" | "about" | "contact" | "archive";
+export type RouteKey = "home" | "projects" | "about" | "contact";
 
 const ROUTES: Record<Lang, Partial<Record<RouteKey, string>>> = {
   it: {
@@ -8,7 +8,6 @@ const ROUTES: Record<Lang, Partial<Record<RouteKey, string>>> = {
     projects: "/progetti/",
     about: "/chi-sono/",
     contact: "/contatti/",
-    archive: "/archivio/",
   },
   en: {
     home: "/en/",
@@ -34,7 +33,7 @@ function withSlash(p: string): string {
   return p.endsWith("/") ? p : `${p}/`;
 }
 
-/** Equivalent path in the other language, or null when there is none (the archive in EN). */
+/** Equivalent path in the other language, or null when there is none. */
 export function alternatePath(pathname: string, to: Lang): string | null {
   const path = withSlash(pathname);
   const from: Lang = to === "en" ? "it" : "en";

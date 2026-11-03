@@ -8,7 +8,7 @@ type Props = {
   lang: Lang;
   /** Base-path-free current path; defaults to the router pathname. */
   currentPath?: string;
-  /** Describes the target language; the visible code ("IT"/"EN") is prepended to form the accessible name. */
+  /** Describes the target language; the visible code of the CURRENT language ("IT"/"EN") is prepended to form the accessible name. */
   label: string;
   /** Shown (tooltip + screen-reader text) when the page has no translation. */
   unavailable: string;
@@ -38,12 +38,13 @@ export default function LangSwitch({ lang, currentPath, label, unavailable }: Pr
   const path = currentPath ?? routerPath ?? (lang === "en" ? "/en/" : "/");
   const target: Lang = lang === "it" ? "en" : "it";
   const href = alternatePath(path, target);
-  const text = target.toUpperCase();
+  const text = lang.toUpperCase();
 
+  // Shows the language the page is in now; clicking goes to the other one.
   const content = (
     <>
-      {FLAGS[target]}
-      <span lang={target}>{text}</span>
+      {FLAGS[lang]}
+      <span lang={lang}>{text}</span>
     </>
   );
 

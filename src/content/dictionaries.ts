@@ -6,7 +6,6 @@ export type Dictionary = {
     projects: string;
     about: string;
     contact: string;
-    archive: string;
     write: string;
   };
   home: {
@@ -24,6 +23,9 @@ export type Dictionary = {
     title: string;
     intro: string;
     viewProject: string;
+    visit: string;
+    mainTitle: string;
+    otherTitle: string;
     back: string;
     purposeTitle: string;
     whatIDidTitle: string;
@@ -39,20 +41,9 @@ export type Dictionary = {
     invite: string;
     phoneLabel: string;
     linkedinLabel: string;
+    instagramLabel: string;
     cvLabel: string;
     photoAlt: string;
-  };
-  archive: {
-    title: string;
-    lead: string;
-    filterLabel: string;
-    placeholder: string;
-    groupCount: string;
-    found: string;
-    foundOne: string;
-    none: string;
-    code: string;
-    codeAria: string;
   };
   cta: {
     text: string;
@@ -81,7 +72,6 @@ const it: Dictionary = {
     projects: "Progetti",
     about: "Chi sono",
     contact: "Contatti",
-    archive: "Esercizi",
     write: "Scrivimi",
   },
   home: {
@@ -131,6 +121,9 @@ const it: Dictionary = {
     title: "Progetti",
     intro: "Una selezione dei lavori a cui ho dedicato più cura.",
     viewProject: "Scopri il progetto",
+    visit: "Visita il sito",
+    mainTitle: "Progetti principali",
+    otherTitle: "Altri progetti",
     back: "Tutti i progetti",
     purposeTitle: "A cosa serve",
     whatIDidTitle: "Cosa ho fatto",
@@ -155,20 +148,9 @@ const it: Dictionary = {
     invite: "Sono aperto a chiacchierare di software e a nuove collaborazioni.",
     phoneLabel: "Telefono",
     linkedinLabel: "LinkedIn",
+    instagramLabel: "Instagram",
     cvLabel: "Scarica il CV",
     photoAlt: "Ritratto di Matteo De Rosa",
-  },
-  archive: {
-    title: "Esercizi",
-    lead: "Esercizi di frontend puro: HTML, CSS e JavaScript senza librerie. Ognuno ha il suo codice sorgente su GitHub.",
-    filterLabel: "Filtra gli esercizi",
-    placeholder: "Per esempio: tabella, rubrica, timer",
-    groupCount: "{n} esercizi",
-    found: "{n} esercizi trovati.",
-    foundOne: "1 esercizio trovato.",
-    none: "Nessun esercizio trovato.",
-    code: "Codice",
-    codeAria: "Codice sorgente su GitHub: {title}",
   },
   cta: {
     text: "Hai un progetto in mente? Scrivimi, ti rispondo appena posso.",
@@ -201,7 +183,6 @@ const en: Dictionary = {
     projects: "Projects",
     about: "About",
     contact: "Contact",
-    archive: "Archive",
     write: "Get in touch",
   },
   home: {
@@ -251,6 +232,9 @@ const en: Dictionary = {
     title: "Projects",
     intro: "A selection of the work I've put the most care into.",
     viewProject: "View the project",
+    visit: "Visit the site",
+    mainTitle: "Main projects",
+    otherTitle: "Other projects",
     back: "All projects",
     purposeTitle: "What it is for",
     whatIDidTitle: "What I did",
@@ -275,20 +259,9 @@ const en: Dictionary = {
     invite: "I'm open to chatting about software and to new collaborations.",
     phoneLabel: "Phone",
     linkedinLabel: "LinkedIn",
+    instagramLabel: "Instagram",
     cvLabel: "Download the CV",
     photoAlt: "Portrait of Matteo De Rosa",
-  },
-  archive: {
-    title: "Exercises",
-    lead: "Plain frontend exercises: HTML, CSS and JavaScript with no libraries. Each one has its source code on GitHub.",
-    filterLabel: "Filter the exercises",
-    placeholder: "For example: table, address book, timer",
-    groupCount: "{n} exercises",
-    found: "{n} exercises found.",
-    foundOne: "1 exercise found.",
-    none: "No exercises found.",
-    code: "Code",
-    codeAria: "Source code on GitHub: {title}",
   },
   cta: {
     text: "Have a project in mind? Write to me, I'll reply as soon as I can.",

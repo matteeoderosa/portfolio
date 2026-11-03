@@ -65,7 +65,7 @@ gh variable set NEXT_PUBLIC_SITE_URL --body "https://matteoderosa.it"
 
 ## 6. Redirect del vecchio dominio `matteeoderosa.it`
 
-Fallo SOLO quando il passo 5 funziona (il nuovo dominio deve già servire il sito e gli esercizi).
+Fallo SOLO quando il passo 5 funziona (il nuovo dominio deve già servire il sito).
 
 **Non togliere il CNAME dal branch gh-pages di ITSProdigi.** Il vecchio dominio resta collegato a quel branch: è così che `matteeoderosa.it` continua a funzionare e che GitHub può servire la pagina di redirect. Se togli il `CNAME`, GitHub smette di servire il dominio e il redirect non parte.
 
@@ -83,7 +83,7 @@ git push
 
 (Se `git rm` si lamenta del pattern, cancella a mano tutto tranne `CNAME` e rilancia da `cp`.)
 
-- Dopo: i vecchi link `matteeoderosa.it/frontend/...` e `matteeoderosa.it/pages/navigation.html` portano allo stesso percorso su `matteoderosa.it`, dove gli esercizi restano agli stessi indirizzi.
+- Dopo: i vecchi link di `matteeoderosa.it` portano allo stesso percorso su `matteoderosa.it`. Gli esercizi non ci sono più nel nuovo sito, quindi i vecchi link `/frontend/...` e `/pages/navigation.html` mostreranno la pagina 404.
 - Funziona se: `matteeoderosa.it` e un vecchio link profondo portano a `matteoderosa.it`.
 - I quattro sottodomini sono ospitati altrove e qui non si toccano.
 - Annullare: `git revert HEAD` (oppure `git checkout <commit-precedente> -- .`) sul branch `gh-pages`, poi push.
@@ -116,14 +116,13 @@ Solo quando tutto il resto funziona.
 
 - Ricrea `todo.`, `tabella.`, `poke.`, `stats.` sul nuovo dominio `matteoderosa.it` e, dai vecchi indirizzi, metti redirect permanenti (301) verso i nuovi. Finora i loro DNS non vanno toccati.
 - Poi aggiorna i `demoUrl` in `src/content/projects.ts` ai nuovi indirizzi e correggi i link `http://` in `https://`.
-- `utenti-post-commenti` non ha `demoUrl` finché la sua demo non è di nuovo online: quando torna attiva, aggiungi `demoUrl` con il nuovo indirizzo.
+- I progetti si cambiano in `src/content/projects.ts`: i due siti del Pisa Running Club sono `main: true` (progetti principali) e hanno `siteUrl`.
 - Annullare: finché i vecchi sottodomini restano attivi, i vecchi link funzionano.
 
 ## Cosa controllare alla fine
 
 - [ ] `https://matteoderosa.it` si apre col lucchetto (HTTPS).
 - [ ] `https://matteoderosa.it/en/` mostra la versione inglese.
-- [ ] Un vecchio esercizio funziona, ad esempio `https://matteoderosa.it/frontend/html/NavigazioneBase/tutto.html`.
 - [ ] Una pagina inesistente mostra la pagina 404 del sito.
 - [ ] `https://matteoderosa.it/sitemap.xml` si apre.
 - [ ] Invia la sitemap in Google Search Console.

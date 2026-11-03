@@ -9,15 +9,65 @@ export type ProjectText = {
 
 export type Project = {
   slug: string;
+  /** Live website: shown first, as the main action ("Visita il sito"). */
+  siteUrl?: string;
   demoUrl?: string;
-  repoUrl: string;
+  repoUrl?: string;
   tech: string[];
   featured: boolean;
+  /** Main project: listed first, under "Progetti principali". */
+  main?: boolean;
   text: Record<Lang, ProjectText>;
   screenshot?: string;
 };
 
 export const projects: Project[] = [
+  {
+    slug: "pisa-running-club",
+    siteUrl: "https://pisarunningclub.it",
+    tech: [],
+    featured: true,
+    main: true,
+    text: {
+      it: {
+        name: "Pisa Running Club",
+        summary: "Il sito del gruppo di corsa di Pisa: uscite, eventi e come partecipare.",
+        purpose:
+          "Spiega come funziona il club: ci si trova in piazza Cairoli, si corre piano e nessuno resta indietro. Elenca le prossime uscite, presenta gli altri sport del gruppo e i professionisti convenzionati, e permette di mettersi in contatto.",
+        whatIDid: "Ho realizzato il sito del club.",
+      },
+      en: {
+        name: "Pisa Running Club",
+        summary: "The website of Pisa's running group: runs, events and how to join.",
+        purpose:
+          "It explains how the club works: we meet in Piazza Cairoli, we run slowly and nobody is left behind. It lists the upcoming runs, presents the group's other sports and partner professionals, and lets you get in touch.",
+        whatIDid: "I built the club's website.",
+      },
+    },
+  },
+  {
+    slug: "gare-pisa-running-club",
+    siteUrl: "https://gare.pisarunningclub.it",
+    tech: [],
+    featured: true,
+    main: true,
+    text: {
+      it: {
+        name: "Gare del Pisa Running Club",
+        summary: "Il calendario condiviso delle gare podistiche.",
+        purpose:
+          "Un calendario condiviso delle gare podistiche, pensato per chi si prepara a una gara con il club. È collegato al sito principale del Pisa Running Club.",
+        whatIDid: "Ho realizzato il sito del calendario.",
+      },
+      en: {
+        name: "Pisa Running Club races",
+        summary: "The shared calendar of running races.",
+        purpose:
+          "A shared calendar of running races, made for anyone preparing for a race with the club. It is linked from the main Pisa Running Club website.",
+        whatIDid: "I built the calendar website.",
+      },
+    },
+  },
   {
     slug: "to-do-list",
     demoUrl: "https://todo.matteeoderosa.it",
@@ -40,31 +90,6 @@ export const projects: Project[] = [
           "You sign in to your own account, create lists of things to do and notes you want to remember, and tick off what is already done.",
         whatIDid:
           "I built both the part that handles accounts and data, and the interface you use in the browser.",
-      },
-    },
-  },
-  {
-    slug: "utenti-post-commenti",
-    // Demo offline: add `demoUrl: "https://tabella.matteeoderosa.it"` back when it is live.
-    repoUrl: "https://github.com/derteo/users-posts-comments-node",
-    tech: ["Node.js", "Express", "SQLite"],
-    featured: true,
-    text: {
-      it: {
-        name: "Utenti, post e commenti",
-        summary: "Per gestire persone, articoli e commenti in un'unica pagina.",
-        purpose:
-          "Vedi utenti, post e commenti in tabelle chiare e puoi aggiungerli, cambiarli o toglierli direttamente da lì, senza cambiare pagina.",
-        whatIDid:
-          "Ho realizzato la pagina con le tabelle modificabili e il programma che conserva e aggiorna i dati.",
-      },
-      en: {
-        name: "Users, posts and comments",
-        summary: "To manage people, articles and comments on a single page.",
-        purpose:
-          "You see users, posts and comments in clear tables and can add, change or remove them right there, without leaving the page.",
-        whatIDid:
-          "I made the page with editable tables and the program that stores and updates the data.",
       },
     },
   },

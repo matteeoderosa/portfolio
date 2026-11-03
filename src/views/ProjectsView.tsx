@@ -16,18 +16,30 @@ export default function ProjectsView({ lang }: { lang: Lang }) {
           <p className="lead rise" style={{ "--i": 1 } as React.CSSProperties}>
             {dict.projects.intro}
           </p>
-          <div className="ledger">
-            {projects.map((p, i) => (
-              <ProjectCard
-                key={p.slug}
-                project={p}
-                lang={lang}
-                viewLabel={dict.projects.viewProject}
-                headingLevel={2}
-                index={i}
-              />
+          {[
+            { key: "main", title: dict.projects.mainTitle, items: projects.filter((p) => p.main) },
+            { key: "other", title: dict.projects.otherTitle, items: projects.filter((p) => !p.main) },
+          ]
+            .filter((g) => g.items.length > 0)
+            .map((g) => (
+              <section key={g.key} aria-labelledby={`projects-${g.key}`}>
+                <h2 id={`projects-${g.key}`} data-reveal>
+                  {g.title}
+                </h2>
+                <div className="ledger">
+                  {g.items.map((p, i) => (
+                    <ProjectCard
+                      key={p.slug}
+                      project={p}
+                      lang={lang}
+                      viewLabel={dict.projects.viewProject}
+                      visitLabel={dict.projects.visit}
+                      index={i}
+                    />
+                  ))}
+                </div>
+              </section>
             ))}
-          </div>
         </div>
       </div>
       <ContactCta lang={lang} />

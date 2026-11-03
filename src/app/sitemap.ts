@@ -5,7 +5,7 @@ import { absoluteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const KEYS: RouteKey[] = ["home", "projects", "about", "contact", "archive"];
+const KEYS: RouteKey[] = ["home", "projects", "about", "contact"];
 
 function entry(itPath: string, enPath: string | null): MetadataRoute.Sitemap {
   const it = absoluteUrl(itPath);
