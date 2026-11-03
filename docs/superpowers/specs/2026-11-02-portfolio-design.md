@@ -70,7 +70,7 @@ Materiale di partenza, in locale, nella cartella `matteo-sito/` accanto al repo:
 
 1. Costruire e pubblicare su `matteeoderosa.github.io/portfolio` (provvisorio).
 2. Quando Matteo approva: `CNAME` per `matteoderosa.it` e record DNS (A di GitHub Pages e CNAME per `www`) nel pannello Register.it. Rimuovere `CNAME` dal branch `gh-pages` di ITSProdigi.
-3. Casella email `ciao@matteoderosa.it` dal pannello Register.it (può essere fatta subito, indipendente).
+3. Casella email `info@matteoderosa.it` dal pannello Register.it (può essere fatta subito, indipendente).
 4. `matteeoderosa.it` (due "e"): la home diventa un redirect verso il nuovo dominio; i sottodomini restano.
 5. `derteo.github.io`: solo un `index.html` con meta refresh, canonical e JS verso il nuovo sito.
 6. Archiviare ITSProdigi su GitHub, senza cancellarlo.
@@ -79,7 +79,7 @@ Materiale di partenza, in locale, nella cartella `matteo-sito/` accanto al repo:
 ## Cosa è incluso nel lavoro e cosa fa Matteo
 
 - **Nel lavoro di costruzione:** il sito, il file `CNAME`, la pagina di redirect per `matteeoderosa.it` e lo stub `index.html` per `derteo.github.io`, e l'elenco esatto dei record DNS.
-- **Lo fa Matteo:** il pannello DNS e le caselle email su Register.it, la rimozione del `CNAME` da ITSProdigi e il suo archivio su GitHub, il push dello stub su `derteo.github.io`. La casella `ciao@matteoderosa.it` va creata prima di andare online.
+- **Lo fa Matteo:** il pannello DNS e le caselle email su Register.it, la rimozione del `CNAME` da ITSProdigi e il suo archivio su GitHub, il push dello stub su `derteo.github.io`. La casella `info@matteoderosa.it` va creata prima di andare online.
 
 ## A discrezione del costruttore
 

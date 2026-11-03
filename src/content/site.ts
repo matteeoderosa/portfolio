@@ -8,7 +8,7 @@ export type SiteInfo = {
 };
 
 export const site: SiteInfo = {
-  email: "ciao@matteoderosa.it",
+  email: "info@matteoderosa.it",
   github: "https://github.com/matteeoderosa",
   linkedin: undefined,
   phone: undefined,

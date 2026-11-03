@@ -105,7 +105,7 @@ docs/redirect-stubs/     matteeoderosa.it.html, derteo.github.io.html
 **Interfaces:**
 - Produces: `type Project = { slug: string; demoUrl: string; repoUrl: string; tech: string[]; featured: boolean; text: Record<Lang, { name: string; summary: string; purpose: string; whatIDid: string }>; screenshot?: string }`; `projects: Project[]` (To-Do List, Utenti/post/commenti, PokèReact, GitHub Stats); `site: { email: string; github: string; linkedin?: string; phone?: string; cvUrl?: string; photo?: string }`.
 
-- [ ] **Step 1: Failing test:** every project has non-empty `text.it` and `text.en` fields, `https://` `demoUrl`/`repoUrl`, unique `slug`, at least one `tech`; `site.email === "ciao@matteoderosa.it"`.
+- [ ] **Step 1: Failing test:** every project has non-empty `text.it` and `text.en` fields, `https://` `demoUrl`/`repoUrl`, unique `slug`, at least one `tech`; `site.email === "info@matteoderosa.it"`.
 - [ ] **Step 2:** Run → FAIL. Fill `projects.ts` from `../ITSProdigi/index.html` and `../derteo.github.io/pages/projects.html`, texts written from the user's side ("Per tenere in ordine liste e note"). **Verify `tech` against the real repos** with `gh repo view derteo/<repo>` / README (the two old sites disagree on To-Do's interface and Utenti/post's database). Demo URLs use the current `https://<sub>.matteeoderosa.it` subdomains.
 - [ ] **Step 3:** Run → PASS. Commit `feat: project and site content`.
 
@@ -159,7 +159,7 @@ docs/redirect-stubs/     matteeoderosa.it.html, derteo.github.io.html
 
 **Files:** Create `docs/go-live.md`, `docs/redirect-stubs/matteoderosa-old.html`, `docs/redirect-stubs/derteo-github-io.html`.
 
-- [ ] **Step 1:** `docs/go-live.md` lists, in order: create `ciao@matteoderosa.it` at Register.it; DNS records (four `A` records for `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`; `CNAME www` → `matteeoderosa.github.io`); add `public/CNAME` containing `matteoderosa.it`; set the final env (empty base path, `NEXT_PUBLIC_SITE_URL=https://matteoderosa.it`, no `NOINDEX`) in the workflow; enable "Enforce HTTPS"; remove `CNAME` from the `gh-pages` branch of ITSProdigi; publish the redirect stubs; archive ITSProdigi; last, move the four subdomains and update `demoUrl`s.
+- [ ] **Step 1:** `docs/go-live.md` lists, in order: create `info@matteoderosa.it` at Register.it; DNS records (four `A` records for `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`; `CNAME www` → `matteeoderosa.github.io`); add `public/CNAME` containing `matteoderosa.it`; set the final env (empty base path, `NEXT_PUBLIC_SITE_URL=https://matteoderosa.it`, no `NOINDEX`) in the workflow; enable "Enforce HTTPS"; remove `CNAME` from the `gh-pages` branch of ITSProdigi; publish the redirect stubs; archive ITSProdigi; last, move the four subdomains and update `demoUrl`s.
 - [ ] **Step 2:** The two stubs are complete HTML files (meta refresh, `link rel=canonical`, JS `location.replace`, visible fallback link) pointing to `https://matteoderosa.it/`.
 - [ ] **Step 3:** Commit `docs: go-live checklist and redirect stubs`.
 

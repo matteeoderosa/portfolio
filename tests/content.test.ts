@@ -24,7 +24,7 @@ describe("projects content", () => {
 
 describe("site content", () => {
   it("has the contact email and github", () => {
-    expect(site.email).toBe("ciao@matteoderosa.it");
+    expect(site.email).toBe("info@matteoderosa.it");
     expect(site.github).toBe("https://github.com/matteeoderosa");
   });
   it("leaves optional fields undefined", () => {

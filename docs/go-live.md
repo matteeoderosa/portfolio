@@ -6,10 +6,10 @@ Nomi da non confondere:
 - `matteoderosa.it` (una "e") = il dominio NUOVO, quello del portfolio.
 - `matteeoderosa.it` (due "e") = il dominio VECCHIO, che oggi mostra ITSProdigi e ha i sottodomini `todo.`, `tabella.`, `poke.`, `stats.`.
 
-## 1. Casella email `ciao@matteoderosa.it` (si può fare subito)
+## 1. Casella email `info@matteoderosa.it` (si può fare subito)
 
 - Dove: pannello Register.it, dominio `matteoderosa.it`, sezione Email, "Crea casella".
-- Crea `ciao@matteoderosa.it` (hai 3 caselle a disposizione).
+- Crea `info@matteoderosa.it` (hai 3 caselle a disposizione).
 - Funziona se: puoi accedere alla webmail e ricevere un messaggio di prova.
 - Annullare: elimina la casella dallo stesso pannello.
 
@@ -23,7 +23,7 @@ Nomi da non confondere:
 ## 3. DNS di `matteoderosa.it` su Register.it
 
 - Dove: Register.it, dominio `matteoderosa.it`, Gestione DNS (o "Record DNS").
-- **ATTENZIONE: non cancellare i record MX e TXT esistenti.** Servono alla posta (`ciao@...`). Tocca solo i record A e il CNAME `www`: aggiungi o sostituisci solo quelli.
+- **ATTENZIONE: non cancellare i record MX e TXT esistenti.** Servono alla posta (`info@...`). Tocca solo i record A e il CNAME `www`: aggiungi o sostituisci solo quelli.
 - **Attenzione:** passare Register.it ai record DNS personalizzati può azzerare quelli esistenti: controlla che MX e TXT siano ancora al loro posto. Se su `@` ci sono record `AAAA` o di parcheggio (parking), eliminali: solo quelli, mai MX o TXT.
 - Inserisci quattro record `A`, host `@`:
   - `185.199.108.153`
@@ -138,4 +138,4 @@ Solo quando tutto il resto funziona.
 - [ ] Una pagina inesistente mostra la pagina 404 del sito.
 - [ ] `https://matteoderosa.it/sitemap.xml` si apre.
 - [ ] Invia la sitemap in Google Search Console.
-- [ ] `ciao@matteoderosa.it` riceve e invia.
+- [ ] `info@matteoderosa.it` riceve e invia.
