@@ -1,0 +1,51 @@
+td{
+    text-align: center;
+    padding: 3px;
+}
+
+.pari{
+    background-color: aqua;
+    border: 2px solid #000;
+}
+
+.dispari{
+    background-color: yellow;
+    border: 2px solid #000;
+}
+
+.dispariprimo{
+    color:white;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.pariprimo{
+    color:white;
+    background-color: red;
+    border-radius: 50%;
+}
+
+#num50{ 
+    background-color: blueviolet;
+}
+
+h1 {
+    text-align: center;
+    font-size: 45px;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+}
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    td {
+        font-size: 13px;
+        padding: 2px;
+    }
+}

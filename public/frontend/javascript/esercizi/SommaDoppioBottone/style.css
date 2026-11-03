@@ -1,0 +1,51 @@
+input[type=number]:focus{
+    outline: 1px solid blue;
+}
+
+input[type=number]{
+    width: 150px;
+    height: 30px;
+    padding: 10px;
+}
+
+button{
+    margin-top: 10px;
+    padding: 15px;
+
+    background-color: black;
+    color: white;
+}
+
+#aggiungi:hover{
+    background-color: green;
+}
+
+#svuota:hover{
+    background-color: red;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+    text-align: center;
+}
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    input[type=number] {
+        width: 100%;
+        max-width: 150px;
+    }
+}

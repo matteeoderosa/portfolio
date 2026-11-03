@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Primo esercizio sulle tabelle · Matteo De Rosa</title>
+    <link rel="stylesheet" href="../../../pages/css/fonts.css">
+    <link rel="stylesheet" href="../../../pages/css/nav-icons.css" />
+    <link rel="icon" href="../../../favicon.ico" sizes="48x48">
+    <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../../apple-touch-icon.png">
+</head>
+
+<body>
+    <nav class="nav-icons">
+        <a href="../../../index.html" aria-label="torna alla home page"><img src="../../../pages/img/casetta.png" alt="logo home page" /></a>
+        <a href="../../../pages/navigation.html" aria-label="torna alla pagina di navigazione"><img src="../../../pages/img/arrow.png" alt="logo freccia per tornare alla pagina di navigazione" /></a>
+    </nav>
+
+    <!--<body style="background-color: red;">
+(inline)  -->
+
+    <!--    <style>
+            body { background-color: red;}
+        </style>
+(interno)    -->
+
+    <h1>Le tabelle in HTML</h1>
+    <h2>Una prima tabella di esempio</h2>
+
+    <div>
+        <table border="1">
+            <tr>
+                <th id="venditeauto">Vendite auto</th>
+                <th scope="col" class="mese">Gennaio</th>
+                <th scope="col" class="mese">Febbraio</th>
+                <th scope="col" class="mese">Marzo</th>
+            </tr>
+            <tr>
+                <th scope="row" class="auto">Fiat Panda</th>
+                <td>121</td>
+                <td>119</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <th scope="row" class="auto">Opel Zafira</th>
+                <td>89</td>
+                <td>80</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <th scope="row" class="auto">Audi A4</th>
+                <td>10</td>
+                <td>12</td>
+                <td>14</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

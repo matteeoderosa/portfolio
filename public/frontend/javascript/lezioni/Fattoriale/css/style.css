@@ -1,0 +1,18 @@
+body{
+    background-color: #efefefef;
+}
+
+input[type=button]{
+    color: white;
+    background-color: cornflowerblue;
+    border: solid black;
+}
+
+input:focus{
+    outline: none;
+    border: 2px solid blueviolet;
+}
+
+input{
+    margin-bottom: 3px;
+}

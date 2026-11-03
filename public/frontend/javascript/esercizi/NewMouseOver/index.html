@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse over tra due immagini · Matteo De Rosa</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+
+    <link rel="stylesheet" href="../../../../pages/css/fonts.css">
+    <link rel="stylesheet" href="../../../../pages/css/nav-icons.css" />
+    <link rel="icon" href="../../../../favicon.ico" sizes="48x48">
+    <link rel="icon" href="../../../../favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="../../../../apple-touch-icon.png">
+</head>
+
+<body>
+    <nav class="nav-icons">
+        <a href="../../../../index.html" aria-label="torna alla home page"><img src="../../../../pages/img/casetta.png" alt="logo home page" /></a>
+        <a href="../../../../pages/navigation.html" aria-label="torna alla pagina di navigazione"><img src="../../../../pages/img/arrow.png" alt="logo freccia per tornare alla pagina di navigazione" /></a>
+    </nav>
+
+    <div class="container">
+        <div class="subcontainer">
+            <h1>Attributo Mouse Over</h1>
+        </div>
+        <div class="subcontainer">
+            <p>Questo esercizio cambia il l'immagine al passaggio del mouse sopra la stessa</p>
+        </div>
+        <div class="subcontainer">
+            <img src="../../../html/sinner.jpg" width="350" height="200" id="image" onmouseover="changeImage(0)" onmouseout="changeImage(1)">
+        </div>
+    </div>
+</body>
+
+</html>
