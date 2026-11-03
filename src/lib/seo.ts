@@ -78,8 +78,11 @@ export function pageMetadata(key: PageKey, lang: Lang, env?: SiteEnv): Metadata 
       images: [absoluteUrl("/og-image.png", env)],
     },
     icons: {
+      // Google vuole un'icona quadrata di almeno 48px, multipla di 48: per questo i PNG da 48 e 96
       icon: [
         { url: withBase("/favicon.ico", env), sizes: "any" },
+        { url: withBase("/favicon-48x48.png", env), sizes: "48x48", type: "image/png" },
+        { url: withBase("/favicon-96x96.png", env), sizes: "96x96", type: "image/png" },
         { url: withBase("/favicon.svg", env), type: "image/svg+xml" },
       ],
       apple: [{ url: withBase("/apple-touch-icon.png", env) }],
@@ -87,6 +90,17 @@ export function pageMetadata(key: PageKey, lang: Lang, env?: SiteEnv): Metadata 
   };
   if (env === undefined ? isNoindex() : isNoindex(env)) meta.robots = { index: false, follow: false };
   return meta;
+}
+
+/** Il nome del sito per i risultati di ricerca: Google lo legge dalla home e lo mostra sopra l'indirizzo. */
+export function websiteJsonLd(env?: SiteEnv): object {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: OWNER,
+    alternateName: new URL(absoluteUrl("/", env)).hostname,
+    url: absoluteUrl(routePath("home", "it"), env),
+  };
 }
 
 export function personJsonLd(lang: Lang, env?: SiteEnv): object {
