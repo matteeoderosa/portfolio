@@ -523,7 +523,9 @@ main:focus { outline: none; }
 }
 
 
-.shot { display: block; margin: 0 0 32px; }
+.shot { display: none; margin: 0 0 32px; }
+.ledger-shot { display: none; }
+.photo-mosaic.photo-mosaic-inline { display: none; }
 .portrait { display: block; max-width: 220px; margin: 0 0 32px; }
 .project-detail p { max-width: 54ch; }
 .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 24px; }
@@ -685,7 +687,28 @@ main:focus { outline: none; }
     .page-split .stage-shots { height: min(30svh, 240px); }
     .stage-photos { height: min(46svh, 360px); }
     .page-split .stage-photos, .page-split .stage-shots:has(.stage-me) { height: min(46svh, 360px); }
-    .split-hero .stage-photos { height: min(60svh, 460px); }
+    .split-hero .stage-photos { height: min(38svh, 290px); }
+    .split-hero .photo-grid[data-n="shots8"] {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        background: transparent;
+    }
+    .split-hero .photo-grid[data-n="shots8"]::-webkit-scrollbar { display: none; }
+    .split-hero .photo-grid[data-n="shots8"] img {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: none;
+        height: 100%;
+        scroll-snap-align: start;
+        animation: none;
+    }
+    /* le due strisce larghe (To-Do List e footer) a quell'altezza si vedrebbero tagliate */
+    .split-hero .photo-grid[data-n="shots8"] img:nth-child(1),
+    .split-hero .photo-grid[data-n="shots8"] img:nth-child(8) { display: none; }
     .hero-col h1 { font-size: clamp(2.5rem, 11vw, 3.5rem); }
     .hero-col h1:lang(en) { font-size: clamp(2.1rem, 8.6vw, 3.25rem); }
     .hero-col .lead, .page-col .lead { max-width: none; }
@@ -709,6 +732,31 @@ main:focus { outline: none; }
 
 @media (max-width: 999px) {
     .cta-band, .cta-close-text { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 999px) {
+    /* il mosaico di foto sta dentro il testo, ognuno accanto alla sua parte */
+    .page-split .stage-shots:has(.stage-me) { display: none; }
+    .photo-mosaic.photo-mosaic-inline {
+        position: static;
+        display: block;
+        container-type: normal;
+        width: min(100%, calc(62svh * var(--a)));
+        margin: 8px auto 32px;
+    }
+    .photo-mosaic-inline .mosaic-root { width: 100%; }
+
+    /* progetti: l'anteprima sopra ogni riga al posto dello stage */
+    .page-split:has(.ledger) > .stage, .page-split:has(.project-detail) > .stage { display: none; }
+    .ledger-shot {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        margin-bottom: 8px;
+        object-fit: cover;
+        object-position: top;
+    }
+    .shot { display: block; width: 100%; }
 }
 
 @media (max-width: 639px) {

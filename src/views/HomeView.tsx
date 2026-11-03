@@ -4,6 +4,7 @@ import { projects } from "@/content/projects";
 import { projectPath, routePath, type Lang } from "@/lib/routes";
 import ProjectStage from "@/components/ProjectStage";
 import PhotoMosaic from "@/components/PhotoMosaic";
+import InlineMosaic from "@/components/InlineMosaic";
 import PhotoStage from "@/components/PhotoStage";
 import { aboutMosaics, heroLayout, heroPhotos } from "@/content/photos";
 import { stageShots } from "@/lib/shots";
@@ -93,11 +94,13 @@ export default function HomeView({ lang }: { lang: Lang }) {
               <p className="lead" data-reveal style={delay(1)}>
                 {dict.about.intro}
               </p>
+              <InlineMosaic lang={lang} id="volti" />
               <p data-reveal style={delay(2)}>
                 {dict.about.paragraphs[0]}
               </p>
             </div>
             <div data-stage-me="giro">
+              <InlineMosaic lang={lang} id="giro" />
               {dict.about.paragraphs.slice(1).map((p, i) => (
                 <p key={p} data-reveal style={delay(i + 3)}>
                   {p}
@@ -115,6 +118,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
                 <li key={i}>{i}</li>
               ))}
             </ul>
+            <InlineMosaic lang={lang} id="ciclismo" />
             <p data-reveal>
               <Link className="text-link" href={routePath("about", lang)}>
                 {dict.home.aboutLink}

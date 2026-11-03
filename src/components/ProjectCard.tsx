@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Project } from "@/content/projects";
 import { projectPath, type Lang } from "@/lib/routes";
 import TagList from "./TagList";
+import { assetHref } from "@/lib/site";
 
 type Props = {
   project: Project;
@@ -28,6 +29,10 @@ export default function ProjectCard({ project, lang, viewLabel, visitLabel, head
       data-reveal
       style={{ "--i": index } as React.CSSProperties}
     >
+      {project.screenshot ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img className="ledger-shot" src={assetHref(project.screenshot)} alt="" loading="lazy" />
+      ) : null}
       <Heading className="ledger-name">
         <Link href={projectPath(project.slug, lang)}>{text.name}</Link>
       </Heading>

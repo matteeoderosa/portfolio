@@ -52,11 +52,14 @@ function Node({
   );
 }
 
-/** Mosaico di foto intere, ognuna nel riquadro della sua forma, centrato nello stage. */
-export default function PhotoMosaic({ lang, tree }: { lang: Lang; tree: MosaicNode }) {
+/**
+ * Mosaico di foto intere, ognuna nel riquadro della sua forma, centrato nello stage.
+ * Con `inline` sta nel flusso del testo (si vede solo su schermi stretti, dove lo stage non c'è).
+ */
+export default function PhotoMosaic({ lang, tree, inline }: { lang: Lang; tree: MosaicNode; inline?: boolean }) {
   const a = ratioOf(tree);
   return (
-    <div className="photo-mosaic" style={{ "--a": a } as React.CSSProperties}>
+    <div className={inline ? "photo-mosaic photo-mosaic-inline" : "photo-mosaic"} style={{ "--a": a } as React.CSSProperties}>
       <Node n={tree} lang={lang} leaves={leavesOf(tree)} root />
     </div>
   );
