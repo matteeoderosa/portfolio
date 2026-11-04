@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Scegli lo stile · Matteo De Rosa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root {
+    --bg: #f7f7f5; --surface: #ebebe8; --ink: #111111; --muted: #5c5c58;
+    --p: #ff5fa2; --s: #111111;
+    --head: "Bricolage Grotesque", system-ui, sans-serif; --hw: 800;
+    --body: "Jost", system-ui, sans-serif;
+    --ui: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --m: clamp(16px, 2.2vw, 32px);
+}
+:root[data-theme="dark"] { --bg: #0e0f12; --surface: #1b1d22; --ink: #f4f4f2; --muted: #a6a9b1; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 1.125rem; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { margin: 0; font-family: var(--head); font-weight: var(--hw); letter-spacing: -0.03em; line-height: .98; text-wrap: balance; }
+p { margin: 0 0 1em; max-width: 56ch; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 400px; min-height: 100svh; }
+
+/* ---------- anteprima ---------- */
+.preview { min-width: 0; }
+.site-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--m); }
+.wordmark { font-family: var(--head); font-weight: var(--hw); font-size: 1.35rem; letter-spacing: -0.03em; }
+.wordmark, .site-nav span { white-space: nowrap; }
+.site-nav { display: flex; align-items: center; gap: 24px; font-size: 1rem; }
+.site-nav span { display: none; }
+@media (min-width: 700px) { .site-nav span { display: inline; } }
+.btn { display: inline-block; background: var(--p); color: var(--s); border: 0; padding: 14px 26px; font-weight: 600; font-size: 1rem; text-decoration: none; border-radius: 0; transition: transform .15s ease; }
+.btn:hover { transform: translateY(-2px); }
+
+.hero { padding: clamp(40px, 7vw, 110px) var(--m) clamp(56px, 8vw, 120px); }
+.hero h1 { font-size: clamp(2.8rem, 1rem + 7vw, 7.5rem); max-width: 11ch; margin-bottom: 28px; }
+.hero p { font-size: 1.3rem; margin-bottom: 32px; }
+
+.services { background: var(--p); color: var(--s); padding: clamp(56px, 7vw, 112px) var(--m); }
+.services > h2 { font-size: clamp(2.4rem, 1rem + 4.4vw, 5.5rem); margin-bottom: clamp(36px, 5vw, 72px); max-width: 12ch; }
+.svc-list { display: grid; gap: clamp(44px, 5vw, 72px); max-width: 780px; }
+.svc h3 { font-size: clamp(1.9rem, 1rem + 2.6vw, 3.6rem); max-width: 15ch; }
+.svc p { margin: 18px 0 18px; font-size: 1.125rem; font-weight: 500; }
+.svc ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.svc li { display: flex; align-items: baseline; gap: 14px; padding: 8px 0; font-size: 1.2rem; font-weight: 600; line-height: 1.3; transition: transform .18s ease; }
+.svc li::before { content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--s); transform: translateY(1px); }
+.svc li:hover { transform: translateX(8px); }
+
+.about { padding: clamp(56px, 7vw, 100px) var(--m); }
+.about h2 { font-size: clamp(2rem, 1rem + 3vw, 4rem); margin-bottom: 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 28px 0 0; list-style: none; }
+.chips li { background: var(--surface); padding: 10px 18px; font-weight: 600; }
+.chips li:first-child { background: var(--p); color: var(--s); }
+
+/* ---------- pannello ---------- */
+.panel { background: var(--surface); padding: 20px; position: sticky; top: 0; height: 100svh; overflow-y: auto; font-family: var(--ui); font-size: 15px; line-height: 1.4; }
+.panel h2 { font: 800 20px var(--ui); letter-spacing: -0.01em; margin-bottom: 4px; }
+.panel .intro { color: var(--muted); margin-bottom: 20px; }
+.step { margin: 0 0 26px; }
+.step > h3 { font: 700 14px var(--ui); letter-spacing: 0; margin-bottom: 10px; display: flex; gap: 8px; align-items: center; }
+.step > h3 b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); color: var(--bg); font-size: 13px; }
+
+.fonts { display: grid; gap: 6px; }
+.fgroup { font: 700 12px var(--ui); color: var(--muted); margin: 14px 0 2px; }
+.fgroup:first-child { margin-top: 0; }
+.font { text-align: left; background: var(--bg); border: 3px solid transparent; border-radius: 12px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.font span { font-size: 22px; line-height: 1.1; }
+.font small { font: 400 12px var(--ui); color: var(--muted); white-space: nowrap; }
+.font[aria-pressed="true"] { border-color: var(--ink); }
+
+.row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.picker { display: flex; align-items: center; gap: 12px; }
+.picker input[type="color"] { width: 64px; height: 64px; padding: 0; border: 0; background: none; cursor: pointer; }
+.picker code { font: 600 16px ui-monospace, Consolas, monospace; }
+.swatches { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.sw { width: 34px; height: 34px; border-radius: 50%; border: 3px solid var(--bg); outline: 2px solid transparent; }
+.sw[aria-pressed="true"] { outline-color: var(--ink); }
+
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.seg button { background: var(--bg); border: 3px solid transparent; border-radius: 12px; padding: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.seg button[aria-pressed="true"] { border-color: var(--ink); }
+.dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--ink); }
+.note { margin-top: 8px; color: var(--muted); font-size: 13px; }
+.note.warn { color: #b3261e; font-weight: 600; }
+:root[data-theme="dark"] .note.warn { color: #ff8a80; }
+
+.send { background: var(--ink); color: var(--bg); border-radius: 16px; padding: 16px; }
+.send h3 { font: 800 16px var(--ui); letter-spacing: 0; margin-bottom: 8px; }
+.send dl { margin: 0 0 12px; display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: 14px; }
+.send dt { opacity: .7; } .send dd { margin: 0; font-weight: 600; }
+.send .actions { display: grid; gap: 8px; }
+.send a, .send button { display: block; text-align: center; text-decoration: none; padding: 12px; border-radius: 10px; font: 700 15px var(--ui); border: 0; }
+.send .go { background: var(--p); color: var(--s); }
+.send .copy { background: transparent; color: var(--bg); border: 2px solid var(--bg); }
+.fine { font-size: 12px; color: var(--muted); margin: 10px 0 0; }
+
+.mobilebar { display: none; }
+@media (max-width: 960px) {
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    .panel { position: static; height: auto; overflow: visible; padding-bottom: 110px; }
+    .mobilebar { display: flex; position: fixed; inset: auto 0 0 0; z-index: 10; gap: 10px; align-items: center; justify-content: space-between; background: var(--ink); color: var(--bg); padding: 12px 16px; font-family: var(--ui); font-size: 14px; }
+    .mobilebar a { background: var(--p); color: var(--s); padding: 12px 18px; border-radius: 10px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .mobilebar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="layout">
+
+<main class="preview" aria-label="Anteprima del sito">
+    <header class="site-head">
+        <span class="wordmark">Matteo De Rosa</span>
+        <nav class="site-nav" aria-hidden="true"><span>Home</span><span>Progetti</span><span>Chi sono</span><span>Contatti</span><a class="btn" href="#" onclick="return false">Scrivimi</a></nav>
+    </header>
+
+    <section class="hero">
+        <h1>Siti e WebApps su misura</h1>
+        <p>Ciao! Sono Matteo, sviluppatore web di Grosseto, a Pisa per motivi di studio. Aiuto persone e piccole attività a portare online ciò che serve davvero, in modo semplice e curato.</p>
+        <a class="btn" href="#" onclick="return false">Guarda i progetti</a>
+    </section>
+
+    <section class="services">
+        <h2>Cosa posso fare per te</h2>
+        <div class="svc-list">
+            <article class="svc">
+                <h3>Un sito vetrina per la tua attività</h3>
+                <p>Una pagina chiara che spiega chi sei, cosa fai e come contattarti, che si legga piacevolmente da ogni dispositivo.</p>
+                <ul>
+                    <li>Titoli di studio, esperienze e contatti sempre a portata di mano</li>
+                    <li>Foto e descrizione di prodotti o servizi</li>
+                    <li>Veloce da aprire e semplice da tenere aggiornato</li>
+                    <li>Pronto per farsi trovare su ogni motore di ricerca</li>
+                </ul>
+            </article>
+            <article class="svc">
+                <h3>Un'applicazione web su misura</h3>
+                <p>Quando non trovi un programma già pronto che faccia al caso tuo, costruisco io ciò che ti serve davvero.</p>
+                <ul>
+                    <li>Accesso con il tuo account personale</li>
+                    <li>I tuoi dati sempre sincronizzati e disponibili all'istante</li>
+                    <li>Funziona da ogni dispositivo, computer o telefono</li>
+                    <li>Cresce insieme alla tua attività</li>
+                </ul>
+            </article>
+            <article class="svc">
+                <h3>Un gestionale per organizzare il tuo lavoro</h3>
+                <p>Clienti, appuntamenti, ordini o magazzino: tutto in un posto solo, sempre a portata di mano.</p>
+                <ul>
+                    <li>Elenchi e ricerche per ritrovare tutto subito</li>
+                    <li>Prenotazioni e scadenze sempre sotto controllo</li>
+                    <li>Meno carta e meno dati da ricopiare</li>
+                    <li>Pensato per chi lo usa ogni giorno</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>Alcuni dei miei progetti</h2>
+        <p>Pisa Running Club, To-Do List, PokèReact e altri: ognuno costruito con cura, dall'idea al sito online.</p>
+        <ul class="chips"><li>Pisa Running Club</li><li>To-Do List</li><li>PokèReact</li></ul>
+    </section>
+</main>
+
+<aside class="panel" aria-label="Scelte di stile">
+    <h2>Scegli lo stile del sito</h2>
+    <p class="intro">Prova font e colori: a sinistra vedi subito il risultato. Quando sei contento, premi "Invia la mia scelta" in fondo.</p>
+
+    <section class="step">
+        <h3><b>1</b> Font dei titoli</h3>
+        <div class="fonts" id="fonts"></div>
+    </section>
+
+    <section class="step">
+        <h3><b>2</b> Colore principale</h3>
+        <div class="picker">
+            <input type="color" id="primary" value="#ff5fa2" aria-label="Colore principale">
+            <code id="hex">#FF5FA2</code>
+        </div>
+        <div class="swatches" id="swatches"></div>
+    </section>
+
+    <section class="step">
+        <h3><b>3</b> Secondo colore: scritte sopra il principale</h3>
+        <div class="seg" id="second">
+            <button type="button" data-v="white" aria-pressed="false"><i class="dot" style="background:#fff;border-color:#111"></i>Bianco</button>
+            <button type="button" data-v="black" aria-pressed="true"><i class="dot" style="background:#111;border-color:#111"></i>Nero</button>
+        </div>
+        <p class="note" id="contrast"></p>
+    </section>
+
+    <section class="step">
+        <h3><b>4</b> Tema del sito</h3>
+        <div class="seg" id="theme">
+            <button type="button" data-v="light" aria-pressed="true"><i class="dot" style="background:#f7f7f5"></i>Chiaro</button>
+            <button type="button" data-v="dark" aria-pressed="false"><i class="dot" style="background:#0e0f12;border-color:#888"></i>Scuro</button>
+        </div>
+    </section>
+
+    <section class="send" id="send">
+        <h3>La tua scelta</h3>
+        <dl>
+            <dt>Font</dt><dd id="o-font"></dd>
+            <dt>Colore</dt><dd id="o-color"></dd>
+            <dt>Secondo</dt><dd id="o-second"></dd>
+            <dt>Tema</dt><dd id="o-theme"></dd>
+        </dl>
+        <div class="actions">
+            <a class="go" id="mail" href="#">Invia la mia scelta</a>
+            <button type="button" class="copy" id="copy">Copia il link alla mia scelta</button>
+        </div>
+    </section>
+    <p class="fine">Le scelte si salvano da sole in questo browser. "Invia" apre la tua email già scritta per Matteo.</p>
+</aside>
+</div>
+
+<div class="mobilebar"><span id="m-sum"></span><a id="m-mail" href="#">Invia la scelta</a></div>
+
+<script>
+/* Font: dai più massicci ai più raffinati. w = peso usato per i titoli. */
+var GROUPS = [
+  { name: "Massicci e giocosi", fonts: [
+    ["Dela Gothic One", 400], ["Rubik Mono One", 400], ["Bowlby One", 400], ["Titan One", 400], ["Lilita One", 400],
+    ["Chango", 400], ["Bungee", 400], ["Alfa Slab One", 400], ["Archivo Black", 400], ["Passion One", 900]
+  ]},
+  { name: "Moderni e decisi", fonts: [
+    ["Unbounded", 800], ["Bricolage Grotesque", 800], ["Syne", 800], ["Rubik", 800], ["Outfit", 800], ["Lexend", 800],
+    ["Montserrat", 800], ["Epilogue", 800], ["Plus Jakarta Sans", 800], ["Red Hat Display", 800], ["Fredoka", 700], ["Poppins", 700]
+  ]},
+  { name: "Puliti e neutri", fonts: [
+    ["Space Grotesk", 700], ["Sora", 700], ["Manrope", 800], ["Figtree", 800], ["Urbanist", 800], ["DM Sans", 700],
+    ["Familjen Grotesk", 700], ["Raleway", 700], ["Josefin Sans", 600]
+  ]},
+  { name: "Serif morbidi e di carattere", fonts: [
+    ["Fraunces", 900], ["Abril Fatface", 400], ["Gloock", 400], ["Young Serif", 400], ["DM Serif Display", 400], ["Playfair Display", 800]
+  ]},
+  { name: "Eleganti e raffinati", fonts: [
+    ["Bodoni Moda", 600], ["Instrument Serif", 400], ["Libre Caslon Display", 400], ["Cormorant Garamond", 600],
+    ["Prata", 400], ["Marcellus", 400], ["Italiana", 400]
+  ]}
+];
+var SWATCHES = ["#ff5fa2", "#c8ff2e", "#ffd60a", "#ff8a1f", "#ff3d2e", "#19d3c5", "#00c27a", "#1b3bff", "#8a5cff", "#111111", "#ffffff"];
+var DEFAULT = { f: "Bricolage Grotesque", c: "#ff5fa2", s: "black", t: "light" };
+var all = [];
+GROUPS.forEach(function (g) { g.fonts.forEach(function (f) { all.push(f); }); });
+
+/* carica tutti i font in una sola richiesta */
+var fam = all.map(function (f) {
+  var n = f[0].replace(/ /g, "+");
+  var single = ["Dela Gothic One","Rubik Mono One","Bowlby One","Titan One","Lilita One","Chango","Bungee","Alfa Slab One","Archivo Black","Abril Fatface","Gloock","Young Serif","DM Serif Display","Instrument Serif","Libre Caslon Display","Prata","Marcellus","Italiana"];
+  return "family=" + n + (single.indexOf(f[0]) >= 0 ? "" : ":wght@" + f[1]);
+});
+var link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = "https://fonts.googleapis.com/css2?" + fam.join("&") + "&family=Jost:wght@400;500;600&display=swap";
+document.head.appendChild(link);
+
+var root = document.documentElement;
+var state = Object.assign({}, DEFAULT);
+try { Object.assign(state, JSON.parse(localStorage.getItem("stile-v1") || "{}")); } catch (e) {}
+var h = new URLSearchParams(location.hash.slice(1));
+if (h.get("f")) state.f = h.get("f");
+if (h.get("c") && /^[0-9a-f]{6}$/i.test(h.get("c"))) state.c = "#" + h.get("c");
+if (h.get("s")) state.s = h.get("s") === "white" ? "white" : "black";
+if (h.get("t")) state.t = h.get("t") === "dark" ? "dark" : "light";
+if (!all.some(function (f) { return f[0] === state.f; })) state.f = DEFAULT.f;
+
+function lum(hex) {
+  var n = parseInt(hex.slice(1), 16);
+  var ch = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(function (v) { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); });
+  return .2126 * ch[0] + .7152 * ch[1] + .0722 * ch[2];
+}
+function ratio(a, b) { var x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); }
+var SEC = { white: "#ffffff", black: "#111111" };
+
+var fontsEl = document.getElementById("fonts");
+GROUPS.forEach(function (g) {
+  var t = document.createElement("p"); t.className = "fgroup"; t.textContent = g.name; fontsEl.appendChild(t);
+  g.fonts.forEach(function (f) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "font"; b.dataset.f = f[0];
+    b.style.fontFamily = '"' + f[0] + '", sans-serif'; b.style.fontWeight = f[1];
+    b.innerHTML = "<span>Siti su misura</span><small></small>";
+    b.querySelector("small").textContent = f[0];
+    b.addEventListener("click", function () { state.f = f[0]; apply(); });
+    fontsEl.appendChild(b);
+  });
+});
+
+var swEl = document.getElementById("swatches");
+SWATCHES.forEach(function (c) {
+  var b = document.createElement("button");
+  b.type = "button"; b.className = "sw"; b.dataset.c = c; b.style.background = c; b.setAttribute("aria-label", "Colore " + c);
+  b.addEventListener("click", function () { state.c = c; apply(); });
+  swEl.appendChild(b);
+});
+document.getElementById("primary").addEventListener("input", function (e) { state.c = e.target.value; apply(); });
+document.querySelectorAll("#second button").forEach(function (b) { b.addEventListener("click", function () { state.s = b.dataset.v; apply(); }); });
+document.querySelectorAll("#theme button").forEach(function (b) { b.addEventListener("click", function () { state.t = b.dataset.v; apply(); }); });
+
+function share() {
+  return location.origin + location.pathname + "#f=" + encodeURIComponent(state.f) + "&c=" + state.c.slice(1) + "&s=" + state.s + "&t=" + state.t;
+}
+
+function apply() {
+  var f = all.filter(function (x) { return x[0] === state.f; })[0];
+  root.style.setProperty("--head", '"' + f[0] + '", system-ui, sans-serif');
+  root.style.setProperty("--hw", f[1]);
+  root.style.setProperty("--p", state.c);
+  root.style.setProperty("--s", SEC[state.s]);
+  root.setAttribute("data-theme", state.t);
+  document.getElementById("primary").value = state.c;
+  document.getElementById("hex").textContent = state.c.toUpperCase();
+  document.querySelectorAll(".font").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.f === state.f)); });
+  document.querySelectorAll(".sw").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.c === state.c)); });
+  document.querySelectorAll("#second button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === state.s)); });
+  document.querySelectorAll("#theme button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.v === state.t)); });
+
+  var r = ratio(state.c, SEC[state.s]);
+  var other = state.s === "black" ? "white" : "black";
+  var n = document.getElementById("contrast");
+  if (r < 3) { n.className = "note warn"; n.textContent = "Si legge male su questo colore: prova " + (other === "white" ? "il bianco" : "il nero") + "."; }
+  else if (ratio(state.c, SEC[other]) > r + 3) { n.className = "note"; n.textContent = "Si legge, ma " + (other === "white" ? "il bianco" : "il nero") + " sarebbe più chiaro."; }
+  else { n.className = "note"; n.textContent = "Si legge bene."; }
+
+  var sec = state.s === "white" ? "Bianco" : "Nero", th = state.t === "dark" ? "Scuro" : "Chiaro";
+  document.getElementById("o-font").textContent = state.f;
+  document.getElementById("o-color").textContent = state.c.toUpperCase();
+  document.getElementById("o-second").textContent = sec;
+  document.getElementById("o-theme").textContent = th;
+  document.getElementById("m-sum").textContent = state.f + " · " + state.c.toUpperCase() + " · " + sec + " · " + th;
+
+  var body = "Ciao Matteo,\n\nho scelto lo stile:\n- Font dei titoli: " + state.f + "\n- Colore principale: " + state.c.toUpperCase() + "\n- Secondo colore: " + sec + "\n- Tema: " + th + "\n\nLink per rivedere la mia scelta:\n" + share() + "\n";
+  var href = "mailto:info@matteoderosa.it?subject=" + encodeURIComponent("La mia scelta di stile") + "&body=" + encodeURIComponent(body);
+  document.getElementById("mail").href = href;
+  document.getElementById("m-mail").href = href;
+  try { localStorage.setItem("stile-v1", JSON.stringify(state)); } catch (e) {}
+}
+
+document.getElementById("copy").addEventListener("click", function () {
+  var b = this, url = share();
+  function ok() { b.textContent = "Link copiato ✓"; setTimeout(function () { b.textContent = "Copia il link alla mia scelta"; }, 2000); }
+  if (navigator.clipboard) navigator.clipboard.writeText(url).then(ok, function () { prompt("Copia il link:", url); });
+  else prompt("Copia il link:", url);
+});
+
+apply();
+</script>
+</body>
+</html>
