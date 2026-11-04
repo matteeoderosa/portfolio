@@ -363,14 +363,25 @@ main:focus { outline: none; }
    Due copie in fila, ognuna scivola della propria lunghezza: il giro si chiude senza stacco. */
 .photo-marquee {
     --gap: 8px;
-    --speed: 45s;
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 56px, #000 calc(100% - 56px), transparent);
-    mask-image: linear-gradient(to bottom, transparent, #000 56px, #000 calc(100% - 56px), transparent);
+}
+/* sfumatura ai bordi con due veli e non con una maschera: su Safari una maschera sopra immagini animate si svuota */
+.photo-marquee::before, .photo-marquee::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    inset: 0 0 auto 0;
+    height: 56px;
+    background: linear-gradient(to bottom, var(--surface), transparent);
+}
+.photo-marquee::after {
+    inset: auto 0 0 0;
+    background: linear-gradient(to top, var(--surface), transparent);
 }
 .marquee-track {
     flex: none;
@@ -378,8 +389,6 @@ main:focus { outline: none; }
     flex-direction: column;
     gap: var(--gap);
     padding-bottom: var(--gap);
-    animation: marquee-y var(--speed) linear infinite;
-    will-change: transform;
 }
 .marquee-track img {
     display: block;
@@ -387,13 +396,9 @@ main:focus { outline: none; }
     height: auto;
     object-fit: cover;
 }
-.photo-marquee:hover .marquee-track { animation-play-state: paused; }
-@keyframes marquee-y { to { transform: translateY(-100%); } }
-@keyframes marquee-x { to { transform: translateX(-100%); } }
 
 @media (prefers-reduced-motion: reduce) {
     .photo-marquee { overflow: auto; scrollbar-width: none; }
-    .marquee-track { animation: none; }
     .marquee-track[aria-hidden] { display: none; }
 }
 
@@ -740,18 +745,10 @@ main:focus { outline: none; }
     .page-split .stage-photos, .page-split .stage-shots:has(.stage-me) { height: min(46svh, 360px); }
     .split-hero .stage-photos { height: min(38svh, 290px); }
     /* su telefono il nastro scorre in orizzontale, ognuna intera all'altezza dello stage */
-    .split-hero .photo-marquee {
-        --speed: 32s;
-        flex-direction: row;
-        -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
-        mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
-    }
-    .split-hero .marquee-track {
-        flex-direction: row;
-        padding-bottom: 0;
-        padding-right: var(--gap);
-        animation-name: marquee-x;
-    }
+    .split-hero .photo-marquee { flex-direction: row; }
+    .split-hero .photo-marquee::before { inset: 0 auto 0 0; width: 28px; height: auto; background: linear-gradient(to right, var(--surface), transparent); }
+    .split-hero .photo-marquee::after { inset: 0 0 0 auto; width: 28px; height: auto; background: linear-gradient(to left, var(--surface), transparent); }
+    .split-hero .marquee-track { flex-direction: row; padding-bottom: 0; padding-right: var(--gap); }
     .split-hero .marquee-track img { width: auto; height: 100%; }
     .hero-col h1 { font-size: clamp(2.5rem, 11vw, 3.5rem); }
     .hero-col h1:lang(en) { font-size: clamp(2.1rem, 8.6vw, 3.25rem); }
