@@ -363,7 +363,7 @@ main:focus { outline: none; }
    Due copie in fila, ognuna scivola della propria lunghezza: il giro si chiude senza stacco. */
 .photo-marquee {
     --gap: 8px;
-    --speed: 90s;
+    --speed: 45s;
     position: absolute;
     inset: 0;
     display: flex;
@@ -379,6 +379,7 @@ main:focus { outline: none; }
     gap: var(--gap);
     padding-bottom: var(--gap);
     animation: marquee-y var(--speed) linear infinite;
+    will-change: transform;
 }
 .marquee-track img {
     display: block;
@@ -740,7 +741,7 @@ main:focus { outline: none; }
     .split-hero .stage-photos { height: min(38svh, 290px); }
     /* su telefono il nastro scorre in orizzontale, ognuna intera all'altezza dello stage */
     .split-hero .photo-marquee {
-        --speed: 70s;
+        --speed: 32s;
         flex-direction: row;
         -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
         mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
