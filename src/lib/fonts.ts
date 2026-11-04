@@ -13,3 +13,10 @@ export const serif = localFont({
   variable: "--font-bodoni",
   display: "swap",
 });
+
+/** Titoli della versione /stile: Unbounded (variabile 200–900), servita dal sito stesso. */
+export const unbounded = localFont({
+  src: [{ path: "../fonts/unbounded-latin-200-900.woff2", weight: "200 900", style: "normal" }],
+  variable: "--font-unbounded",
+  display: "swap",
+});
