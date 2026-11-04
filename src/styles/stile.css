@@ -28,6 +28,9 @@
 }
 :root[data-stile] .svc li:hover { transform: translateX(8px); }
 
+/* il nome in fondo: Unbounded è molto più largo, quindi si riduce per restare su una riga a tutta larghezza come nel sito */
+:root[data-stile] .footer-name { font-size: clamp(1.5rem, 10vw, 15rem); font-weight: 800; line-height: 0.9; }
+
 /* pannello colore */
 .lab { position: fixed; right: 16px; bottom: 16px; z-index: 50; font-family: system-ui, sans-serif; font-size: 14px; line-height: 1.4; }
 .lab-toggle { background: var(--ink); color: var(--bg); border: 0; border-radius: 999px; padding: 12px 20px; font: 700 14px system-ui, sans-serif; cursor: pointer; }
