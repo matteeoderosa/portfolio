@@ -14,6 +14,9 @@ describe("LangSwitch", () => {
     // next/link normalises the trailing slash outside a configured build
     expect(link.getAttribute("href")).toMatch(/^\/en\/projects\/?$/);
     expect(link.textContent).toContain("IT");
+    // the other language is revealed on hover but is not part of the name
+    expect(link.querySelector(".lang-next")?.getAttribute("aria-hidden")).toBe("true");
+    expect(link.querySelector(".lang-next")?.textContent).toBe("EN");
   });
   it("stores the preference and survives a throwing localStorage", () => {
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
@@ -33,7 +36,7 @@ describe("LangSwitch", () => {
       render(<LangSwitch lang={lang} currentPath={path} label="x" unavailable="n/a" />);
       const link = screen.getByRole("link");
       const name = link.getAttribute("aria-label") ?? "";
-      expect(link.textContent?.trim()).toBe(code);
+      expect(link.querySelector(".lang-now")?.textContent?.trim()).toBe(code);
       expect(name.startsWith(`${code}, `)).toBe(true);
       cleanup();
     }
