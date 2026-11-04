@@ -60,7 +60,7 @@ describe("Lightbox", () => {
   it("keeps the caption for the project screenshots", () => {
     const view = render(
       <>
-        <div className="photo-grid">
+        <div className="photo-marquee">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/shot-1.jpg" alt="PokèReact: la scheda di Charizard" />
         </div>
@@ -68,7 +68,7 @@ describe("Lightbox", () => {
       </>,
     );
     const dialog = view.container.ownerDocument.querySelector("dialog.lightbox") as HTMLDialogElement;
-    fireEvent.click(view.container.querySelector(".photo-grid img") as HTMLImageElement);
+    fireEvent.click(view.container.querySelector(".photo-marquee img") as HTMLImageElement);
     expect(dialog.querySelector(".lb-caption")?.textContent).toBe("PokèReact: la scheda di Charizard");
     expect(dialog.hasAttribute("data-no-caption")).toBe(false);
   });

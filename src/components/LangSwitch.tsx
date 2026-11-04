@@ -53,7 +53,7 @@ export default function LangSwitch({ lang, currentPath, label, unavailable }: Pr
     // (the title tooltip is mouse-only).
     return (
       <span className="lang-switch is-disabled" title={unavailable}>
-        {content}
+        <span className="lang-now">{content}</span>
         <span className="visually-hidden"> ({unavailable})</span>
       </span>
     );
@@ -75,7 +75,14 @@ export default function LangSwitch({ lang, currentPath, label, unavailable }: Pr
         }
       }}
     >
-      {content}
+      {/* The other language opens to the left on hover or focus; it is the same link, so it adds no name. */}
+      <span className="lang-next" aria-hidden="true">
+        <span className="lang-next-inner">
+          {FLAGS[target]}
+          <span lang={target}>{target.toUpperCase()}</span>
+        </span>
+      </span>
+      <span className="lang-now">{content}</span>
     </Link>
   );
 }

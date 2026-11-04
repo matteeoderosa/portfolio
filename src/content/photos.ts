@@ -22,20 +22,18 @@ export const photos: Record<string, Photo> = {
   manubrio: { src: "/me/web/manubrio.jpg", pos: "50% 50%", ratio: 0.75, alt: { it: "Il manubrio della bici visto dalla sella", en: "The bike handlebar seen from the saddle" } },
   "primo-piano": { src: "/me/web/primo-piano.jpg", pos: "50% 50%", ratio: 0.75, alt: { it: "Matteo, primo piano", en: "Matteo, close-up" } },
   notte: { src: "/me/web/notte.jpg", pos: "50% 50%", ratio: 0.75, alt: { it: "Matteo che corre di notte", en: "Matteo running at night" } },
-  "s-todo": { src: "/work/mosaico/todo-estratto.jpg", pos: "50% 50%", alt: { it: "To-Do List: le liste e le note", en: "To-Do List: lists and notes" } },
-  "s-poke": { src: "/work/mosaico/h-poke.jpg", pos: "50% 0%", alt: { it: "PokèReact: la scheda di Charizard", en: "PokèReact: Charizard's card" } },
-  "s-gare": { src: "/work/mosaico/h-gare.jpg", pos: "50% 0%", alt: { it: "Gare del Pisa Running Club: l'accesso", en: "Pisa Running Club races: sign-in" } },
-  "s-corsette": { src: "/work/mosaico/h-corsette.jpg", pos: "50% 0%", alt: { it: "Pisa Running Club: le prossime corse", en: "Pisa Running Club: the upcoming runs" } },
-  "s-stats": { src: "/work/mosaico/h-stats.jpg", pos: "50% 0%", alt: { it: "GitHub Stats: il profilo di un utente", en: "GitHub Stats: a user profile" } },
-  "s-poke-elenco": { src: "/work/mosaico/h-poke-elenco.jpg", pos: "50% 0%", alt: { it: "PokèReact: l'elenco dei Pokémon", en: "PokèReact: the list of Pokémon" } },
-  "s-stats-repo": { src: "/work/mosaico/h-stats-repo.jpg", pos: "50% 0%", alt: { it: "GitHub Stats: i repository di un profilo", en: "GitHub Stats: a profile's repositories" } },
-  "s-footer": { src: "/work/mosaico/prc-footer-estratto.jpg", pos: "50% 50%", alt: { it: "Pisa Running Club: il piè di pagina del sito", en: "Pisa Running Club: the site footer" } },
+  "s-todo": { src: "/work/mosaico/todo-estratto.jpg", pos: "50% 50%", ratio: 3.8806, alt: { it: "To-Do List: le liste e le note", en: "To-Do List: lists and notes" } },
+  "s-poke": { src: "/work/mosaico/h-poke.jpg", pos: "50% 0%", ratio: 0.9032, alt: { it: "PokèReact: la scheda di Charizard", en: "PokèReact: Charizard's card" } },
+  "s-gare": { src: "/work/mosaico/h-gare.jpg", pos: "50% 0%", ratio: 0.9032, alt: { it: "Gare del Pisa Running Club: l'accesso", en: "Pisa Running Club races: sign-in" } },
+  "s-corsette": { src: "/work/mosaico/h-corsette.jpg", pos: "50% 0%", ratio: 1.3333, alt: { it: "Pisa Running Club: le prossime corse", en: "Pisa Running Club: the upcoming runs" } },
+  "s-stats": { src: "/work/mosaico/h-stats.jpg", pos: "50% 0%", ratio: 0.6667, alt: { it: "GitHub Stats: il profilo di un utente", en: "GitHub Stats: a user profile" } },
+  "s-poke-elenco": { src: "/work/mosaico/h-poke-elenco.jpg", pos: "50% 0%", ratio: 0.6667, alt: { it: "PokèReact: l'elenco dei Pokémon", en: "PokèReact: the list of Pokémon" } },
+  "s-stats-repo": { src: "/work/mosaico/h-stats-repo.jpg", pos: "50% 0%", ratio: 1.3333, alt: { it: "GitHub Stats: i repository di un profilo", en: "GitHub Stats: a profile's repositories" } },
+  "s-footer": { src: "/work/mosaico/prc-footer-estratto.jpg", pos: "50% 50%", ratio: 4.1139, alt: { it: "Pisa Running Club: il piè di pagina del sito", en: "Pisa Running Club: the site footer" } },
 };
 
-/** Mosaico della prima schermata: screenshot dei lavori. */
-export const heroPhotos = ["s-todo", "s-poke", "s-gare", "s-corsette", "s-stats", "s-poke-elenco", "s-stats-repo", "s-footer"] as const;
-/** Disposizione degli 8 screenshot: due strisce larghe (todo e footer) e sei tasselli. */
-export const heroLayout = "shots8";
+/** Il nastro della prima schermata, nell'ordine in cui si vede: Pisa Running Club, GitHub Stats, poi il resto. */
+export const heroPhotos = ["s-gare", "s-stats", "s-corsette", "s-poke", "s-poke-elenco", "s-stats-repo", "s-todo", "s-footer"] as const;
 /**
  * Un mosaico è un albero di righe e colonne: ogni foto resta intera e il suo riquadro ha la
  * sua stessa forma (nessun ritaglio). Il mosaico si adatta allo stage tenendo le proporzioni.

@@ -6,7 +6,7 @@ import ProjectStage from "@/components/ProjectStage";
 import PhotoMosaic from "@/components/PhotoMosaic";
 import InlineMosaic from "@/components/InlineMosaic";
 import PhotoStage from "@/components/PhotoStage";
-import { aboutMosaics, heroLayout, heroPhotos } from "@/content/photos";
+import { aboutMosaics, heroPhotos } from "@/content/photos";
 import { stageShots } from "@/lib/shots";
 import ProjectCard from "@/components/ProjectCard";
 import ContactCta from "@/components/ContactCta";
@@ -19,7 +19,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
   return (
     <>
       <div className="split split-hero" data-nav={routePath("home", lang)}>
-        <PhotoStage lang={lang} keys={heroPhotos} layout={heroLayout} />
+        <PhotoStage lang={lang} keys={heroPhotos} />
         <div className="col hero-col">
           <h1 className="rise" style={delay(0)}>
             {dict.home.title}

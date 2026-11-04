@@ -4,9 +4,9 @@ import { useEffect, useRef } from "react";
 
 type Labels = { open: string; close: string; prev: string; next: string; zoom: string; unzoom: string; of: string };
 
-/** Le immagini che si possono aprire: i tasselli dei mosaici (foto e screenshot). */
-const SELECTOR = ".photo-mosaic img, .photo-grid img";
-const GROUP = ".photo-mosaic, .photo-grid";
+/** Le immagini che si possono aprire: i tasselli dei mosaici e le immagini del nastro. */
+const SELECTOR = ".photo-mosaic img, .photo-marquee img";
+const GROUP = ".photo-mosaic, .photo-marquee";
 const NAME = "lb";
 
 type VT = { ready: Promise<void>; finished: Promise<void> };
@@ -49,6 +49,8 @@ export default function Lightbox({ labels }: { labels: Labels }) {
       document.querySelectorAll<HTMLImageElement>(SELECTOR).forEach((el) => {
         if (el.dataset.lb !== undefined) return;
         el.dataset.lb = "";
+        // la seconda copia del nastro si clicca ma non si legge né si raggiunge da tastiera
+        if (el.hasAttribute("data-dup")) return;
         el.tabIndex = 0;
         el.setAttribute("role", "button");
         el.setAttribute("aria-haspopup", "dialog");
@@ -83,7 +85,7 @@ export default function Lightbox({ labels }: { labels: Labels }) {
       big.src = el.currentSrc || el.src;
       big.alt = el.alt;
       // la didascalia c'è solo per gli screenshot dei progetti, non per le foto personali
-      const shot = !!el.closest(".photo-grid");
+      const shot = !!el.closest(".photo-marquee");
       if (caption.current) caption.current.textContent = shot ? el.alt : "";
       dlg.toggleAttribute("data-no-caption", !shot);
       if (count.current) count.current.textContent = `${index + 1} ${labels.of} ${items.length}`;
@@ -95,8 +97,10 @@ export default function Lightbox({ labels }: { labels: Labels }) {
       if (dlg.open || busy) return;
       const group = el.closest(GROUP);
       // solo le foto che si vedono: su telefono alcuni tasselli della hero sono nascosti
-      items = group ? Array.from(group.querySelectorAll<HTMLImageElement>("img")).filter((i) => i === el || getComputedStyle(i).display !== "none") : [el];
-      show(Math.max(0, items.indexOf(el)));
+      items = group ? Array.from(group.querySelectorAll<HTMLImageElement>("img")).filter((i) => !i.hasAttribute("data-dup") && getComputedStyle(i).display !== "none") : [el];
+      // una foto della seconda copia vale quanto la sua gemella nella prima
+      const same = el.hasAttribute("data-dup") ? items.find((i) => i.src === el.src) : el;
+      show(Math.max(0, items.indexOf(same ?? el)));
       const reveal = () => {
         setName(el, false);
         setName(big, true);
