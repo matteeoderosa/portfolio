@@ -721,8 +721,18 @@ main:focus { outline: none; }
         width: auto;
         max-width: none;
         height: 100%;
+        /* mai più larghe di ~80% dello schermo: la foto dopo si affaccia sempre e fa capire che si scorre */
+        max-width: 80%;
         scroll-snap-align: start;
         animation: none;
+    }
+    /* su telefono si parte dal Pisa Running Club e da GitHub Stats; il resto segue (su desktop l'ordine è quello della griglia) */
+    .split-hero .photo-grid[data-n="shots8"] img:nth-child(3) { order: -2; }
+    .split-hero .photo-grid[data-n="shots8"] img:nth-child(5) { order: -1; }
+    /* sfumatura sul bordo destro: c'è altro da scoprire */
+    .split-hero .stage-photos {
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
     }
     /* le due strisce larghe (To-Do List e footer) a quell'altezza si vedrebbero tagliate */
     .split-hero .photo-grid[data-n="shots8"] img:nth-child(1),
