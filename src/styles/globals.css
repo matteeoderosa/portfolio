@@ -191,6 +191,7 @@ main:focus { outline: none; }
 }
 .brand:hover { text-decoration: underline; text-decoration-thickness: 1px; }
 
+.main-nav { position: relative; }
 .main-nav ul {
     display: flex;
     flex-wrap: wrap;
@@ -213,6 +214,22 @@ main:focus { outline: none; }
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 0.45em;
+}
+
+/* con lo script la sottolineatura è un solo elemento che scivola da una voce all'altra */
+.main-nav.has-bar a[aria-current] { text-decoration: none; }
+.nav-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2px;
+    background: var(--ink);
+    pointer-events: none;
+}
+.nav-bar[data-glide] {
+    transition:
+        transform 0.5s cubic-bezier(0.65, 0, 0.35, 1),
+        width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .btn {
@@ -654,6 +671,7 @@ main:focus { outline: none; }
 
 @media (prefers-reduced-motion: reduce) {
     .rise { animation: none; }
+    .nav-bar[data-glide] { transition: none; }
     .js [data-reveal] { opacity: 1; transform: none; transition: background 0.2s; }
     .btn:hover, .picker-option:hover span { transform: none; }
 }
@@ -703,8 +721,18 @@ main:focus { outline: none; }
         width: auto;
         max-width: none;
         height: 100%;
+        /* mai più larghe di ~80% dello schermo: la foto dopo si affaccia sempre e fa capire che si scorre */
+        max-width: 80%;
         scroll-snap-align: start;
         animation: none;
+    }
+    /* su telefono si parte dal Pisa Running Club e da GitHub Stats; il resto segue (su desktop l'ordine è quello della griglia) */
+    .split-hero .photo-grid[data-n="shots8"] img:nth-child(3) { order: -2; }
+    .split-hero .photo-grid[data-n="shots8"] img:nth-child(5) { order: -1; }
+    /* sfumatura sul bordo destro: c'è altro da scoprire */
+    .split-hero .stage-photos {
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
     }
     /* le due strisce larghe (To-Do List e footer) a quell'altezza si vedrebbero tagliate */
     .split-hero .photo-grid[data-n="shots8"] img:nth-child(1),

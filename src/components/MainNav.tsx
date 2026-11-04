@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { isCurrentPath } from "@/lib/routes";
 
 type Props = { items: { label: string; href: string }[]; ariaLabel: string };
@@ -37,8 +37,42 @@ export default function MainNav({ items, ariaLabel }: Props) {
     };
   }, [onHome]);
 
+  const activeHref = items.find((item) =>
+    onHome && spied ? item.href === spied : isCurrentPath(item.href, pathname),
+  )?.href;
+
+  // The underline is one element that glides to the current link instead of jumping between links.
+  const navRef = useRef<HTMLElement>(null);
+  const [bar, setBar] = useState<{ x: number; y: number; w: number } | null>(null);
+  const [glide, setGlide] = useState(false);
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const place = () => {
+      const link = nav.querySelector<HTMLElement>("a[aria-current]");
+      if (!link) return setBar(null);
+      const pad = parseFloat(getComputedStyle(link).paddingLeft) || 0;
+      const next = { x: link.offsetLeft + pad, y: link.offsetTop + link.offsetHeight - 9, w: link.offsetWidth - pad * 2 };
+      setBar((prev) => (prev && prev.x === next.x && prev.y === next.y && prev.w === next.w ? prev : next));
+    };
+    place();
+    if (!("ResizeObserver" in window)) return;
+    const ro = new ResizeObserver(place);
+    ro.observe(nav);
+    document.fonts?.ready.then(place);
+    return () => ro.disconnect();
+  }, [activeHref]);
+
+  // the first placement must not travel in from the corner
+  useEffect(() => {
+    if (!bar || glide) return;
+    const id = requestAnimationFrame(() => setGlide(true));
+    return () => cancelAnimationFrame(id);
+  }, [bar, glide]);
+
   return (
-    <nav className="main-nav" aria-label={ariaLabel}>
+    <nav ref={navRef} className={`main-nav${bar ? " has-bar" : ""}`} aria-label={ariaLabel}>
       <ul>
         {items.map((item) => {
           const current = onHome && spied ? item.href === spied : isCurrentPath(item.href, pathname);
@@ -52,6 +86,14 @@ export default function MainNav({ items, ariaLabel }: Props) {
           );
         })}
       </ul>
+      {bar && (
+        <span
+          className="nav-bar"
+          aria-hidden="true"
+          data-glide={glide || undefined}
+          style={{ width: bar.w, transform: `translate(${bar.x}px, ${bar.y}px)` }}
+        />
+      )}
     </nav>
   );
 }
