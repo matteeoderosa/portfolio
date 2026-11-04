@@ -41,8 +41,8 @@ export const projects: Project[] = [
         name: "Pisa Running Club",
         summary: "The website of Pisa's running group: runs, events and how to join.",
         purpose:
-          "It explains how the club works: we meet in Piazza Cairoli, we run slowly and nobody is left behind. It lists the upcoming runs, presents the group's other sports and partner professionals, and lets you get in touch.",
-        whatIDid: "I built the club's website from scratch. Everything you see on the site, I made it myself, using our design system, logos and names.",
+          "It explains how the club works: we decide the meeting point, we run slowly and nobody is left behind. It lists the upcoming runs, presents the group's other sports and partner professionals, and lets you get in touch.",
+        whatIDid: "I built the club's website from scratch, using our design system, logos and names. Everything you see on the site, I made personally.",
       },
     },
   },
@@ -65,8 +65,8 @@ export const projects: Project[] = [
         name: "Pisa Running Club races",
         summary: "The shared calendar of running races.",
         purpose:
-          "A shared calendar of running races, made for anyone preparing for a race with the club. It is linked from the main Pisa Running Club website.",
-        whatIDid: "I built the calendar website from scratch. Every feature was designed and built by me, to make it as simple as possible to use.",
+          "A shared calendar of running races, made for anyone preparing for a race with the club. It is linked from the main Pisa Running Club website. Anyone can add a race, and anyone can browse it to find out where and when people run.",
+        whatIDid: "I built the site from scratch. Every feature was designed and built by me, to make it as simple as possible to use.",
       },
     },
   },
@@ -92,7 +92,7 @@ export const projects: Project[] = [
         purpose:
           "You sign in to your own account, create lists of things to do and notes you want to remember, and tick off what is already done.",
         whatIDid:
-          "I built both the part that handles accounts and data, and the interface you use in the browser.",
+          "I built both the part that handles accounts and data, and the interface you use in the browser, making it as simple as possible to use on every device.",
       },
     },
   },
@@ -118,7 +118,7 @@ export const projects: Project[] = [
         purpose:
           "You can search a Pokémon by name, filter them by type, flip through the pages and open a card with all the details, in light or dark theme.",
         whatIDid:
-          "I created the whole interface, which gets its data from the public PokéAPI.",
+          "I created the whole interface, which gets its data from the public APIs provided by PokéAPI, so that it would look nice and be easy to use.",
       },
     },
   },
@@ -144,7 +144,7 @@ export const projects: Project[] = [
         purpose:
           "Type the name of a person or an organization and see their projects, the languages they use and their recent activity. You can also compare two profiles.",
         whatIDid:
-          "I built the page with charts and cards, which reads its data straight from GitHub.",
+          "I built the page with charts and cards, which reads its data straight from GitHub through public APIs, with an eye-catching interface.",
       },
     },
   },
