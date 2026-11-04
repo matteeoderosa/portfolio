@@ -1,5 +1,5 @@
 /* Direzione "split stage": metà schermo resta ferma con un campo di colore,
-   l'altra metà scorre. Inchiostro e pietra, Bodoni Moda per i titoli, Jost per il testo.
+   l'altra metà scorre. Inchiostro e pietra, Unbounded per i titoli, Jost per il testo.
    Niente linee sottili, ombre, sfumature o monospace: le superfici si separano con un
    cambio di tono, il resto con lo spazio. */
 
@@ -21,7 +21,7 @@
     --band-surface: #9bb0bf;
 
     --font-sans: var(--font-jost), "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --font-serif: var(--font-bodoni), "Bodoni Moda", Didot, "Bodoni 72", Georgia, serif;
+    --font-serif: var(--font-unbounded), "Unbounded", system-ui, sans-serif;
 
     --header-h: 64px;
     --m: clamp(16px, 2.2vw, 32px);
@@ -30,10 +30,10 @@
     --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
     --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
     --step-lead: clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem);
-    --step-h2: clamp(1.75rem, 1.1rem + 1.2vw, 2.5rem);
-    --step-h1: clamp(2rem, 0.7rem + 3.4vw, 3.75rem);
-    --step-display: clamp(3rem, 8.6vw, 8.5rem);
-    --step-title: clamp(3rem, 6.4vw, 6rem);
+    --step-h2: clamp(1.5rem, 1rem + 1vw, 2.1rem);
+    --step-h1: clamp(1.7rem, 0.6rem + 2.8vw, 3rem);
+    --step-display: clamp(2.4rem, 6.6vw, 6.4rem);
+    --step-title: clamp(2.4rem, 5vw, 4.6rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -102,9 +102,9 @@ body {
 h1, h2, h3 {
     margin: 0;
     font-family: var(--font-serif);
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
     text-wrap: balance;
 }
 h1 { font-size: var(--step-h1); }
@@ -184,8 +184,9 @@ main:focus { outline: none; }
     color: var(--ink);
     text-decoration: none;
     font-family: var(--font-serif);
-    font-size: 1.35rem;
-    letter-spacing: -0.01em;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     line-height: 1;
     white-space: nowrap;
 }
@@ -344,7 +345,7 @@ main:focus { outline: none; }
 }
 
 .page-split { min-height: calc(100svh - var(--header-h)); }
-.stage-shots { background: var(--surface); }
+.stage-shots { background: var(--surface); border-radius: 28px; }
 .stage-img {
     position: absolute;
     inset: 0;
@@ -501,7 +502,7 @@ main:focus { outline: none; }
     align-self: start;
     position: sticky;
     top: calc(var(--header-h) + 32px);
-    font-size: var(--step-h1);
+    font-size: clamp(2rem, 0.8rem + 3.4vw, 4.4rem);
     line-height: 1;
 }
 .svc-list {
@@ -509,16 +510,37 @@ main:focus { outline: none; }
     display: grid;
     gap: clamp(48px, 5vw, 72px);
 }
-.svc h3 { max-width: 18ch; }
-.svc-row { margin-top: 16px; }
-.svc p { margin: 0 0 20px; }
-.svc ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.svc h3 { max-width: 16ch; font-size: clamp(1.45rem, 0.9rem + 1.7vw, 2.6rem); line-height: 1.08; }
+.svc-row { margin-top: 20px; }
+.svc p { margin: 0 0 20px; font-size: 1.125rem; font-weight: 500; }
+.svc ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.svc li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 8px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    transition: transform 0.18s ease;
+}
+.svc li::before {
+    content: "";
+    flex: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--field-ink);
+    transform: translateY(1px);
+}
+.svc li:hover { transform: translateX(8px); }
 .svc-proof {
     grid-column: 7 / 13;
     margin: clamp(40px, 4vw, 64px) 0 0;
     font-family: var(--font-serif);
-    font-size: var(--step-lead);
-    line-height: 1.3;
+    font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
+    font-weight: 600;
+    line-height: 1.4;
 }
 
 /* LAVORI e CHI SONO: la colonna che scorre accanto allo stage */
@@ -538,7 +560,7 @@ main:focus { outline: none; }
     transition: background 0.2s;
 }
 .ledger-row:hover, .ledger-row:focus-within { background: var(--surface); }
-.page-col .ledger-name, .ledger-name { margin: 0; font-size: var(--step-lead); line-height: 1.15; }
+.page-col .ledger-name, .ledger-name { margin: 0; font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem); font-weight: 700; line-height: 1.2; }
 .ledger-name a { text-decoration: none; }
 .ledger-name a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
 .ledger-body p { margin: 0 0 8px; }
@@ -571,14 +593,15 @@ main:focus { outline: none; }
     padding: 0;
     list-style: none;
     font-family: var(--font-serif);
-    font-size: var(--step-h1);
-    line-height: 1.22;
-    letter-spacing: -0.02em;
+    font-size: var(--step-h2);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.03em;
 }
 
 
-.shot { display: none; margin: 0 0 32px; }
-.ledger-shot { display: none; }
+.shot { display: none; margin: 0 0 32px; border-radius: 24px; }
+.ledger-shot { display: none; border-radius: 20px; }
 .photo-mosaic.photo-mosaic-inline { display: none; }
 .portrait { display: block; max-width: 220px; margin: 0 0 32px; }
 .project-detail p { max-width: 54ch; }
@@ -594,8 +617,9 @@ main:focus { outline: none; }
 .contact-big {
     font-family: var(--font-serif);
     font-size: var(--step-h2);
-    letter-spacing: -0.02em;
-    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
 }
 
 .picker fieldset { margin: 0 0 20px; padding: 0; border: 0; min-width: 0; }
@@ -673,10 +697,11 @@ main:focus { outline: none; }
     max-width: none;
     margin: 0 0 clamp(32px, 4vw, 56px);
     font-family: var(--font-serif);
-    font-size: clamp(3rem, 14.2vw, 17rem);
-    font-weight: 500;
+    /* Unbounded è largo: il nome sta su una riga a tutta larghezza */
+    font-size: clamp(1.5rem, 9.4vw, 15rem);
+    font-weight: 800;
     letter-spacing: -0.04em;
-    line-height: 0.85;
+    line-height: 0.9;
     white-space: nowrap;
 }
 .footer-line {

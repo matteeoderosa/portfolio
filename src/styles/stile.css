@@ -1,35 +1,4 @@
-/* Anteprima /stile: titoli in Unbounded, servizi più forti, elenco con punti. Tutto sotto [data-stile]. */
-
-:root[data-stile] {
-    --font-serif: var(--font-unbounded), "Unbounded", system-ui, sans-serif;
-    --step-h2: clamp(1.5rem, 1rem + 1vw, 2.1rem);
-    --step-h1: clamp(1.7rem, 0.6rem + 2.8vw, 3rem);
-    --step-display: clamp(2.4rem, 6.6vw, 6.4rem);
-    --step-title: clamp(2.4rem, 5vw, 4.6rem);
-}
-:root[data-stile] h1,
-:root[data-stile] h2,
-:root[data-stile] h3 { font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; }
-
-/* i tre servizi */
-:root[data-stile] .services > h2 { font-size: clamp(2rem, 0.8rem + 3.4vw, 4.4rem); line-height: 1; }
-:root[data-stile] .svc h3 { font-size: clamp(1.45rem, 0.9rem + 1.7vw, 2.6rem); line-height: 1.08; max-width: 16ch; }
-:root[data-stile] .svc-row { margin-top: 20px; }
-:root[data-stile] .svc p { font-size: 1.125rem; font-weight: 500; }
-:root[data-stile] .svc ul { gap: 4px; }
-:root[data-stile] .svc li {
-    display: flex; align-items: baseline; gap: 14px;
-    font-size: 1.2rem; font-weight: 600; line-height: 1.3; padding: 8px 0;
-    transition: transform .18s ease;
-}
-:root[data-stile] .svc li::before {
-    content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%;
-    background: var(--field-ink); transform: translateY(1px);
-}
-:root[data-stile] .svc li:hover { transform: translateX(8px); }
-
-/* il nome in fondo: Unbounded è molto più largo, quindi si riduce per restare su una riga a tutta larghezza come nel sito */
-:root[data-stile] .footer-name { font-size: clamp(1.5rem, 10vw, 15rem); font-weight: 800; line-height: 0.9; }
+/* /stile: solo il pannello del colore. Tutto il resto è identico al sito. */
 
 /* pannello colore */
 .lab { position: fixed; right: 16px; bottom: 16px; z-index: 50; font-family: system-ui, sans-serif; font-size: 14px; line-height: 1.4; }
