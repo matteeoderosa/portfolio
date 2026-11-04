@@ -25,7 +25,7 @@ function pathFor(key: PageKey, lang: Lang): string | null {
   }
 }
 
-function textFor(key: PageKey, lang: Lang): { title: string; description: string } {
+function textFor(key: PageKey, lang: Lang): { title: string; description: string; share?: string } {
   const d = dictionaries[lang];
   if (typeof key === "object") {
     const p = projects.find((x) => x.slug === key.project);
@@ -35,7 +35,7 @@ function textFor(key: PageKey, lang: Lang): { title: string; description: string
   }
   switch (key) {
     case "home":
-      return { title: `${OWNER} · ${d.home.title}`, description: d.home.intro };
+      return { title: `${OWNER} · ${d.home.title}`, description: d.home.intro, share: d.home.shareText };
     case "projects":
       return { title: `${d.projects.title} · ${OWNER}`, description: d.projects.intro };
     case "about":
@@ -48,7 +48,9 @@ function textFor(key: PageKey, lang: Lang): { title: string; description: string
 export function pageMetadata(key: PageKey, lang: Lang, env?: SiteEnv): Metadata {
   const path = pathFor(key, lang);
   if (!path) throw new Error(`No route for ${JSON.stringify(key)} in "${lang}"`);
-  const { title, description } = textFor(key, lang);
+  const { title, description, share } = textFor(key, lang);
+  // Nell'anteprima dei link (Open Graph e Twitter) può esserci un testo più breve; Google usa la descrizione completa.
+  const shareDescription = share ?? description;
   const url = absoluteUrl(path, env);
 
   const languages: Record<string, string> = {};
@@ -66,7 +68,7 @@ export function pageMetadata(key: PageKey, lang: Lang, env?: SiteEnv): Metadata 
       type: "website",
       url,
       title,
-      description,
+      description: shareDescription,
       siteName: OWNER,
       locale: LOCALE[lang],
       images: [{ url: absoluteUrl("/og-image.png", env), width: 1200, height: 630, alt: OG_ALT[lang] }],
@@ -74,7 +76,7 @@ export function pageMetadata(key: PageKey, lang: Lang, env?: SiteEnv): Metadata 
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: shareDescription,
       images: [absoluteUrl("/og-image.png", env)],
     },
     icons: {

@@ -11,6 +11,8 @@ export type Dictionary = {
   home: {
     title: string;
     intro: string;
+    /** Descrizione breve mostrata nell'anteprima del link (WhatsApp, Instagram…). */
+    shareText: string;
     ctaProjects: string;
     servicesTitle: string;
     servicesProof: string;
@@ -81,6 +83,7 @@ const it: Dictionary = {
     title: "Siti e WebApps su misura",
     intro:
       "Ciao! sono Matteo, sviluppatore web di Grosseto, a Pisa per motivi di studio. Aiuto persone e piccole attività a portare online ciò che serve davvero, in modo semplice e curato.",
+    shareText: "Visita il mio sito!",
     ctaProjects: "Guarda i progetti",
     servicesTitle: "Cosa posso fare per te",
     servicesProof: "Un esempio reale:",
@@ -202,6 +205,7 @@ const en: Dictionary = {
     title: "Custom websites and web apps",
     intro:
       "Hi! I'm Matteo, a web developer from Grosseto, in Pisa for my studies. I help people and small businesses put online what they really need, with simplicity and care.",
+    shareText: "Visit my website!",
     ctaProjects: "See my projects",
     servicesTitle: "What I can do for you",
     servicesProof: "A real example:",
