@@ -11,7 +11,7 @@ import type { Lang } from "@/lib/routes";
 export default function PhotoMarquee({ lang, keys }: { lang: Lang; keys: readonly string[] }) {
   const track = (copy: boolean) => (
     <div className="marquee-track" aria-hidden={copy || undefined}>
-      {keys.map((k, i) => {
+      {keys.map((k) => {
         const p = photos[k];
         return (
           // eslint-disable-next-line @next/next/no-img-element
@@ -20,7 +20,9 @@ export default function PhotoMarquee({ lang, keys }: { lang: Lang; keys: readonl
             src={assetHref(p.src)}
             alt={p.alt[lang]}
             data-dup={copy || undefined}
-            loading={i < 3 && !copy ? "eager" : "lazy"}
+            // tutte subito: un'immagine "lazy" che entra scorrendo resterebbe un riquadro vuoto finché non arriva
+            loading="eager"
+            decoding="async"
             style={{ aspectRatio: p.ratio ?? 0.75 }}
           />
         );
