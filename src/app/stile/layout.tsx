@@ -3,12 +3,12 @@ import Shell from "@/components/Shell";
 import StileLab from "@/components/StileLab";
 import { dictionaries } from "@/content/dictionaries";
 import { routePath } from "@/lib/routes";
-import { sans, serif, unbounded } from "@/lib/fonts";
+import { sans, serif } from "@/lib/fonts";
 import { THEME_SCRIPT } from "@/lib/themeScript";
 import "@/styles/globals.css";
 import "@/styles/stile.css";
 
-/** Anteprima riservata: il sito con Unbounded e la scelta del colore. Non indicizzata. */
+/** Anteprima riservata: identica al sito, con in più il pannello per scegliere il colore. Non indicizzata. */
 export const metadata: Metadata = {
   title: "Anteprima stile · Matteo De Rosa",
   robots: { index: false, follow: false },
@@ -32,7 +32,7 @@ const header = {
 
 export default function StileLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="it" className={`${sans.variable} ${serif.variable} ${unbounded.variable}`} data-stile="" suppressHydrationWarning>
+    <html lang="it" className={`${sans.variable} ${serif.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
