@@ -19,6 +19,10 @@ export function gmailDeepLink(mailto: string, platform: Platform): string | null
   }
 
   // Windows and Linux: the browser cannot tell whether Gmail is in use, so this opens Gmail on the web.
+  return gmailWebLink(mailto);
+}
+
+export function gmailWebLink(mailto: string): string {
   const url = new URL(mailto);
   const params = new URLSearchParams({ view: "cm", fs: "1", to: decodeURIComponent(url.pathname) });
   const subject = url.searchParams.get("subject");
