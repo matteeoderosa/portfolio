@@ -5,6 +5,7 @@ import type { Lang } from "@/lib/routes";
 import PhotoStage from "@/components/PhotoStage";
 import { contactMosaic } from "@/content/photos";
 import NeedPicker from "@/components/NeedPicker";
+import MailLink from "@/components/MailLink";
 
 export default function ContactView({ lang }: { lang: Lang }) {
   const dict = dictionaries[lang];
@@ -21,9 +22,9 @@ export default function ContactView({ lang }: { lang: Lang }) {
         <ul className="contact-list">
           <li data-reveal>
             <span className="label">{c.emailLabel}</span>
-            <a className="contact-big" href={`mailto:${site.email}`}>
+            <MailLink className="contact-big" href={`mailto:${site.email}`}>
               {site.email}
-            </a>
+            </MailLink>
           </li>
           <li data-reveal>
             <span className="label">{dict.footer.github}</span>
