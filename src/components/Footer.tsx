@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { routePath } from "@/lib/routes";
+import MailLink from "./MailLink";
 
 export type FooterProps = {
   lang: "it" | "en";
@@ -20,7 +21,7 @@ export default function Footer({ lang, labels }: FooterProps) {
         <a href={site.github} rel="noopener noreferrer">
           {labels.github}
         </a>
-        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <MailLink href={`mailto:${site.email}`}>{site.email}</MailLink>
       </div>
     </footer>
   );

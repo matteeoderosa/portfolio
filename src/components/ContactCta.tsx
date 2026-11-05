@@ -2,6 +2,7 @@ import { dictionaries } from "@/content/dictionaries";
 import { site } from "@/content/site";
 import { routePath, type Lang } from "@/lib/routes";
 import NeedPicker from "./NeedPicker";
+import MailLink from "./MailLink";
 
 /** "photo": the closing block of the home page, with the live picker beside it. "band": the short close of the other pages. */
 export default function ContactCta({ lang, variant = "band" }: { lang: Lang; variant?: "photo" | "band" }) {
@@ -41,9 +42,9 @@ export default function ContactCta({ lang, variant = "band" }: { lang: Lang; var
       <div className="cta-band-side" data-reveal style={{ "--i": 1 } as React.CSSProperties}>
         <p>{dict.cta.text}</p>
         <div className="cta-actions">
-          <a className="btn btn-primary" href={`mailto:${site.email}`}>
+          <MailLink className="btn btn-primary" href={`mailto:${site.email}`}>
             {dict.nav.write}
-          </a>
+          </MailLink>
           <a className="btn btn-quiet" href={site.github} target="_blank" rel="noopener noreferrer">
             {dict.footer.github}
           </a>

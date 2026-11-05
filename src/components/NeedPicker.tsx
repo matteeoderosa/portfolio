@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import MailLink from "./MailLink";
 
 type Props = {
   email: string;
@@ -41,9 +42,9 @@ export default function NeedPicker({ email, legend, choices, send, mailSubject, 
           ))}
         </div>
       </fieldset>
-      <a className="btn btn-primary" href={href}>
+      <MailLink className="btn btn-primary" href={href}>
         {send}
-      </a>
+      </MailLink>
     </div>
   );
 }
